@@ -102,7 +102,12 @@
           </a>
         </div>
         <div class="col-lg-6">
-          <div class="p-4 p-md-5 bg-light rounded-4 border">
+          <div class="rounded-4 overflow-hidden shadow-sm mb-4" style="height: 220px;">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=800&q=80" 
+                 alt="Tư vấn giải pháp CNTT & Chuyển đổi số" 
+                 class="w-100 h-100 object-fit-cover" loading="lazy">
+          </div>
+          <div class="p-4 p-md-4 bg-light rounded-4 border">
             <h5 class="fw-bold mb-3">Lợi ích mang lại cho khách hàng</h5>
             <ul class="list-unstyled d-flex flex-column gap-3 mb-0 small text-secondary">
               <li class="d-flex gap-2">
@@ -163,7 +168,12 @@
           </a>
         </div>
         <div class="col-lg-6">
-          <div class="p-4 p-md-5 bg-light rounded-4 border">
+          <div class="rounded-4 overflow-hidden shadow-sm mb-4" style="height: 220px;">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
+                 alt="Thiết kế Website Doanh nghiệp chuẩn SEO" 
+                 class="w-100 h-100 object-fit-cover" loading="lazy">
+          </div>
+          <div class="p-4 p-md-4 bg-light rounded-4 border">
             <h5 class="fw-bold mb-3">Các gói dịch vụ thiết kế linh hoạt</h5>
             <div class="d-flex flex-column gap-3">
               <div class="p-3 bg-white rounded-3 shadow-sm border">
@@ -226,7 +236,12 @@
           </a>
         </div>
         <div class="col-lg-6">
-          <div class="p-4 p-md-5 bg-light rounded-4 border">
+          <div class="rounded-4 overflow-hidden shadow-sm mb-4" style="height: 220px;">
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" 
+                 alt="Bảo trì & Vận hành Hệ thống 24/7" 
+                 class="w-100 h-100 object-fit-cover" loading="lazy">
+          </div>
+          <div class="p-4 p-md-4 bg-light rounded-4 border">
             <h5 class="fw-bold mb-3">Chính sách cam kết chất lượng (SLA)</h5>
             <ul class="list-unstyled d-flex flex-column gap-3 mb-0 small text-secondary">
               <li class="pb-2 border-bottom">
@@ -395,5 +410,21 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Custom JS -->
   <script src="../../assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.ApiClient && window.ApiClient.getServices) {
+        window.ApiClient.getServices()
+          .then(res => {
+            if (res && res.success && Array.isArray(res.data)) {
+              console.log('✅ Tải danh mục dịch vụ động thành công từ API:', res.data.length, 'dịch vụ.');
+            }
+          })
+          .catch(err => {
+            console.log('ℹ️ Sử dụng thông tin dịch vụ mặc định.', err);
+          });
+      }
+    });
+  </script>
 </body>
 </html>
