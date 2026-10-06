@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bảng Quản Trị - CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM</title>
+  <!-- Bootstrap 5.3.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body class="bg-light">
+
+  <!-- ==================== 1. ADMIN NAVBAR ==================== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="../../index.html">
+        <span class="badge bg-primary p-2 rounded"><i class="bi bi-shield-lock-fill fs-5"></i></span>
+        <span>FFT ADMIN PORTAL</span>
+      </a>
+      <div class="d-flex align-items-center gap-3 ms-auto">
+        <a href="../../index.html" class="btn btn-outline-light btn-sm">
+          <i class="bi bi-box-arrow-up-right me-1"></i> Xem Website
+        </a>
+        <div class="d-flex align-items-center gap-2 text-white small">
+          <i class="bi bi-person-circle fs-5 text-primary"></i>
+          <span class="d-none d-md-inline">Quản Trị Viên</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==================== 2. ADMIN DASHBOARD CONTENT ==================== -->
+  <main class="container-fluid px-4 py-4">
+
+    <!-- Header & Breadcrumb -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+      <div>
+        <h3 class="fw-bold mb-1">Quản Lý Thông Tin Liên Hệ</h3>
+        <p class="text-secondary small mb-0">Theo dõi, tiếp nhận và xử lý các yêu cầu tư vấn từ khách hàng.</p>
+      </div>
+      <div class="mt-2 mt-md-0">
+        <button id="btn-refresh" class="btn btn-white btn-sm border shadow-sm fw-semibold">
+          <i class="bi bi-arrow-clockwise me-1"></i> Làm mới dữ liệu
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-lg-3">
+        <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <div class="text-muted small fw-semibold">Tổng liên hệ</div>
+              <h3 class="fw-bold mb-0 mt-1" id="stat-total">0</h3>
+            </div>
+            <div class="p-3 bg-primary-subtle text-primary rounded-3">
+              <i class="bi bi-envelope-paper-fill fs-4"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <div class="text-danger small fw-semibold">Chưa xử lý</div>
+              <h3 class="fw-bold mb-0 mt-1 text-danger" id="stat-unread">0</h3>
+            </div>
+            <div class="p-3 bg-danger-subtle text-danger rounded-3">
+              <i class="bi bi-bell-fill fs-4"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <div class="text-warning small fw-semibold">Đã đọc</div>
+              <h3 class="fw-bold mb-0 mt-1 text-warning" id="stat-read">0</h3>
+            </div>
+            <div class="p-3 bg-warning-subtle text-warning rounded-3">
+              <i class="bi bi-envelope-open-fill fs-4"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-6 col-lg-3">
+        <div class="card border-0 shadow-sm rounded-3 p-3 bg-white">
+          <div class="d-flex justify-content-between align-items-center">
+            <div>
+              <div class="text-success small fw-semibold">Đã phản hồi</div>
+              <h3 class="fw-bold mb-0 mt-1 text-success" id="stat-replied">0</h3>
+            </div>
+            <div class="p-3 bg-success-subtle text-success rounded-3">
+              <i class="bi bi-check-circle-fill fs-4"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Management Table Card -->
+    <div class="card border-0 shadow-sm rounded-4 bg-white overflow-hidden">
+      <!-- Card Header: Filters -->
+      <div class="card-header bg-white py-3 px-4 border-bottom">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+          <div class="btn-group btn-group-sm" id="filter-group">
+            <button type="button" class="btn btn-primary active" data-filter="">Tất cả</button>
+            <button type="button" class="btn btn-outline-secondary" data-filter="unread">Chưa đọc</button>
+            <button type="button" class="btn btn-outline-secondary" data-filter="read">Đã đọc</button>
+            <button type="button" class="btn btn-outline-secondary" data-filter="replied">Đã phản hồi</button>
+          </div>
+          <div class="small text-muted" id="status-indicator">
+            <i class="bi bi-database-check text-success me-1"></i> Sẵn sàng kết nối API Backend
+          </div>
+        </div>
+      </div>
+
+      <!-- Table Body -->
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light small text-secondary">
+            <tr>
+              <th scope="col" class="ps-4">Mã</th>
+              <th scope="col">Ngày gửi</th>
+              <th scope="col">Họ và tên</th>
+              <th scope="col">Email &amp; SĐT</th>
+              <th scope="col">Tiêu đề liên hệ</th>
+              <th scope="col" class="text-center">Trạng thái</th>
+              <th scope="col" class="text-end pe-4">Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="contact-table-body" class="small">
+            <tr>
+              <td colspan="7" class="text-center py-4 text-muted">
+                <div class="spinner-border spinner-border-sm text-primary me-2" role="status"></div>
+                Đang tải dữ liệu liên hệ...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== 3. DETAIL & STATUS UPDATE MODAL ==================== -->
+  <div class="modal fade" id="contactDetailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-primary" id="modal-status-badge">unread</span>
+            <h5 class="modal-title fw-bold" id="detailModalLabel">Chi Tiết Liên Hệ #<span id="modal-id"></span></h5>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="row g-3 mb-4 pb-3 border-bottom">
+            <div class="col-sm-6">
+              <div class="text-muted small">Người gửi:</div>
+              <strong id="modal-fullname" class="text-dark fs-6"></strong>
+            </div>
+            <div class="col-sm-6">
+              <div class="text-muted small">Thời điểm gửi:</div>
+              <span id="modal-date" class="text-secondary"></span>
+            </div>
+            <div class="col-sm-6">
+              <div class="text-muted small">Email:</div>
+              <span id="modal-email" class="text-primary fw-semibold"></span>
+            </div>
+            <div class="col-sm-6">
+              <div class="text-muted small">Số điện thoại:</div>
+              <span id="modal-phone" class="text-secondary"></span>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <div class="text-muted small mb-1">Tiêu đề:</div>
+            <h6 id="modal-subject" class="fw-bold text-dark"></h6>
+          </div>
+
+          <div class="mb-4">
+            <div class="text-muted small mb-1">Nội dung tin nhắn:</div>
+            <div class="p-3 bg-light rounded-3 border text-secondary" id="modal-message"></div>
+          </div>
+
+          <div class="bg-light-subtle p-3 rounded-3 border">
+            <label for="modal-notes" class="form-label small fw-semibold text-dark">Ghi chú xử lý nội bộ của Admin:</label>
+            <textarea class="form-control form-control-sm mb-3" id="modal-notes" rows="2" placeholder="Nhập ghi chú (ví dụ: Đã gọi điện trao đổi với khách...)"></textarea>
+            
+            <div class="d-flex gap-2">
+              <button type="button" class="btn btn-warning btn-sm fw-semibold" id="btn-mark-read">
+                <i class="bi bi-envelope-open me-1"></i> Đánh dấu Đã đọc
+              </button>
+              <button type="button" class="btn btn-success btn-sm fw-semibold" id="btn-mark-replied">
+                <i class="bi bi-check-circle me-1"></i> Đánh dấu Đã phản hồi
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Admin Management JavaScript -->
+  <script>
+    // Dữ liệu mẫu dự phòng khi Backend Offline
+    const MOCK_CONTACTS = [
+      {
+        id: 1,
+        full_name: 'Nguyễn Văn An',
+        email: 'nguyenvanan@example.com',
+        phone: '0912 345 678',
+        subject: 'Yêu cầu báo giá dịch vụ thiết kế website',
+        message: 'Kính gửi FFT Việt Nam, công ty chúng tôi đang có nhu cầu thiết kế lại website doanh nghiệp để chuẩn hóa thương hiệu. Xin vui lòng gửi báo giá và tài liệu giới thiệu chi tiết qua email.',
+        status: 'read',
+        admin_notes: 'Đã tiếp nhận yêu cầu, chuẩn bị liên hệ lại trong sáng mai.',
+        created_at: '2026-06-25 09:30:00'
+      },
+      {
+        id: 2,
+        full_name: 'Trần Thị Mai',
+        email: 'tranmai.tech@example.com',
+        phone: '0987 654 321',
+        subject: 'Tư vấn triển khai giải pháp chuyển đổi số',
+        message: 'Tôi muốn tìm hiểu thêm về dịch vụ tư vấn giải pháp CNTT và khả năng tích hợp hệ thống cho doanh nghiệp sản xuất.',
+        status: 'unread',
+        admin_notes: null,
+        created_at: '2026-07-02 14:15:00'
+      }
+    ];
+
+    let currentContacts = [];
+    let currentFilter = '';
+    let selectedContactId = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadContacts();
+
+      // Sự kiện làm mới
+      document.getElementById('btn-refresh').addEventListener('click', () => loadContacts(currentFilter));
+
+      // Sự kiện bộ lọc
+      const filterButtons = document.querySelectorAll('#filter-group button');
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterButtons.forEach(b => {
+            b.classList.remove('btn-primary', 'active');
+            b.classList.add('btn-outline-secondary');
+          });
+          btn.classList.remove('btn-outline-secondary');
+          btn.classList.add('btn-primary', 'active');
+
+          currentFilter = btn.getAttribute('data-filter');
+          loadContacts(currentFilter);
+        });
+      });
+
+      // Sự kiện đổi trạng thái trong Modal
+      document.getElementById('btn-mark-read').addEventListener('click', () => updateStatus('read'));
+      document.getElementById('btn-mark-replied').addEventListener('click', () => updateStatus('replied'));
+    });
+
+    async function loadContacts(status = '') {
+      const tableBody = document.getElementById('contact-table-body');
+      const indicator = document.getElementById('status-indicator');
+
+      try {
+        const url = status ? `http://localhost:5000/api/contacts?status=${status}` : 'http://localhost:5000/api/contacts';
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('API offline');
+        const data = await res.json();
+        
+        currentContacts = data.data;
+        updateStats(data.statistics);
+        indicator.innerHTML = '<i class="bi bi-circle-fill text-success me-1"></i> Đã kết nối MySQL API Backend';
+      } catch (err) {
+        // Fallback sang dữ liệu mẫu
+        currentContacts = status ? MOCK_CONTACTS.filter(c => c.status === status) : MOCK_CONTACTS;
+        updateStats({
+          total: MOCK_CONTACTS.length,
+          unread: MOCK_CONTACTS.filter(c => c.status === 'unread').length,
+          read_count: MOCK_CONTACTS.filter(c => c.status === 'read').length,
+          replied: MOCK_CONTACTS.filter(c => c.status === 'replied').length
+        });
+        indicator.innerHTML = '<i class="bi bi-circle-fill text-warning me-1"></i> Chế độ Offline / Dữ liệu demo';
+      }
+
+      renderTable();
+    }
+
+    function updateStats(stats) {
+      if (!stats) return;
+      document.getElementById('stat-total').textContent = stats.total || 0;
+      document.getElementById('stat-unread').textContent = stats.unread || 0;
+      document.getElementById('stat-read').textContent = stats.read_count || 0;
+      document.getElementById('stat-replied').textContent = stats.replied || 0;
+    }
+
+    function renderTable() {
+      const tableBody = document.getElementById('contact-table-body');
+      if (!currentContacts || currentContacts.length === 0) {
+        tableBody.innerHTML = '<tr><td colspan="7" class="text-center py-4 text-muted">Không có thông tin liên hệ nào.</td></tr>';
+        return;
+      }
+
+      tableBody.innerHTML = currentContacts.map(c => {
+        let badgeClass = 'bg-secondary';
+        let badgeText = 'Chưa xác định';
+        if (c.status === 'unread') { badgeClass = 'bg-danger'; badgeText = 'Chưa đọc'; }
+        else if (c.status === 'read') { badgeClass = 'bg-warning text-dark'; badgeText = 'Đã đọc'; }
+        else if (c.status === 'replied') { badgeClass = 'bg-success'; badgeText = 'Đã phản hồi'; }
+
+        return `
+          <tr>
+            <td class="ps-4 fw-semibold text-secondary">#${c.id}</td>
+            <td><small class="text-muted">${c.created_at ? c.created_at.substring(0, 16) : ''}</small></td>
+            <td class="fw-bold text-dark">${c.full_name}</td>
+            <td>
+              <div>${c.email}</div>
+              <small class="text-muted">${c.phone || '-'}</small>
+            </td>
+            <td class="text-truncate" style="max-width: 250px;">${c.subject}</td>
+            <td class="text-center"><span class="badge ${badgeClass}">${badgeText}</span></td>
+            <td class="text-end pe-4">
+              <button class="btn btn-outline-primary btn-sm py-1 px-2" onclick="openDetail(${c.id})">
+                <i class="bi bi-eye"></i> Xem &amp; Xử lý
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function openDetail(id) {
+      const item = currentContacts.find(c => c.id === id);
+      if (!item) return;
+
+      selectedContactId = id;
+      document.getElementById('modal-id').textContent = item.id;
+      document.getElementById('modal-fullname').textContent = item.full_name;
+      document.getElementById('modal-date').textContent = item.created_at;
+      document.getElementById('modal-email').textContent = item.email;
+      document.getElementById('modal-phone').textContent = item.phone || 'Chưa cung cấp';
+      document.getElementById('modal-subject').textContent = item.subject;
+      document.getElementById('modal-message').textContent = item.message;
+      document.getElementById('modal-notes').value = item.admin_notes || '';
+
+      const badge = document.getElementById('modal-status-badge');
+      badge.textContent = item.status.toUpperCase();
+      badge.className = `badge ${item.status === 'unread' ? 'bg-danger' : item.status === 'read' ? 'bg-warning text-dark' : 'bg-success'}`;
+
+      const modal = new bootstrap.Modal(document.getElementById('contactDetailModal'));
+      modal.show();
+    }
+
+    async function updateStatus(newStatus) {
+      if (!selectedContactId) return;
+      const notes = document.getElementById('modal-notes').value;
+
+      try {
+        await fetch(`http://localhost:5000/api/contacts/${selectedContactId}/status`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus, adminNotes: notes })
+        });
+      } catch (e) {
+        // Cập nhật local nếu offline
+        const item = currentContacts.find(c => c.id === selectedContactId);
+        if (item) {
+          item.status = newStatus;
+          item.admin_notes = notes;
+        }
+      }
+
+      // Đóng modal và reload
+      bootstrap.Modal.getInstance(document.getElementById('contactDetailModal')).hide();
+      loadContacts(currentFilter);
+    }
+  </script>
+</body>
+</html>

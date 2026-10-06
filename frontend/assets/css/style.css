@@ -1,64 +1,335 @@
 /* ==========================================================================
-   Main Stylesheet - Website Giới Thiệu Doanh Nghiệp
+   Main Stylesheet - Website Giới Thiệu Doanh Nghiệp (FFT Việt Nam)
    Thực hiện theo: PROJECT_PLAN_Web_gioi_thieu_doanh_nghiep_OKL.md
-   Giai đoạn: Nền tảng (Foundation)
+   Thiết kế chuẩn Doanh nghiệp B2B (Clean, Professional, High Density)
    ========================================================================== */
 
 :root {
-  --primary-color: #0d6efd;
-  --primary-dark: #0b5ed7;
-  --secondary-color: #6c757d;
-  --dark-color: #212529;
-  --light-bg: #f8f9fa;
-  --border-color: #dee2e6;
-  --text-muted: #6c757d;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-light: #eff6ff;
+  --secondary: #475569;
+  --dark: #0f172a;
+  --dark-surface: #1e293b;
+  --light-bg: #f8fafc;
+  --border: #e2e8f0;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
 }
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  color: var(--dark-color);
+  color: var(--text-main);
+  background-color: #ffffff;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
+}
+
+/* Navbar */
+.navbar {
+  padding-top: 0.85rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-size: 1.25rem;
+}
+
+.navbar-nav .nav-link {
+  font-weight: 500;
+  padding: 0.5rem 0.85rem !important;
+  transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #ffffff !important;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  color: #ffffff;
+  padding: 5.5rem 0 4.5rem;
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(37, 99, 235, 0.2);
+  border: 1px solid rgba(147, 197, 253, 0.3);
+  color: #bfdbfe;
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.25rem;
+}
+
+.hero-lead {
+  font-size: 1.15rem;
+  color: #94a3b8;
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+}
+
+/* Stats Section */
+.stats-bar {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  box-shadow: var(--card-shadow);
+  margin-top: -2.5rem;
+  position: relative;
+  z-index: 10;
+  padding: 1.75rem 1rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Feature & Service Cards */
+.feature-card {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background-color: #ffffff;
+  padding: 2rem 1.5rem;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hover-shadow);
+  border-color: #cbd5e1;
+}
+
+.icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 0.625rem;
+  background-color: var(--primary-light);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+/* News Cards */
+.news-card {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background-color: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-/* Header & Navbar */
-.navbar-brand {
-  font-weight: 700;
-  letter-spacing: -0.5px;
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hover-shadow);
 }
 
-/* Hero / Welcome Banner */
-.hero-section {
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-bottom: 1px solid var(--border-color);
-  padding: 4rem 0;
+.news-card-img {
+  height: 180px;
+  object-fit: cover;
+  background-color: #e2e8f0;
 }
 
-/* Status badge */
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.35rem 0.85rem;
-  border-radius: 50rem;
-  font-size: 0.875rem;
-  font-weight: 500;
+.news-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
-.status-online {
-  background-color: #d1e7dd;
-  color: #0f5132;
-}
-
-.status-offline {
-  background-color: #f8d7da;
-  color: #842029;
+/* CTA Section */
+.cta-section {
+  background-color: var(--light-bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 4.5rem 0;
 }
 
 /* Footer */
 footer {
   margin-top: auto;
-  background-color: #f8f9fa;
-  border-top: 1px solid var(--border-color);
+  background-color: var(--dark);
+  color: #94a3b8;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 4rem;
+  padding-bottom: 2rem;
 }
+
+footer a {
+  color: #cbd5e1;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+footer a:hover {
+  color: #ffffff;
+}
+
+.footer-heading {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 1.25rem;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints & Mobile Enhancements (STORY-016)
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background-color: var(--dark-surface);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .hero-section {
+    padding: 4rem 0 3.5rem;
+  }
+  
+  .hero-title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .hero-section {
+    padding: 3rem 0 2.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.85rem;
+  }
+
+  .hero-lead {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .stats-bar {
+    margin-top: -1.5rem;
+    padding: 1.25rem 0.5rem;
+  }
+
+  .stat-number {
+    font-size: 1.6rem;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+  }
+
+  .cta-section {
+    padding: 3rem 0;
+  }
+
+  footer {
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hero-title {
+    font-size: 1.65rem;
+  }
+
+  .hero-section .btn,
+  .cta-section .btn,
+  .contact-card .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .btn-group .btn {
+    width: auto;
+  }
+
+  /* Table horizontal scroll optimization on narrow phones */
+  .table-responsive {
+    -webkit-overflow-scrolling: touch;
+    border-radius: 0.5rem;
+  }
+
+  /* Adjust padding for dense mobile viewing */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* ==========================================================================
+   Cross-Browser Compatibility Fixes (Safari, Firefox, Chrome, Edge)
+   ========================================================================== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Smooth focus rings for keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Webkit tap highlight removal for cleaner touch feedback */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+

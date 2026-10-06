@@ -1,44 +1,74 @@
 /**
- * main.js - Script cơ bản cho Website Giới Thiệu Doanh Nghiệp
- * Giai đoạn: Nền tảng (Foundation)
+ * main.js - Core JavaScript cho Website Giới Thiệu Doanh Nghiệp (FFT Việt Nam)
+ * Giai đoạn: EPIC-005 — Tích hợp Website và CSDL (STORY-017)
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Frontend Website Giới Thiệu Doanh Nghiệp đã sẵn sàng.');
+const API_BASE_URL = 'http://localhost:5000/api';
 
-  const checkBackendBtn = document.getElementById('btn-check-backend');
-  const backendStatusEl = document.getElementById('backend-status');
-  const backendDetailsEl = document.getElementById('backend-details');
+/**
+ * ApiClient - Module trao đổi dữ liệu tập trung với Backend Node.js Express
+ */
+const ApiClient = {
+  async getHealth() {
+    const res = await fetch(`${API_BASE_URL}/health`);
+    return await res.json();
+  },
 
-  if (checkBackendBtn && backendStatusEl) {
-    checkBackendBtn.addEventListener('click', async () => {
-      backendStatusEl.innerHTML = '<span class="spinner-border spinner-border-sm" role="status"></span> Đang kết nối...';
-      backendStatusEl.className = 'badge bg-warning text-dark';
-      
-      try {
-        const response = await fetch('http://localhost:5000/api/health');
-        if (!response.ok) {
-          throw new Error(`HTTP Error: ${response.status}`);
-        }
-        const data = await response.json();
-        
-        backendStatusEl.textContent = 'Hoạt động bình thường (OK)';
-        backendStatusEl.className = 'badge bg-success';
-        
-        if (backendDetailsEl) {
-          backendDetailsEl.classList.remove('d-none');
-          backendDetailsEl.textContent = JSON.stringify(data, null, 2);
-        }
-      } catch (error) {
-        console.error('Không thể kết nối Backend:', error);
-        backendStatusEl.textContent = 'Chưa kết nối được (Offline / Backend chưa chạy)';
-        backendStatusEl.className = 'badge bg-danger';
-        
-        if (backendDetailsEl) {
-          backendDetailsEl.classList.remove('d-none');
-          backendDetailsEl.textContent = `Lỗi: ${error.message}\n(Hãy đảm bảo bạn đã khởi động Backend: cd backend && npm run dev)`;
-        }
-      }
+  async getCompanyInfo() {
+    const res = await fetch(`${API_BASE_URL}/company`);
+    return await res.json();
+  },
+
+  async getServices() {
+    const res = await fetch(`${API_BASE_URL}/services`);
+    return await res.json();
+  },
+
+  async getServiceBySlug(slug) {
+    const res = await fetch(`${API_BASE_URL}/services/${slug}`);
+    return await res.json();
+  },
+
+  async getNews(limit = 10) {
+    const res = await fetch(`${API_BASE_URL}/news?limit=${limit}`);
+    return await res.json();
+  },
+
+  async getNewsBySlug(slug) {
+    const res = await fetch(`${API_BASE_URL}/news/${slug}`);
+    return await res.json();
+  },
+
+  async getGallery(category = 'all') {
+    const url = category && category !== 'all' 
+      ? `${API_BASE_URL}/gallery?category=${encodeURIComponent(category)}`
+      : `${API_BASE_URL}/gallery`;
+    const res = await fetch(url);
+    return await res.json();
+  },
+
+  async sendContact(data) {
+    const res = await fetch(`${API_BASE_URL}/contacts`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
     });
+    return await res.json();
   }
+};
+
+// Đính kèm ApiClient vào window để các trang có thể gọi dùng
+window.ApiClient = ApiClient;
+
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('✅ Hệ thống Website FFT Việt Nam đã sẵn sàng.');
+
+  // Kiểm tra kết nối Backend API trên console
+  ApiClient.getHealth()
+    .then(data => {
+      console.log('🚀 Kết nối Backend thành công:', data);
+    })
+    .catch(() => {
+      console.log('ℹ️ Backend đang ở chế độ offline. Website sử dụng dữ liệu tĩnh dự phòng.');
+    });
 });

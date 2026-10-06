@@ -5,7 +5,14 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "db:init": "node ../database/initDb.js",
+    "test:contact": "node src/scripts/verifyContactIntegration.js",
+    "test:functional": "node src/scripts/runFunctionalTests.js",
+    "test:ui": "node src/scripts/verifyUiResponsive.js",
+    "test:regression": "node src/scripts/runRegressionSuite.js",
+    "test:all": "npm run test:regression",
+    "test:audit": "node src/scripts/runFinalReviewAudit.js"
   },
   "keywords": [
     "express",

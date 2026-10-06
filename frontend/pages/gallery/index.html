@@ -3,37 +3,386 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hình Ảnh - Website Giới Thiệu Doanh Nghiệp</title>
+  <title>Thư Viện Hình Ảnh - CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM</title>
+  <!-- Bootstrap 5.3.3 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <!-- ==================== 1. NAVIGATION BAR ==================== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="../../index.html">DOANH NGHIỆP OKL</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="../../index.html">
+        <span class="badge bg-primary p-2 rounded"><i class="bi bi-cpu-fill fs-5"></i></span>
+        <span>FFT VIỆT NAM</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="../../index.html">Trang chủ</a></li>
           <li class="nav-item"><a class="nav-link" href="../about/index.html">Giới thiệu</a></li>
           <li class="nav-item"><a class="nav-link" href="../services/index.html">Dịch vụ</a></li>
           <li class="nav-item"><a class="nav-link" href="../news/index.html">Tin tức</a></li>
           <li class="nav-item"><a class="nav-link active" href="index.html">Hình ảnh</a></li>
           <li class="nav-item"><a class="nav-link" href="../contact/index.html">Liên hệ</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-primary btn-sm px-3 py-2 fw-semibold" href="../contact/index.html">
+              <i class="bi bi-telephone-fill me-1"></i> Tư vấn ngay
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="container my-5">
-    <div class="p-5 bg-light rounded-3 border">
-      <h2>Hình Ảnh Hoạt Động (Gallery)</h2>
-      <p class="text-muted">Skeleton cơ bản. Nội dung và bố cục chi tiết sẽ được xây dựng trong EPIC-004 (STORY-014).</p>
-      <a href="../../index.html" class="btn btn-outline-primary btn-sm">Quay về trang chính</a>
+  <!-- ==================== 2. PAGE HEADER ==================== -->
+  <header class="bg-dark text-white py-5 border-bottom border-secondary border-opacity-25">
+    <div class="container text-center py-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center small mb-3">
+          <li class="breadcrumb-item"><a href="../../index.html" class="text-secondary text-decoration-none">Trang chủ</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Hình ảnh</li>
+        </ol>
+      </nav>
+      <h1 class="fw-bold mb-2">Thư Viện Hình Ảnh &amp; Hoạt Động</h1>
+      <p class="text-secondary max-w-600 mx-auto mb-0">
+        Khám phá không gian văn phòng sáng tạo, văn hóa làm việc năng động và các sự kiện đáng nhớ của FFT Việt Nam.
+      </p>
     </div>
-  </main>
+  </header>
 
-  <footer class="py-4 text-center text-muted small mt-auto border-top">
-    <p class="mb-0">Website Giới Thiệu Doanh Nghiệp © 2026.</p>
+  <!-- ==================== 3. GALLERY SECTION WITH FILTER ==================== -->
+  <section class="py-5">
+    <div class="container py-3">
+
+      <!-- Filter Buttons -->
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5" id="gallery-filters">
+        <button class="btn btn-primary btn-sm px-3 py-2 fw-semibold active" data-filter="all">
+          Tất cả ảnh
+        </button>
+        <button class="btn btn-outline-secondary btn-sm px-3 py-2 fw-semibold" data-filter="van-phong">
+          <i class="bi bi-building me-1"></i> Không gian văn phòng
+        </button>
+        <button class="btn btn-outline-secondary btn-sm px-3 py-2 fw-semibold" data-filter="hoat-dong">
+          <i class="bi bi-people me-1"></i> Hoạt động đội ngũ
+        </button>
+        <button class="btn btn-outline-secondary btn-sm px-3 py-2 fw-semibold" data-filter="su-kien">
+          <i class="bi bi-trophy me-1"></i> Sự kiện &amp; Vinh danh
+        </button>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="row g-4" id="gallery-items">
+
+        <!-- Item 1: Văn phòng -->
+        <div class="col-md-6 col-lg-4 gallery-item" data-category="van-phong">
+          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
+            <div class="bg-light d-flex align-items-center justify-content-center p-4 position-relative" style="height: 200px;">
+              <i class="bi bi-building fs-1 text-primary"></i>
+              <span class="badge bg-primary position-absolute top-0 end-0 m-3">Văn phòng</span>
+            </div>
+            <div class="card-body p-4">
+              <h5 class="fw-bold mb-2">Không gian văn phòng mở hiện đại</h5>
+              <p class="text-secondary small mb-3">
+                Khu vực làm việc tiện nghi, ngập tràn ánh sáng tự nhiên thúc đẩy khả năng sáng tạo của đội ngũ kỹ sư.
+              </p>
+              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn" 
+                      data-bs-toggle="modal" data-bs-target="#imageModal"
+                      data-title="Không gian văn phòng mở hiện đại"
+                      data-category="Văn phòng"
+                      data-desc="Không gian làm việc mở với đầy đủ tiện nghi, thiết kế hiện đại chuẩn doanh nghiệp công nghệ, trang bị màn hình chất lượng cao và môi trường năng động.">
+                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2: Văn phòng -->
+        <div class="col-md-6 col-lg-4 gallery-item" data-category="van-phong">
+          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
+            <div class="bg-light d-flex align-items-center justify-content-center p-4 position-relative" style="height: 200px;">
+              <i class="bi bi-laptop fs-1 text-primary"></i>
+              <span class="badge bg-primary position-absolute top-0 end-0 m-3">Văn phòng</span>
+            </div>
+            <div class="card-body p-4">
+              <h5 class="fw-bold mb-2">Phòng họp sáng tạo &amp; Brainstorm</h5>
+              <p class="text-secondary small mb-3">
+                Không gian thảo luận chiến lược dự án, trang bị bảng tương tác và hệ thống họp trực tuyến bảo mật.
+              </p>
+              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn"
+                      data-bs-toggle="modal" data-bs-target="#imageModal"
+                      data-title="Phòng họp sáng tạo & Brainstorm"
+                      data-category="Văn phòng"
+                      data-desc="Phòng họp cách âm chuẩn, trang bị hệ thống họp trực tuyến đa điểm cho các buổi làm việc từ xa cùng khách hàng và đối tác chiến lược.">
+                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3: Hoạt động -->
+        <div class="col-md-6 col-lg-4 gallery-item" data-category="hoat-dong">
+          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
+            <div class="bg-light d-flex align-items-center justify-content-center p-4 position-relative" style="height: 200px;">
+              <i class="bi bi-code-square fs-1 text-success"></i>
+              <span class="badge bg-success position-absolute top-0 end-0 m-3">Hoạt động</span>
+            </div>
+            <div class="card-body p-4">
+              <h5 class="fw-bold mb-2">Buổi họp kỹ thuật Sprint Review</h5>
+              <p class="text-secondary small mb-3">
+                Đội ngũ lập trình viên định kỳ đánh giá chất lượng sản phẩm, rà soát mã nguồn và chia sẻ kiến thức mới.
+              </p>
+              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn"
+                      data-bs-toggle="modal" data-bs-target="#imageModal"
+                      data-title="Buổi họp kỹ thuật Sprint Review"
+                      data-category="Hoạt động"
+                      data-desc="Hình ảnh buổi tổng kết tiến độ theo mô hình Agile/Scrum, nơi các thành viên đóng góp ý kiến nâng cao trải nghiệm người dùng và hiệu năng hệ thống.">
+                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4: Hoạt động -->
+        <div class="col-md-6 col-lg-4 gallery-item" data-category="hoat-dong">
+          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
+            <div class="bg-light d-flex align-items-center justify-content-center p-4 position-relative" style="height: 200px;">
+              <i class="bi bi-people-fill fs-1 text-success"></i>
+              <span class="badge bg-success position-absolute top-0 end-0 m-3">Hoạt động</span>
+            </div>
+            <div class="card-body p-4">
+              <h5 class="fw-bold mb-2">Chuyến dã ngoại Teambuilding</h5>
+              <p class="text-secondary small mb-3">
+                Hoạt động ngoại khóa thường niên giúp tái tạo năng lượng, tăng cường kết nối và thấu hiểu giữa các phòng ban.
+              </p>
+              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn"
+                      data-bs-toggle="modal" data-bs-target="#imageModal"
+                      data-title="Chuyến dã ngoại Teambuilding"
+                      data-category="Hoạt động"
+                      data-desc="Khoảnh khắc vui tươi, gắn kết tinh thần đoàn kết của toàn thể cán bộ nhân viên công ty trong chuyến hành trình dã ngoại định kỳ hàng năm.">
+                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5: Sự kiện -->
+        <div class="col-md-6 col-lg-4 gallery-item" data-category="su-kien">
+          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
+            <div class="bg-light d-flex align-items-center justify-content-center p-4 position-relative" style="height: 200px;">
+              <i class="bi bi-trophy-fill fs-1 text-warning"></i>
+              <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3">Sự kiện</span>
+            </div>
+            <div class="card-body p-4">
+              <h5 class="fw-bold mb-2">Lễ vinh danh nhân sự xuất sắc</h5>
+              <p class="text-secondary small mb-3">
+                Trao thưởng các kỹ sư và chuyên viên có cống hiến vượt bậc trong các dự án công nghệ chuyển đổi số.
+              </p>
+              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn"
+                      data-bs-toggle="modal" data-bs-target="#imageModal"
+                      data-title="Lễ vinh danh nhân sự xuất sắc"
+                      data-category="Sự kiện"
+                      data-desc="Ban lãnh đạo công ty trao chứng nhận và phần thưởng vinh danh những cá nhân xuất sắc có thành tích vượt trội trong quý 2/2026.">
+                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6: Sự kiện -->
+        <div class="col-md-6 col-lg-4 gallery-item" data-category="su-kien">
+          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
+            <div class="bg-light d-flex align-items-center justify-content-center p-4 position-relative" style="height: 200px;">
+              <i class="bi bi-mic-fill fs-1 text-warning"></i>
+              <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3">Sự kiện</span>
+            </div>
+            <div class="card-body p-4">
+              <h5 class="fw-bold mb-2">Hội thảo kết nối công nghệ số</h5>
+              <p class="text-secondary small mb-3">
+                FFT Việt Nam đồng tổ chức diễn đàn chia sẻ xu hướng giải pháp phần mềm cho cộng đồng doanh nghiệp.
+              </p>
+              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn"
+                      data-bs-toggle="modal" data-bs-target="#imageModal"
+                      data-title="Hội thảo kết nối công nghệ số"
+                      data-category="Sự kiện"
+                      data-desc="Đại diện FFT Việt Nam trình bày tham luận về kiến trúc phần mềm thế hệ mới và an toàn thông tin tại hội thảo thường niên khối công nghệ.">
+                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== 4. LIGHTBOX MODAL ==================== -->
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content border-0 shadow">
+        <div class="modal-header">
+          <div class="d-flex align-items-center gap-2">
+            <span class="badge bg-primary" id="modalCategory">Danh mục</span>
+            <h5 class="modal-title fw-bold" id="imageModalLabel">Tiêu đề ảnh</h5>
+          </div>
+          <button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#imageModal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center p-4">
+          <div class="p-5 bg-light rounded-3 text-primary mb-3">
+            <i class="bi bi-image fs-1"></i>
+          </div>
+          <p class="text-secondary small mb-0 text-start" id="modalDesc">
+            Mô tả chi tiết hình ảnh sẽ hiển thị tại đây.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 5. CTA SECTION ==================== -->
+  <section class="cta-section text-center">
+    <div class="container">
+      <h2 class="fw-bold mb-3">Gia nhập hoặc hợp tác cùng FFT Việt Nam</h2>
+      <p class="text-muted max-w-600 mx-auto mb-4">
+        Chúng tôi luôn chào đón các cơ hội hợp tác phát triển công nghệ và các nhân sự tài năng có chung tầm nhìn.
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="../contact/index.html" class="btn btn-primary px-4 py-2 fw-semibold">
+          Liên hệ hợp tác ngay
+        </a>
+        <a href="../about/index.html" class="btn btn-outline-dark px-4 py-2 fw-semibold">
+          Tìm hiểu thêm về chúng tôi
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. FOOTER ==================== -->
+  <footer>
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <span class="badge bg-primary p-2 rounded"><i class="bi bi-cpu-fill fs-5"></i></span>
+            <span class="fw-bold fs-5 text-white">FFT VIỆT NAM</span>
+          </div>
+          <p class="small text-secondary mb-3">
+            CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM — Tiên phong giải pháp công nghệ, phát triển phần mềm và kiến tạo giải pháp số chuyên nghiệp cho doanh nghiệp.
+          </p>
+          <div class="d-flex gap-3 text-secondary">
+            <a href="#"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#"><i class="bi bi-linkedin fs-5"></i></a>
+            <a href="#"><i class="bi bi-envelope-fill fs-5"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h6 class="footer-heading">Liên kết nhanh</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="../../index.html">Trang chủ</a></li>
+            <li><a href="../about/index.html">Giới thiệu công ty</a></li>
+            <li><a href="../services/index.html">Dịch vụ giải pháp</a></li>
+            <li><a href="../news/index.html">Tin tức &amp; Sự kiện</a></li>
+            <li><a href="index.html">Thư viện hình ảnh</a></li>
+            <li><a href="../contact/index.html">Liên hệ hợp tác</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading">Dịch vụ chính</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="../services/index.html">Tư vấn giải pháp CNTT</a></li>
+            <li><a href="../services/index.html">Thiết kế website doanh nghiệp</a></li>
+            <li><a href="../services/index.html">Bảo trì &amp; Vận hành hệ thống</a></li>
+            <li><a href="../services/index.html">Chuyển đổi số doanh nghiệp</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading">Thông tin liên hệ</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0 text-secondary">
+            <li class="d-flex align-items-start gap-2">
+              <i class="bi bi-geo-alt-fill text-primary mt-1"></i>
+              <span>Tầng 5, Tòa nhà Công Nghệ, Q. Cầu Giấy, Hà Nội</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-telephone-fill text-primary"></i>
+              <span>024 1234 5678</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-envelope-fill text-primary"></i>
+              <span>contact@fft.com.vn</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-clock-fill text-primary"></i>
+              <span>Thứ 2 - Thứ 6: 08:00 - 17:30</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-secondary border-opacity-25 text-center small text-secondary">
+        <p class="mb-0">© 2026 CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM. Tất cả quyền được bảo lưu.</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Gallery Interactive Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Lọc ảnh theo danh mục (Filter Tabs)
+      const filterButtons = document.querySelectorAll('#gallery-filters button');
+      const galleryItems = document.querySelectorAll('.gallery-item');
+
+      filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Bỏ active cũ, gán active mới
+          filterButtons.forEach(b => {
+            b.classList.remove('btn-primary', 'active');
+            b.classList.add('btn-outline-secondary');
+          });
+          btn.classList.remove('btn-outline-secondary');
+          btn.classList.add('btn-primary', 'active');
+
+          const filterValue = btn.getAttribute('data-filter');
+
+          galleryItems.forEach(item => {
+            if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+              item.style.display = 'block';
+            } else {
+              item.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 2. Mở Modal hiển thị chi tiết (Lightbox)
+      const viewButtons = document.querySelectorAll('.view-detail-btn');
+      const modalTitle = document.getElementById('imageModalLabel');
+      const modalCategory = document.getElementById('modalCategory');
+      const modalDesc = document.getElementById('modalDesc');
+
+      viewButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          modalTitle.textContent = btn.getAttribute('data-title');
+          modalCategory.textContent = btn.getAttribute('data-category');
+          modalDesc.textContent = btn.getAttribute('data-desc');
+        });
+      });
+    });
+  </script>
 </body>
 </html>

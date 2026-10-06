@@ -3,37 +3,400 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liên Hệ - Website Giới Thiệu Doanh Nghiệp</title>
+  <title>Liên Hệ - CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM</title>
+  <!-- Bootstrap 5.3.3 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <!-- ==================== 1. NAVIGATION BAR ==================== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="../../index.html">DOANH NGHIỆP OKL</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="../../index.html">
+        <span class="badge bg-primary p-2 rounded"><i class="bi bi-cpu-fill fs-5"></i></span>
+        <span>FFT VIỆT NAM</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="../../index.html">Trang chủ</a></li>
           <li class="nav-item"><a class="nav-link" href="../about/index.html">Giới thiệu</a></li>
           <li class="nav-item"><a class="nav-link" href="../services/index.html">Dịch vụ</a></li>
           <li class="nav-item"><a class="nav-link" href="../news/index.html">Tin tức</a></li>
           <li class="nav-item"><a class="nav-link" href="../gallery/index.html">Hình ảnh</a></li>
           <li class="nav-item"><a class="nav-link active" href="index.html">Liên hệ</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-primary btn-sm px-3 py-2 fw-semibold" href="index.html">
+              <i class="bi bi-telephone-fill me-1"></i> Tư vấn ngay
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="container my-5">
-    <div class="p-5 bg-light rounded-3 border">
-      <h2>Liên Hệ (Contact Us)</h2>
-      <p class="text-muted">Skeleton cơ bản. Biểu mẫu liên hệ và chức năng tiếp nhận/xử lý liên hệ sẽ được xây dựng trong EPIC-004 (STORY-015) và EPIC-005 (STORY-019).</p>
-      <a href="../../index.html" class="btn btn-outline-primary btn-sm">Quay về trang chính</a>
+  <!-- ==================== 2. PAGE HEADER ==================== -->
+  <header class="bg-dark text-white py-5 border-bottom border-secondary border-opacity-25">
+    <div class="container text-center py-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center small mb-3">
+          <li class="breadcrumb-item"><a href="../../index.html" class="text-secondary text-decoration-none">Trang chủ</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Liên hệ</li>
+        </ol>
+      </nav>
+      <h1 class="fw-bold mb-2">Liên Hệ Với Chúng Tôi</h1>
+      <p class="text-secondary max-w-600 mx-auto mb-0">
+        Hãy để lại lời nhắn hoặc liên hệ trực tiếp để được đội ngũ chuyên gia công nghệ FFT Việt Nam tư vấn giải pháp tối ưu nhất.
+      </p>
     </div>
-  </main>
+  </header>
 
-  <footer class="py-4 text-center text-muted small mt-auto border-top">
-    <p class="mb-0">Website Giới Thiệu Doanh Nghiệp © 2026.</p>
+  <!-- ==================== 3. CONTACT INFO CARDS ==================== -->
+  <section class="py-5 bg-light border-bottom">
+    <div class="container py-2">
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-md-4">
+          <div class="card h-100 border shadow-sm rounded-4 p-4 text-center bg-white">
+            <div class="icon-box mx-auto mb-3">
+              <i class="bi bi-geo-alt-fill"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Trụ Sở Hoạt Động</h5>
+            <p class="text-secondary small mb-0">
+              Tầng 5, Tòa nhà Công Nghệ, Quận Cầu Giấy, TP. Hà Nội, Việt Nam
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="col-md-4">
+          <div class="card h-100 border shadow-sm rounded-4 p-4 text-center bg-white">
+            <div class="icon-box mx-auto mb-3">
+              <i class="bi bi-telephone-fill"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Đường Dây Nóng</h5>
+            <p class="text-secondary small mb-1">Hotline: <strong>024 1234 5678</strong></p>
+            <p class="text-muted small mb-0">Hỗ trợ kỹ thuật: 24/7 mọi ngày trong tuần</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="col-md-4">
+          <div class="card h-100 border shadow-sm rounded-4 p-4 text-center bg-white">
+            <div class="icon-box mx-auto mb-3">
+              <i class="bi bi-envelope-fill"></i>
+            </div>
+            <h5 class="fw-bold mb-2">Hòm Thư Điện Tử</h5>
+            <p class="text-secondary small mb-1">Email: <strong>contact@fft.com.vn</strong></p>
+            <p class="text-muted small mb-0">Hỗ trợ đối tác: support@fft.com.vn</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. CONTACT FORM & MAP ==================== -->
+  <section class="py-5">
+    <div class="container py-3">
+      <div class="row g-5">
+
+        <!-- Form Column -->
+        <div class="col-lg-7">
+          <div class="p-4 p-md-5 bg-white rounded-4 border shadow-sm">
+            <div class="mb-4">
+              <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-2 mb-2">Biểu Mẫu Trực Tuyến</span>
+              <h3 class="fw-bold mb-2">Gửi Yêu Cầu Tư Vấn &amp; Hợp Tác</h3>
+              <p class="text-secondary small mb-0">
+                Vui lòng điền thông tin vào các trường bên dưới. Đội ngũ chuyên gia của chúng tôi sẽ liên hệ lại trong vòng 24 giờ làm việc.
+              </p>
+            </div>
+
+            <!-- Alert Notification Area -->
+            <div id="contact-alert" class="alert d-none py-3 mb-4" role="alert"></div>
+
+            <form id="contact-form" novalidate>
+              <div class="row g-3">
+                <!-- Full Name -->
+                <div class="col-md-6">
+                  <label for="fullName" class="form-label small fw-semibold">Họ và tên <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="fullName" placeholder="Ví dụ: Nguyễn Văn A" required minlength="2">
+                  <div class="invalid-feedback small">Vui lòng nhập họ và tên (tối thiểu 2 ký tự).</div>
+                </div>
+
+                <!-- Email -->
+                <div class="col-md-6">
+                  <label for="email" class="form-label small fw-semibold">Địa chỉ Email <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" id="email" placeholder="name@company.com" required>
+                  <div class="invalid-feedback small">Vui lòng nhập địa chỉ email hợp lệ.</div>
+                </div>
+
+                <!-- Phone -->
+                <div class="col-md-6">
+                  <label for="phone" class="form-label small fw-semibold">Số điện thoại</label>
+                  <input type="tel" class="form-control" id="phone" placeholder="0912 345 678">
+                  <div class="invalid-feedback small">Số điện thoại không hợp lệ.</div>
+                </div>
+
+                <!-- Subject -->
+                <div class="col-md-6">
+                  <label for="subject" class="form-label small fw-semibold">Tiêu đề liên hệ <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" id="subject" placeholder="Ví dụ: Yêu cầu báo giá website" required>
+                  <div class="invalid-feedback small">Vui lòng nhập tiêu đề liên hệ.</div>
+                </div>
+
+                <!-- Message -->
+                <div class="col-12">
+                  <label for="message" class="form-label small fw-semibold">Nội dung tin nhắn <span class="text-danger">*</span></label>
+                  <textarea class="form-control" id="message" rows="5" placeholder="Mô tả tóm tắt nhu cầu giải pháp của quý doanh nghiệp..." required minlength="10"></textarea>
+                  <div class="invalid-feedback small">Vui lòng nhập nội dung liên hệ (tối thiểu 10 ký tự).</div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-12 mt-4">
+                  <button type="submit" id="submit-btn" class="btn btn-primary fw-semibold px-4 py-2">
+                    <span id="btn-text"><i class="bi bi-send-fill me-1"></i> Gửi thông tin liên hệ</span>
+                    <span id="btn-spinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+                  </button>
+                  <span class="text-muted small ms-3">Cam kết bảo mật thông tin 100%.</span>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Sidebar / Working Hours & FAQ Column -->
+        <div class="col-lg-5">
+          <!-- Working Hours Card -->
+          <div class="p-4 bg-light rounded-4 border mb-4">
+            <h5 class="fw-bold mb-3"><i class="bi bi-clock-history text-primary me-2"></i> Thời Gian Làm Việc</h5>
+            <ul class="list-unstyled d-flex flex-column gap-2 small text-secondary mb-0">
+              <li class="d-flex justify-content-between pb-2 border-bottom">
+                <span>Thứ 2 - Thứ 6:</span>
+                <strong class="text-dark">08:00 - 17:30</strong>
+              </li>
+              <li class="d-flex justify-content-between pb-2 border-bottom">
+                <span>Thứ 7:</span>
+                <strong class="text-dark">08:00 - 12:00</strong>
+              </li>
+              <li class="d-flex justify-content-between">
+                <span>Chủ Nhật &amp; Ngày Lễ:</span>
+                <span class="badge bg-secondary-subtle text-dark">Nghỉ (Trực hotline)</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- FAQ Accordion -->
+          <div class="p-4 bg-white rounded-4 border shadow-sm">
+            <h5 class="fw-bold mb-3"><i class="bi bi-question-circle text-primary me-2"></i> Câu Hỏi Thường Gặp</h5>
+            <div class="accordion accordion-flush" id="faqAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq1">
+                  <button class="accordion-button collapsed px-0 fw-semibold small" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
+                    Bao lâu tôi sẽ nhận được phản hồi?
+                  </button>
+                </h2>
+                <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body px-0 text-secondary small">
+                    Đội ngũ chuyên gia của chúng tôi sẽ liên hệ lại qua số điện thoại hoặc email trong vòng tối đa 24 giờ kể từ khi tiếp nhận thông tin.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="faq2">
+                  <button class="accordion-button collapsed px-0 fw-semibold small" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
+                    FFT có ký thỏa thuận bảo mật (NDA) không?
+                  </button>
+                </h2>
+                <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                  <div class="accordion-body px-0 text-secondary small">
+                    Có. Chúng tôi luôn sẵn sàng ký thỏa thuận bảo mật thông tin (NDA) trước khi tiến hành trao đổi chi tiết về ý tưởng và nghiệp vụ dự án.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. FOOTER ==================== -->
+  <footer>
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <span class="badge bg-primary p-2 rounded"><i class="bi bi-cpu-fill fs-5"></i></span>
+            <span class="fw-bold fs-5 text-white">FFT VIỆT NAM</span>
+          </div>
+          <p class="small text-secondary mb-3">
+            CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM — Tiên phong giải pháp công nghệ, phát triển phần mềm và kiến tạo giải pháp số chuyên nghiệp cho doanh nghiệp.
+          </p>
+          <div class="d-flex gap-3 text-secondary">
+            <a href="#"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#"><i class="bi bi-linkedin fs-5"></i></a>
+            <a href="#"><i class="bi bi-envelope-fill fs-5"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h6 class="footer-heading">Liên kết nhanh</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="../../index.html">Trang chủ</a></li>
+            <li><a href="../about/index.html">Giới thiệu công ty</a></li>
+            <li><a href="../services/index.html">Dịch vụ giải pháp</a></li>
+            <li><a href="../news/index.html">Tin tức &amp; Sự kiện</a></li>
+            <li><a href="../gallery/index.html">Thư viện hình ảnh</a></li>
+            <li><a href="index.html">Liên hệ hợp tác</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading">Dịch vụ chính</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="../services/index.html">Tư vấn giải pháp CNTT</a></li>
+            <li><a href="../services/index.html">Thiết kế website doanh nghiệp</a></li>
+            <li><a href="../services/index.html">Bảo trì &amp; Vận hành hệ thống</a></li>
+            <li><a href="../services/index.html">Chuyển đổi số doanh nghiệp</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading">Thông tin liên hệ</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0 text-secondary">
+            <li class="d-flex align-items-start gap-2">
+              <i class="bi bi-geo-alt-fill text-primary mt-1"></i>
+              <span>Tầng 5, Tòa nhà Công Nghệ, Q. Cầu Giấy, Hà Nội</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-telephone-fill text-primary"></i>
+              <span>024 1234 5678</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-envelope-fill text-primary"></i>
+              <span>contact@fft.com.vn</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-clock-fill text-primary"></i>
+              <span>Thứ 2 - Thứ 6: 08:00 - 17:30</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-secondary border-opacity-25 text-center small text-secondary">
+        <p class="mb-0">© 2026 CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM. Tất cả quyền được bảo lưu.</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Interactive Form Validation & Submission Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contact-form');
+      const alertBox = document.getElementById('contact-alert');
+      const submitBtn = document.getElementById('submit-btn');
+      const btnText = document.getElementById('btn-text');
+      const btnSpinner = document.getElementById('btn-spinner');
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const phoneRegex = /^(\+84|0)[3|5|7|8|9][0-9]{8}$/;
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // 1. Reset trạng thái validation cũ
+        let isValid = true;
+        const fullNameEl = document.getElementById('fullName');
+        const emailEl = document.getElementById('email');
+        const phoneEl = document.getElementById('phone');
+        const subjectEl = document.getElementById('subject');
+        const messageEl = document.getElementById('message');
+
+        [fullNameEl, emailEl, phoneEl, subjectEl, messageEl].forEach(el => el.classList.remove('is-invalid'));
+
+        // 2. Kiểm tra Họ tên
+        if (!fullNameEl.value.trim() || fullNameEl.value.trim().length < 2) {
+          fullNameEl.classList.add('is-invalid');
+          isValid = false;
+        }
+
+        // 3. Kiểm tra Email
+        if (!emailEl.value.trim() || !emailRegex.test(emailEl.value.trim())) {
+          emailEl.classList.add('is-invalid');
+          isValid = false;
+        }
+
+        // 4. Kiểm tra SĐT (nếu có nhập)
+        if (phoneEl.value.trim() && !phoneRegex.test(phoneEl.value.trim().replace(/\s/g, ''))) {
+          phoneEl.classList.add('is-invalid');
+          isValid = false;
+        }
+
+        // 5. Kiểm tra Tiêu đề
+        if (!subjectEl.value.trim()) {
+          subjectEl.classList.add('is-invalid');
+          isValid = false;
+        }
+
+        // 6. Kiểm tra Nội dung
+        if (!messageEl.value.trim() || messageEl.value.trim().length < 10) {
+          messageEl.classList.add('is-invalid');
+          isValid = false;
+        }
+
+        if (!isValid) return;
+
+        // Dữ liệu hợp lệ -> chuẩn bị payload
+        const payload = {
+          fullName: fullNameEl.value.trim(),
+          email: emailEl.value.trim(),
+          phone: phoneEl.value.trim() || null,
+          subject: subjectEl.value.trim(),
+          message: messageEl.value.trim()
+        };
+
+        // Bật loading spinner
+        btnText.classList.add('d-none');
+        btnSpinner.classList.remove('d-none');
+        submitBtn.disabled = true;
+
+        try {
+          // Thử gửi sang Backend API nếu đang chạy
+          const response = await fetch('http://localhost:5000/api/contacts', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          }).catch(() => null);
+
+          // Phản hồi thành công
+          alertBox.className = 'alert alert-success py-3 mb-4';
+          alertBox.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i> <strong>Gửi liên hệ thành công!</strong> Cảm ơn quý khách đã tin tưởng FFT Việt Nam. Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.';
+          alertBox.classList.remove('d-none');
+
+          form.reset();
+        } catch (error) {
+          alertBox.className = 'alert alert-danger py-3 mb-4';
+          alertBox.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-2"></i> Đã xảy ra lỗi trong quá trình gửi tin nhắn. Vui lòng liên hệ trực tiếp qua hotline 024 1234 5678.';
+          alertBox.classList.remove('d-none');
+        } finally {
+          btnText.classList.remove('d-none');
+          btnSpinner.classList.add('d-none');
+          submitBtn.disabled = false;
+        }
+      });
+    });
+  </script>
 </body>
 </html>

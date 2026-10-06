@@ -3,37 +3,367 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tin Tức - Website Giới Thiệu Doanh Nghiệp</title>
+  <title>Tin Tức &amp; Sự Kiện - CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM</title>
+  <!-- Bootstrap 5.3.3 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <!-- ==================== 1. NAVIGATION BAR ==================== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="../../index.html">DOANH NGHIỆP OKL</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="../../index.html">
+        <span class="badge bg-primary p-2 rounded"><i class="bi bi-cpu-fill fs-5"></i></span>
+        <span>FFT VIỆT NAM</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="../../index.html">Trang chủ</a></li>
           <li class="nav-item"><a class="nav-link" href="../about/index.html">Giới thiệu</a></li>
           <li class="nav-item"><a class="nav-link" href="../services/index.html">Dịch vụ</a></li>
           <li class="nav-item"><a class="nav-link active" href="index.html">Tin tức</a></li>
           <li class="nav-item"><a class="nav-link" href="../gallery/index.html">Hình ảnh</a></li>
           <li class="nav-item"><a class="nav-link" href="../contact/index.html">Liên hệ</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-primary btn-sm px-3 py-2 fw-semibold" href="../contact/index.html">
+              <i class="bi bi-telephone-fill me-1"></i> Tư vấn ngay
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="container my-5">
-    <div class="p-5 bg-light rounded-3 border">
-      <h2>Tin Tức & Sự Kiện (News)</h2>
-      <p class="text-muted">Skeleton cơ bản. Nội dung và bố cục chi tiết sẽ được xây dựng trong EPIC-004 (STORY-013).</p>
-      <a href="../../index.html" class="btn btn-outline-primary btn-sm">Quay về trang chính</a>
+  <!-- ==================== 2. PAGE HEADER ==================== -->
+  <header class="bg-dark text-white py-5 border-bottom border-secondary border-opacity-25">
+    <div class="container text-center py-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center small mb-3">
+          <li class="breadcrumb-item"><a href="../../index.html" class="text-secondary text-decoration-none">Trang chủ</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Tin tức</li>
+        </ol>
+      </nav>
+      <h1 class="fw-bold mb-2">Tin Tức &amp; Hoạt Động Doanh Nghiệp</h1>
+      <p class="text-secondary max-w-600 mx-auto mb-0">
+        Cập nhật thông cáo báo chí, các sự kiện công nghệ và góc nhìn chuyên sâu từ đội ngũ chuyên gia FFT Việt Nam.
+      </p>
     </div>
-  </main>
+  </header>
 
-  <footer class="py-4 text-center text-muted small mt-auto border-top">
-    <p class="mb-0">Website Giới Thiệu Doanh Nghiệp © 2026.</p>
+  <!-- ==================== 3. FEATURED STORY ==================== -->
+  <section class="py-5 bg-light border-bottom">
+    <div class="container py-2">
+      <div class="row align-items-center g-4 bg-white rounded-4 border p-3 p-md-4 shadow-sm">
+        <div class="col-lg-6">
+          <div class="rounded-3 bg-secondary-subtle d-flex align-items-center justify-content-center text-secondary" style="height: 280px;">
+            <div class="text-center p-3">
+              <i class="bi bi-rocket-takeoff-fill fs-1 text-primary"></i>
+              <h5 class="fw-bold mt-2 mb-1">Dự Án Trọng Điểm 2026</h5>
+              <span class="badge bg-primary">Chuyển Đổi Số</span>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <span class="badge bg-danger">Tin Nổi Bật</span>
+            <small class="text-muted"><i class="bi bi-calendar3 me-1"></i> 15/06/2026</small>
+            <small class="text-muted">• <i class="bi bi-eye me-1"></i> 128 lượt xem</small>
+          </div>
+          <h3 class="fw-bold mb-3">Khởi động dự án nâng cấp hệ sinh thái số doanh nghiệp 2026</h3>
+          <p class="text-secondary mb-4">
+            FFT Việt Nam chính thức công bố chiến lược chuyển đổi số giai đoạn mới với trọng tâm tối ưu hóa trải nghiệm khách hàng, kiến tạo giải pháp website và cổng thông tin giới thiệu doanh nghiệp thế hệ mới trên nền tảng Node.js và MySQL tối ưu.
+          </p>
+          <div class="d-flex align-items-center justify-content-between">
+            <div class="d-flex align-items-center gap-2">
+              <div class="bg-primary text-white rounded-circle p-2 small" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;">
+                <i class="bi bi-person-fill"></i>
+              </div>
+              <span class="small fw-semibold text-dark">Ban Quản Trị FFT</span>
+            </div>
+            <a href="#article-1" class="btn btn-outline-primary btn-sm fw-semibold">
+              Chi tiết bài viết <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. NEWS LIST & SIDEBAR ==================== -->
+  <section class="py-5">
+    <div class="container py-3">
+      <div class="row g-4">
+
+        <!-- Main Column: News Cards -->
+        <div class="col-lg-8">
+          <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+            <h4 class="fw-bold mb-0">Bài Viết Mới Nhất</h4>
+            <span class="text-muted small">Hiển thị 4 bài viết</span>
+          </div>
+
+          <div class="row g-4">
+
+            <!-- Article 1 -->
+            <div id="article-1" class="col-md-6">
+              <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
+                <div class="bg-light d-flex align-items-center justify-content-center text-muted" style="height: 160px;">
+                  <i class="bi bi-megaphone fs-1 text-primary"></i>
+                </div>
+                <div class="card-body d-flex flex-column p-4">
+                  <div class="d-flex justify-content-between small text-muted mb-2">
+                    <span class="badge bg-primary-subtle text-primary">Sự Kiện</span>
+                    <span><i class="bi bi-calendar3 me-1"></i> 20/06/2026</span>
+                  </div>
+                  <h5 class="fw-bold card-title mb-2">Hội thảo giải pháp công nghệ và tương lai số</h5>
+                  <p class="card-text text-secondary small mb-3 flex-grow-1">
+                    Đại diện ban lãnh đạo FFT Việt Nam tham gia chia sẻ kinh nghiệm xây dựng giải pháp phần mềm tại diễn đàn công nghệ thường niên dành cho khối doanh nghiệp.
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
+                    <span><i class="bi bi-eye me-1"></i> 95 lượt xem</span>
+                    <a href="#article-1" class="text-primary fw-semibold text-decoration-none">Đọc tiếp <i class="bi bi-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Article 2 -->
+            <div id="article-2" class="col-md-6">
+              <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
+                <div class="bg-light d-flex align-items-center justify-content-center text-muted" style="height: 160px;">
+                  <i class="bi bi-code-slash fs-1 text-success"></i>
+                </div>
+                <div class="card-body d-flex flex-column p-4">
+                  <div class="d-flex justify-content-between small text-muted mb-2">
+                    <span class="badge bg-success-subtle text-success">Kiến Thức</span>
+                    <span><i class="bi bi-calendar3 me-1"></i> 25/06/2026</span>
+                  </div>
+                  <h5 class="fw-bold card-title mb-2">Tầm quan trọng của website chuẩn SEO đối với doanh nghiệp</h5>
+                  <p class="card-text text-secondary small mb-3 flex-grow-1">
+                    Phân tích các yếu tố quyết định tốc độ tải trang, cấu trúc mã nguồn ngữ nghĩa HTML5 và sự ảnh hưởng trực tiếp tới khả năng tiếp cận khách hàng tiềm năng.
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
+                    <span><i class="bi bi-eye me-1"></i> 82 lượt xem</span>
+                    <a href="#article-2" class="text-primary fw-semibold text-decoration-none">Đọc tiếp <i class="bi bi-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Article 3 -->
+            <div id="article-3" class="col-md-6">
+              <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
+                <div class="bg-light d-flex align-items-center justify-content-center text-muted" style="height: 160px;">
+                  <i class="bi bi-shield-lock-fill fs-1 text-warning"></i>
+                </div>
+                <div class="card-body d-flex flex-column p-4">
+                  <div class="d-flex justify-content-between small text-muted mb-2">
+                    <span class="badge bg-warning-subtle text-dark">An Toàn Thông Tin</span>
+                    <span><i class="bi bi-calendar3 me-1"></i> 02/07/2026</span>
+                  </div>
+                  <h5 class="fw-bold card-title mb-2">Bảo mật dữ liệu và phòng ngừa tấn công mạng cho khối SMEs</h5>
+                  <p class="card-text text-secondary small mb-3 flex-grow-1">
+                    Hướng dẫn áp dụng các biện pháp an ninh cơ bản: Chứng chỉ SSL/TLS, xác thực hai lớp, phân quyền cơ sở dữ liệu và sao lưu định kỳ giúp ngăn chặn mất mát dữ liệu.
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
+                    <span><i class="bi bi-eye me-1"></i> 70 lượt xem</span>
+                    <a href="#article-3" class="text-primary fw-semibold text-decoration-none">Đọc tiếp <i class="bi bi-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Article 4 -->
+            <div id="article-4" class="col-md-6">
+              <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
+                <div class="bg-light d-flex align-items-center justify-content-center text-muted" style="height: 160px;">
+                  <i class="bi bi-people-fill fs-1 text-info"></i>
+                </div>
+                <div class="card-body d-flex flex-column p-4">
+                  <div class="d-flex justify-content-between small text-muted mb-2">
+                    <span class="badge bg-info-subtle text-dark">Nội Bộ</span>
+                    <span><i class="bi bi-calendar3 me-1"></i> 05/07/2026</span>
+                  </div>
+                  <h5 class="fw-bold card-title mb-2">Chương trình kết nối công nghệ và văn hóa doanh nghiệp FFT</h5>
+                  <p class="card-text text-secondary small mb-3 flex-grow-1">
+                    Tổng kết chuỗi hoạt động giao lưu học thuật và dã ngoại gắn kết tinh thần đoàn kết của tập thể kỹ sư công nghệ FFT Việt Nam trong quý 2/2026.
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
+                    <span><i class="bi bi-eye me-1"></i> 64 lượt xem</span>
+                    <a href="#article-4" class="text-primary fw-semibold text-decoration-none">Đọc tiếp <i class="bi bi-chevron-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Pagination -->
+          <nav class="mt-5" aria-label="News Pagination">
+            <ul class="pagination justify-content-center mb-0">
+              <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Trước</a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">Tiếp</a></li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Sidebar Column -->
+        <div class="col-lg-4">
+          <!-- Search Widget -->
+          <div class="card border p-4 rounded-3 shadow-sm mb-4">
+            <h6 class="fw-bold mb-3"><i class="bi bi-search me-1"></i> Tìm kiếm tin tức</h6>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Nhập từ khóa...">
+              <button class="btn btn-primary" type="button"><i class="bi bi-search"></i></button>
+            </div>
+          </div>
+
+          <!-- Category Widget -->
+          <div class="card border p-4 rounded-3 shadow-sm mb-4">
+            <h6 class="fw-bold mb-3"><i class="bi bi-folder2-open me-1"></i> Danh mục tin</h6>
+            <ul class="list-unstyled mb-0 d-flex flex-column gap-2 small">
+              <li class="d-flex justify-content-between align-items-center pb-2 border-bottom">
+                <a href="#" class="text-decoration-none text-dark">Chuyển đổi số</a>
+                <span class="badge bg-secondary-subtle text-dark">5</span>
+              </li>
+              <li class="d-flex justify-content-between align-items-center pb-2 border-bottom">
+                <a href="#" class="text-decoration-none text-dark">Sự kiện &amp; Hội thảo</a>
+                <span class="badge bg-secondary-subtle text-dark">3</span>
+              </li>
+              <li class="d-flex justify-content-between align-items-center pb-2 border-bottom">
+                <a href="#" class="text-decoration-none text-dark">Kiến thức công nghệ</a>
+                <span class="badge bg-secondary-subtle text-dark">7</span>
+              </li>
+              <li class="d-flex justify-content-between align-items-center">
+                <a href="#" class="text-decoration-none text-dark">Hoạt động nội bộ</a>
+                <span class="badge bg-secondary-subtle text-dark">4</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Top Trending Widget -->
+          <div class="card border p-4 rounded-3 shadow-sm">
+            <h6 class="fw-bold mb-3"><i class="bi bi-fire text-danger me-1"></i> Bài viết xem nhiều</h6>
+            <ul class="list-unstyled mb-0 d-flex flex-column gap-3 small">
+              <li>
+                <a href="#article-1" class="fw-semibold text-dark text-decoration-none d-block mb-1">
+                  Khởi động dự án nâng cấp hệ sinh thái số 2026
+                </a>
+                <span class="text-muted"><i class="bi bi-eye me-1"></i> 128 lượt xem</span>
+              </li>
+              <li>
+                <a href="#article-1" class="fw-semibold text-dark text-decoration-none d-block mb-1">
+                  Hội thảo giải pháp công nghệ và tương lai số
+                </a>
+                <span class="text-muted"><i class="bi bi-eye me-1"></i> 95 lượt xem</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. NEWSLETTER CTA ==================== -->
+  <section class="py-5 bg-dark text-white text-center border-top">
+    <div class="container py-2">
+      <h3 class="fw-bold mb-2">Đăng ký nhận bản tin công nghệ</h3>
+      <p class="text-secondary max-w-600 mx-auto mb-4 small">
+        Nhận những phân tích mới nhất về xu hướng phần mềm, an toàn thông tin và giải pháp số từ FFT Việt Nam hàng tháng.
+      </p>
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+          <div class="input-group">
+            <input type="email" class="form-control" placeholder="Nhập địa chỉ email của bạn...">
+            <button class="btn btn-primary fw-semibold px-4" type="button">Đăng ký</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. FOOTER ==================== -->
+  <footer>
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <span class="badge bg-primary p-2 rounded"><i class="bi bi-cpu-fill fs-5"></i></span>
+            <span class="fw-bold fs-5 text-white">FFT VIỆT NAM</span>
+          </div>
+          <p class="small text-secondary mb-3">
+            CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM — Tiên phong giải pháp công nghệ, phát triển phần mềm và kiến tạo giải pháp số chuyên nghiệp cho doanh nghiệp.
+          </p>
+          <div class="d-flex gap-3 text-secondary">
+            <a href="#"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#"><i class="bi bi-linkedin fs-5"></i></a>
+            <a href="#"><i class="bi bi-envelope-fill fs-5"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-6">
+          <h6 class="footer-heading">Liên kết nhanh</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="../../index.html">Trang chủ</a></li>
+            <li><a href="../about/index.html">Giới thiệu công ty</a></li>
+            <li><a href="../services/index.html">Dịch vụ giải pháp</a></li>
+            <li><a href="index.html">Tin tức &amp; Sự kiện</a></li>
+            <li><a href="../gallery/index.html">Thư viện hình ảnh</a></li>
+            <li><a href="../contact/index.html">Liên hệ hợp tác</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading">Dịch vụ chính</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="../services/index.html">Tư vấn giải pháp CNTT</a></li>
+            <li><a href="../services/index.html">Thiết kế website doanh nghiệp</a></li>
+            <li><a href="../services/index.html">Bảo trì &amp; Vận hành hệ thống</a></li>
+            <li><a href="../services/index.html">Chuyển đổi số doanh nghiệp</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading">Thông tin liên hệ</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0 text-secondary">
+            <li class="d-flex align-items-start gap-2">
+              <i class="bi bi-geo-alt-fill text-primary mt-1"></i>
+              <span>Tầng 5, Tòa nhà Công Nghệ, Q. Cầu Giấy, Hà Nội</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-telephone-fill text-primary"></i>
+              <span>024 1234 5678</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-envelope-fill text-primary"></i>
+              <span>contact@fft.com.vn</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-clock-fill text-primary"></i>
+              <span>Thứ 2 - Thứ 6: 08:00 - 17:30</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-secondary border-opacity-25 text-center small text-secondary">
+        <p class="mb-0">© 2026 CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM. Tất cả quyền được bảo lưu.</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../../assets/js/main.js"></script>
 </body>
 </html>
