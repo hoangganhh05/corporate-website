@@ -1,7 +1,15 @@
 const fs = require('fs');
 const path = require('path');
-const mysql = require('mysql2/promise');
-require('dotenv').config({ path: path.join(__dirname, '../backend/.env') });
+
+let mysql, dotenv;
+try {
+  mysql = require('mysql2/promise');
+  dotenv = require('dotenv');
+} catch (e) {
+  mysql = require(path.join(__dirname, '../backend/node_modules/mysql2/promise'));
+  dotenv = require(path.join(__dirname, '../backend/node_modules/dotenv'));
+}
+dotenv.config({ path: path.join(__dirname, '../backend/.env') });
 
 /**
  * Script tự động khởi tạo Cơ sở dữ liệu và nạp dữ liệu mẫu
