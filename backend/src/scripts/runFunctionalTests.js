@@ -265,8 +265,11 @@ async function runTests() {
   } catch (err) {
     console.error('❌ Ngoại lệ trong quá trình chạy kiểm thử:', err);
   } finally {
-    // Đóng server kiểm thử
+    // Đóng server kiểm thử và dọn dẹp kết nối
     if (server) {
+      if (typeof server.closeAllConnections === 'function') {
+        server.closeAllConnections();
+      }
       await new Promise((resolve) => server.close(resolve));
       console.log('\n🔒 Đã đóng máy chủ kiểm thử an toàn.');
     }

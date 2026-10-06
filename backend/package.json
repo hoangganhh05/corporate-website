@@ -9,7 +9,9 @@
     "db:init": "node ../database/initDb.js",
     "test:contact": "node src/scripts/verifyContactIntegration.js",
     "test:functional": "node src/scripts/runFunctionalTests.js",
-    "test:ui": "node src/scripts/verifyUiResponsive.js"
+    "test:ui": "node src/scripts/verifyUiResponsive.js",
+    "test:regression": "node src/scripts/runRegressionSuite.js",
+    "test:all": "npm run test:regression"
   },
   "keywords": [
     "express",
