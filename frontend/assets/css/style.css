@@ -1,0 +1,64 @@
+/* ==========================================================================
+   Main Stylesheet - Website Giới Thiệu Doanh Nghiệp
+   Thực hiện theo: PROJECT_PLAN_Web_gioi_thieu_doanh_nghiep_OKL.md
+   Giai đoạn: Nền tảng (Foundation)
+   ========================================================================== */
+
+:root {
+  --primary-color: #0d6efd;
+  --primary-dark: #0b5ed7;
+  --secondary-color: #6c757d;
+  --dark-color: #212529;
+  --light-bg: #f8f9fa;
+  --border-color: #dee2e6;
+  --text-muted: #6c757d;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--dark-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header & Navbar */
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+/* Hero / Welcome Banner */
+.hero-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-bottom: 1px solid var(--border-color);
+  padding: 4rem 0;
+}
+
+/* Status badge */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 50rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-online {
+  background-color: #d1e7dd;
+  color: #0f5132;
+}
+
+.status-offline {
+  background-color: #f8d7da;
+  color: #842029;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  background-color: #f8f9fa;
+  border-top: 1px solid var(--border-color);
+}
