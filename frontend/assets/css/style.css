@@ -285,12 +285,51 @@ html {
     font-size: 1.65rem;
   }
 
-  .btn {
+  .hero-section .btn,
+  .cta-section .btn,
+  .contact-card .btn {
     width: 100%;
+    margin-bottom: 0.5rem;
   }
 
-  .d-flex.gap-3 > .btn {
-    width: 100%;
+  .btn-group .btn {
+    width: auto;
   }
+
+  /* Table horizontal scroll optimization on narrow phones */
+  .table-responsive {
+    -webkit-overflow-scrolling: touch;
+    border-radius: 0.5rem;
+  }
+
+  /* Adjust padding for dense mobile viewing */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* ==========================================================================
+   Cross-Browser Compatibility Fixes (Safari, Firefox, Chrome, Edge)
+   ========================================================================== */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Smooth focus rings for keyboard accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Webkit tap highlight removal for cleaner touch feedback */
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 

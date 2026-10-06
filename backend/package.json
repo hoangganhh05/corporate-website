@@ -8,7 +8,8 @@
     "dev": "nodemon server.js",
     "db:init": "node ../database/initDb.js",
     "test:contact": "node src/scripts/verifyContactIntegration.js",
-    "test:functional": "node src/scripts/runFunctionalTests.js"
+    "test:functional": "node src/scripts/runFunctionalTests.js",
+    "test:ui": "node src/scripts/verifyUiResponsive.js"
   },
   "keywords": [
     "express",
