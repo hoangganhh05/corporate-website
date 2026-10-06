@@ -3,37 +3,350 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Giới Thiệu - Website Giới Thiệu Doanh Nghiệp</title>
+  <title>Giới Thiệu - CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM</title>
+  <!-- Bootstrap 5.3.3 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="../../assets/css/style.css">
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <!-- ==================== 1. NAVIGATION BAR ==================== -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
     <div class="container">
-      <a class="navbar-brand" href="../../index.html">DOANH NGHIỆP OKL</a>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav ms-auto">
+      <a class="navbar-brand d-flex align-items-center gap-2" href="../../index.html">
+        <span class="badge bg-primary p-2 rounded"><i class="bi bi-cpu-fill fs-5"></i></span>
+        <span>FFT VIỆT NAM</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
           <li class="nav-item"><a class="nav-link" href="../../index.html">Trang chủ</a></li>
           <li class="nav-item"><a class="nav-link active" href="index.html">Giới thiệu</a></li>
           <li class="nav-item"><a class="nav-link" href="../services/index.html">Dịch vụ</a></li>
           <li class="nav-item"><a class="nav-link" href="../news/index.html">Tin tức</a></li>
           <li class="nav-item"><a class="nav-link" href="../gallery/index.html">Hình ảnh</a></li>
           <li class="nav-item"><a class="nav-link" href="../contact/index.html">Liên hệ</a></li>
+          <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+            <a class="btn btn-primary btn-sm px-3 py-2 fw-semibold" href="../contact/index.html">
+              <i class="bi bi-telephone-fill me-1"></i> Tư vấn ngay
+            </a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="container my-5">
-    <div class="p-5 bg-light rounded-3 border">
-      <h2>Giới Thiệu Doanh Nghiệp (About Us)</h2>
-      <p class="text-muted">Skeleton cơ bản. Nội dung và bố cục chi tiết sẽ được xây dựng trong EPIC-004 (STORY-011).</p>
-      <a href="../../index.html" class="btn btn-outline-primary btn-sm">Quay về trang chính</a>
+  <!-- ==================== 2. PAGE HEADER ==================== -->
+  <header class="bg-dark text-white py-5 border-bottom border-secondary border-opacity-25">
+    <div class="container text-center py-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center small mb-3">
+          <li class="breadcrumb-item"><a href="../../index.html" class="text-secondary text-decoration-none">Trang chủ</a></li>
+          <li class="breadcrumb-item active text-white" aria-current="page">Giới thiệu</li>
+        </ol>
+      </nav>
+      <h1 class="fw-bold mb-2">Về FFT Việt Nam</h1>
+      <p class="text-secondary max-w-600 mx-auto mb-0">
+        Khám phá hành trình phát triển, sứ mệnh và năng lực công nghệ định hình tương lai số cho doanh nghiệp.
+      </p>
     </div>
-  </main>
+  </header>
 
-  <footer class="py-4 text-center text-muted small mt-auto border-top">
-    <p class="mb-0">Website Giới Thiệu Doanh Nghiệp © 2026.</p>
+  <!-- ==================== 3. COMPANY OVERVIEW ==================== -->
+  <section class="py-5">
+    <div class="container py-4">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-2 mb-3">Hồ Sơ Doanh Nghiệp</span>
+          <h2 class="fw-bold mb-4">Đối tác chuyển đổi số tin cậy hàng đầu</h2>
+          <p class="text-secondary mb-3">
+            <strong>CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM</strong> là doanh nghiệp hoạt động chuyên sâu trong lĩnh vực tư vấn giải pháp công nghệ thông tin, phát triển phần mềm và xây dựng hệ thống website doanh nghiệp chất lượng cao.
+          </p>
+          <p class="text-secondary mb-4">
+            Được thành lập với sứ mệnh mang các giải pháp công nghệ hiện đại đến với cộng đồng doanh nghiệp Việt Nam, FFT Việt Nam không ngừng nghiên cứu và đổi mới sáng tạo. Chúng tôi sở hữu đội ngũ kỹ sư phần mềm giàu nhiệt huyết, quy trình làm việc chuẩn mực, cam kết mang đến giá trị thực chất và sự hài lòng cao nhất cho khách hàng.
+          </p>
+          <div class="p-3 bg-light rounded-3 border-start border-primary border-4 mb-4">
+            <p class="fst-italic text-dark mb-0 fw-medium">
+              "Tiên phong giải pháp công nghệ - Đồng hành cùng phát triển bền vững của cộng đồng doanh nghiệp."
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="p-4 p-md-5 bg-light rounded-4 border shadow-sm">
+            <h4 class="fw-bold mb-4 text-dark">Thông Tin Nhận Diện Pháp Lý</h4>
+            <ul class="list-unstyled d-flex flex-column gap-3 mb-0 small text-secondary">
+              <li class="pb-2 border-bottom">
+                <strong class="text-dark d-block">Tên chính thức:</strong>
+                CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM
+              </li>
+              <li class="pb-2 border-bottom">
+                <strong class="text-dark d-block">Trụ sở hoạt động:</strong>
+                Tầng 5, Tòa nhà Công Nghệ, Quận Cầu Giấy, TP. Hà Nội
+              </li>
+              <li class="pb-2 border-bottom">
+                <strong class="text-dark d-block">Đường dây nóng:</strong>
+                024 1234 5678 (Hỗ trợ kỹ thuật 24/7)
+              </li>
+              <li class="pb-2 border-bottom">
+                <strong class="text-dark d-block">Hòm thư điện tử:</strong>
+                contact@fft.com.vn
+              </li>
+              <li>
+                <strong class="text-dark d-block">Thời gian làm việc:</strong>
+                Thứ 2 - Thứ 6: 08:00 - 17:30 (Thứ 7: 08:00 - 12:00)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. VISION - MISSION - VALUES ==================== -->
+  <section class="py-5 bg-light border-top border-bottom">
+    <div class="container py-4">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-2 mb-2">Định Hướng Chiến Lược</span>
+        <h2 class="fw-bold">Tầm Nhìn, Sứ Mệnh &amp; Giá Trị Cốt Lõi</h2>
+        <p class="text-muted">Các nguyên tắc nền tảng định hướng mọi hoạt động tư vấn, thiết kế và phát triển giải pháp.</p>
+      </div>
+
+      <div class="row g-4">
+        <!-- Vision -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm p-4 rounded-4">
+            <div class="icon-box mb-3">
+              <i class="bi bi-eye-fill"></i>
+            </div>
+            <h4 class="fw-bold mb-3">Tầm Nhìn</h4>
+            <p class="text-muted small mb-0">
+              Trở thành đơn vị công nghệ hàng đầu tại Việt Nam trong lĩnh vực cung cấp hạ tầng số và phát triển phần mềm theo yêu cầu, tạo ra các giải pháp có khả năng cạnh tranh quốc tế.
+            </p>
+          </div>
+        </div>
+
+        <!-- Mission -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm p-4 rounded-4">
+            <div class="icon-box mb-3">
+              <i class="bi bi-compass-fill"></i>
+            </div>
+            <h4 class="fw-bold mb-3">Sứ Mệnh</h4>
+            <p class="text-muted small mb-0">
+              Đồng hành cùng đối tác trên con đường số hóa, đơn giản hóa các bài toán phức tạp thông qua phần mềm tối ưu, giúp doanh nghiệp tiết kiệm chi phí và bứt phá doanh thu.
+            </p>
+          </div>
+        </div>
+
+        <!-- Values -->
+        <div class="col-md-4">
+          <div class="card h-100 border-0 shadow-sm p-4 rounded-4">
+            <div class="icon-box mb-3">
+              <i class="bi bi-gem"></i>
+            </div>
+            <h4 class="fw-bold mb-3">Giá Trị Cốt Lõi</h4>
+            <ul class="list-unstyled small text-muted d-flex flex-column gap-2 mb-0">
+              <li><i class="bi bi-check2 text-primary me-1"></i> <strong>Tận tâm:</strong> Lợi ích của khách hàng là ưu tiên số 1.</li>
+              <li><i class="bi bi-check2 text-primary me-1"></i> <strong>Chuẩn mực:</strong> Quy trình khoa học, kiểm thử chặt chẽ.</li>
+              <li><i class="bi bi-check2 text-primary me-1"></i> <strong>Sáng tạo:</strong> Liên tục ứng dụng công nghệ mới.</li>
+              <li><i class="bi bi-check2 text-primary me-1"></i> <strong>Bảo mật:</strong> An toàn dữ liệu là cam kết sống còn.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 5. HISTORY & MILESTONES ==================== -->
+  <section class="py-5">
+    <div class="container py-4">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-2 mb-2">Chặng Đường Đã Qua</span>
+        <h2 class="fw-bold">Lịch Sử Hình Thành &amp; Phát Triển</h2>
+      </div>
+
+      <div class="row g-4">
+        <div class="col-md-3">
+          <div class="p-4 bg-white rounded-3 border h-100">
+            <span class="badge bg-primary mb-2">2018</span>
+            <h5 class="fw-bold mb-2">Khởi Đầu</h5>
+            <p class="text-muted small mb-0">Thành lập công ty, tập trung nghiên cứu kiến trúc giải pháp và tư vấn hạ tầng CNTT cho doanh nghiệp vừa và nhỏ.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-4 bg-white rounded-3 border h-100">
+            <span class="badge bg-primary mb-2">2021</span>
+            <h5 class="fw-bold mb-2">Bứt Phá Dịch Vụ</h5>
+            <p class="text-muted small mb-0">Mở rộng mảng thiết kế website chuyên nghiệp và xây dựng ứng dụng web hiệu năng cao chuẩn responsive.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-4 bg-white rounded-3 border h-100">
+            <span class="badge bg-primary mb-2">2024</span>
+            <h5 class="fw-bold mb-2">Cột Mốc 300+ Dự Án</h5>
+            <p class="text-muted small mb-0">Cán mốc hơn 300 khách hàng doanh nghiệp tin dùng, nâng cấp quy trình hỗ trợ vận hành 24/7 chuyên nghiệp.</p>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="p-4 bg-white rounded-3 border h-100 border-primary">
+            <span class="badge bg-success mb-2">2026 - Nay</span>
+            <h5 class="fw-bold mb-2">Hệ Sinh Thái Số</h5>
+            <p class="text-muted small mb-0">Triển khai dự án nâng cấp hệ thống cổng thông tin doanh nghiệp thế hệ mới trên nền tảng Node.js và MySQL tối ưu.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. LEADERSHIP TEAM ==================== -->
+  <section class="py-5 bg-light border-top">
+    <div class="container py-4">
+      <div class="text-center max-w-700 mx-auto mb-5">
+        <span class="badge bg-primary-subtle text-primary fw-semibold px-3 py-2 mb-2">Đội Ngũ Chủ Chốt</span>
+        <h2 class="fw-bold">Ban Lãnh Đạo &amp; Chuyên Gia</h2>
+        <p class="text-muted">Các nhân sự giàu kinh nghiệm dẫn dắt sự thành công của từng dự án.</p>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <!-- Leader 1 -->
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm rounded-4 text-center p-4">
+            <div class="mx-auto mb-3 p-3 bg-primary-subtle rounded-circle text-primary" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+              <i class="bi bi-person-badge fs-1"></i>
+            </div>
+            <h5 class="fw-bold mb-1">Trương Thị Minh</h5>
+            <div class="text-primary small fw-semibold mb-3">Quản Lý &amp; Cán Bộ Hướng Dẫn</div>
+            <p class="text-muted small mb-0">Hơn 10 năm kinh nghiệm điều hành và quản lý dự án chuyển đổi số công nghệ doanh nghiệp.</p>
+          </div>
+        </div>
+
+        <!-- Leader 2 -->
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm rounded-4 text-center p-4">
+            <div class="mx-auto mb-3 p-3 bg-primary-subtle rounded-circle text-primary" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+              <i class="bi bi-code-square fs-1"></i>
+            </div>
+            <h5 class="fw-bold mb-1">Nguyễn Tuấn Dũng</h5>
+            <div class="text-primary small fw-semibold mb-3">Giám Đốc Công Nghệ (CTO)</div>
+            <p class="text-muted small mb-0">Chuyên gia kiến trúc hệ thống phân tán, cơ sở dữ liệu lớn và an toàn thông tin doanh nghiệp.</p>
+          </div>
+        </div>
+
+        <!-- Leader 3 -->
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm rounded-4 text-center p-4">
+            <div class="mx-auto mb-3 p-3 bg-primary-subtle rounded-circle text-primary" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+              <i class="bi bi-kanban fs-1"></i>
+            </div>
+            <h5 class="fw-bold mb-1">Trần Hải Đăng</h5>
+            <div class="text-primary small fw-semibold mb-3">Trưởng Nhóm Phát Triển (Lead Dev)</div>
+            <p class="text-muted small mb-0">Chịu trách nhiệm giám sát chất lượng mã nguồn, tối ưu hóa giao diện và trải nghiệm người dùng.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 7. CTA SECTION ==================== -->
+  <section class="cta-section text-center">
+    <div class="container">
+      <h2 class="fw-bold mb-3">Khám phá cách chúng tôi có thể hỗ trợ bạn</h2>
+      <p class="text-muted max-w-600 mx-auto mb-4">
+        Tìm hiểu chi tiết các gói giải pháp dịch vụ hoặc gửi thông tin để nhận phản hồi từ đội ngũ chuyên gia của chúng tôi.
+      </p>
+      <div class="d-flex flex-wrap justify-content-center gap-3">
+        <a href="../services/index.html" class="btn btn-primary px-4 py-2 fw-semibold">
+          Xem danh mục dịch vụ <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+        <a href="../contact/index.html" class="btn btn-outline-dark px-4 py-2 fw-semibold">
+          Liên hệ tư vấn
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 8. FOOTER ==================== -->
+  <footer>
+    <div class="container">
+      <div class="row g-4 pb-4">
+        <!-- Col 1 -->
+        <div class="col-lg-4 col-md-6">
+          <div class="d-flex align-items-center gap-2 mb-3">
+            <span class="badge bg-primary p-2 rounded"><i class="bi bi-cpu-fill fs-5"></i></span>
+            <span class="fw-bold fs-5 text-white">FFT VIỆT NAM</span>
+          </div>
+          <p class="small text-secondary mb-3">
+            CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM — Tiên phong giải pháp công nghệ, phát triển phần mềm và kiến tạo giải pháp số chuyên nghiệp cho doanh nghiệp.
+          </p>
+          <div class="d-flex gap-3 text-secondary">
+            <a href="#"><i class="bi bi-facebook fs-5"></i></a>
+            <a href="#"><i class="bi bi-linkedin fs-5"></i></a>
+            <a href="#"><i class="bi bi-envelope-fill fs-5"></i></a>
+          </div>
+        </div>
+
+        <!-- Col 2 -->
+        <div class="col-lg-2 col-md-6">
+          <h6 class="footer-heading">Liên kết nhanh</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="../../index.html">Trang chủ</a></li>
+            <li><a href="index.html">Giới thiệu công ty</a></li>
+            <li><a href="../services/index.html">Dịch vụ giải pháp</a></li>
+            <li><a href="../news/index.html">Tin tức &amp; Sự kiện</a></li>
+            <li><a href="../gallery/index.html">Thư viện hình ảnh</a></li>
+            <li><a href="../contact/index.html">Liên hệ hợp tác</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3 -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading">Dịch vụ chính</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0">
+            <li><a href="../services/index.html">Tư vấn giải pháp CNTT</a></li>
+            <li><a href="../services/index.html">Thiết kế website doanh nghiệp</a></li>
+            <li><a href="../services/index.html">Bảo trì &amp; Vận hành hệ thống</a></li>
+            <li><a href="../services/index.html">Chuyển đổi số doanh nghiệp</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4 -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-heading">Thông tin liên hệ</h6>
+          <ul class="list-unstyled small d-flex flex-column gap-2 mb-0 text-secondary">
+            <li class="d-flex align-items-start gap-2">
+              <i class="bi bi-geo-alt-fill text-primary mt-1"></i>
+              <span>Tầng 5, Tòa nhà Công Nghệ, Q. Cầu Giấy, Hà Nội</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-telephone-fill text-primary"></i>
+              <span>024 1234 5678</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-envelope-fill text-primary"></i>
+              <span>contact@fft.com.vn</span>
+            </li>
+            <li class="d-flex align-items-center gap-2">
+              <i class="bi bi-clock-fill text-primary"></i>
+              <span>Thứ 2 - Thứ 6: 08:00 - 17:30</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-4 border-top border-secondary border-opacity-25 text-center small text-secondary">
+        <p class="mb-0">© 2026 CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM. Tất cả quyền được bảo lưu.</p>
+      </div>
+    </div>
   </footer>
+
+  <!-- Bootstrap 5.3.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Custom JS -->
+  <script src="../../assets/js/main.js"></script>
 </body>
 </html>
