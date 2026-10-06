@@ -46,3 +46,4 @@ Tài liệu này đóng vai trò mục lục tra cứu nhanh toàn bộ hồ sơ
 - [STORY-023_Final_Review_toan_bo_he_thong.md](./STORY-023_Final_Review_toan_bo_he_thong.md): Rà soát toàn bộ hệ thống và ma trận truy vết yêu cầu (RTM).
 - [STORY-024_Hoan_thien_tai_lieu_he_thong.md](./STORY-024_Hoan_thien_tai_lieu_he_thong.md): Báo cáo đóng gói hồ sơ tài liệu hệ thống.
 - [STORY-025_Bao_cao_thuc_tap_va_kich_ban_demo.md](./STORY-025_Bao_cao_thuc_tap_va_kich_ban_demo.md): Báo cáo thực tập, slide thuyết trình và kịch bản demo bảo vệ.
+- [SLIDE_THUYET_MINH_BAO_VE.md](./SLIDE_THUYET_MINH_BAO_VE.md): Đề cương 12 slide thuyết minh bảo vệ đề tài trước Hội đồng.
