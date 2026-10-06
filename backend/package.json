@@ -11,7 +11,8 @@
     "test:functional": "node src/scripts/runFunctionalTests.js",
     "test:ui": "node src/scripts/verifyUiResponsive.js",
     "test:regression": "node src/scripts/runRegressionSuite.js",
-    "test:all": "npm run test:regression"
+    "test:all": "npm run test:regression",
+    "test:audit": "node src/scripts/runFinalReviewAudit.js"
   },
   "keywords": [
     "express",
