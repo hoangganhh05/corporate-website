@@ -1,9 +1,19 @@
 const ContactModel = require('../models/contactModel');
 
+function sanitizeText(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/<style\b[^<]*(?:(?!<\/style>)<[^<]*)*<\/style>/gi, '')
+    .replace(/<[^>]*>/g, '')
+    .trim();
+}
+
 /**
  * Controller xử lý các chức năng quản lý dữ liệu liên hệ
  */
 const contactController = {
+  sanitizeText,
   /**
    * GET /api/contacts
    * Lấy danh sách liên hệ (có thể lọc ?status=unread/read/replied)
@@ -62,7 +72,14 @@ const contactController = {
    */
   async submitContact(req, res, next) {
     try {
-      const { fullName, email, phone, subject, message } = req.body;
+      let { fullName, email, phone, subject, message } = req.body;
+
+      // Làm sạch dữ liệu đầu vào (Trim & XSS Protection)
+      fullName = sanitizeText(fullName);
+      email = (email || '').trim().toLowerCase();
+      phone = (phone || '').trim().replace(/\s/g, '');
+      subject = sanitizeText(subject);
+      message = sanitizeText(message);
 
       // Validation
       if (!fullName || !email || !subject || !message) {
@@ -72,11 +89,32 @@ const contactController = {
         });
       }
 
+      if (fullName.length < 2) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Họ và tên phải có tối thiểu 2 ký tự.'
+        });
+      }
+
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
         return res.status(400).json({
           status: 'error',
           message: 'Địa chỉ email không đúng định dạng.'
+        });
+      }
+
+      if (phone && !/^(\+84|0)[3|5|7|8|9][0-9]{8}$/.test(phone)) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Số điện thoại không đúng định dạng chuẩn Việt Nam.'
+        });
+      }
+
+      if (message.length < 10) {
+        return res.status(400).json({
+          status: 'error',
+          message: 'Nội dung tin nhắn phải có tối thiểu 10 ký tự.'
         });
       }
 
