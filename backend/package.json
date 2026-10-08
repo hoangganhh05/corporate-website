@@ -9,6 +9,7 @@
     "db:init": "node ../database/initDb.js",
     "db:seed-illustrative-gallery": "node src/scripts/seedIllustrativeGallery.js",
     "db:seed-illustrative-news": "node src/scripts/seedIllustrativeNewsThumbnails.js",
+    "db:clear-unverified": "node src/scripts/clearUnverifiedMedia.js",
     "test:contact": "node src/scripts/verifyContactIntegration.js",
     "test:functional": "node src/scripts/runFunctionalTests.js",
     "test:ui": "node src/scripts/verifyUiResponsive.js",

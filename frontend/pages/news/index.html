@@ -72,12 +72,11 @@
         <div class="col-lg-6">
           <div class="d-flex align-items-center gap-2 mb-2">
             <span class="badge bg-danger">Tin Nổi Bật</span>
-            <small class="text-muted"><i class="bi bi-calendar3 me-1"></i> 15/06/2026</small>
-            <small class="text-muted">• <i class="bi bi-eye me-1"></i> 128 lượt xem</small>
+            <small class="text-muted">Nội dung do quản trị viên xuất bản</small>
           </div>
-          <h3 class="fw-bold mb-3">Khởi động dự án nâng cấp hệ sinh thái số doanh nghiệp 2026</h3>
+          <h3 class="fw-bold mb-3">Tin tức đang được cập nhật</h3>
           <p class="text-secondary mb-4">
-            FFT Việt Nam chính thức công bố chiến lược chuyển đổi số giai đoạn mới với trọng tâm tối ưu hóa trải nghiệm khách hàng, kiến tạo giải pháp website và cổng thông tin giới thiệu doanh nghiệp thế hệ mới trên nền tảng Node.js và MySQL tối ưu.
+            Các bài viết chỉ xuất hiện khi được quản trị viên tạo và xuất bản từ hệ thống.
           </p>
           <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center gap-2">
@@ -104,11 +103,11 @@
         <div class="col-lg-8">
           <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
             <h4 class="fw-bold mb-0">Bài Viết Mới Nhất</h4>
-            <span class="text-muted small">Hiển thị 4 bài viết</span>
+            <span class="text-muted small" id="news-count">Đang tải bài viết</span>
           </div>
 
           <div class="row g-4" id="news-grid">
-
+            <template id="legacy-news-layout">
             <!-- Article 1 -->
             <div id="article-1" class="col-md-6">
               <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
@@ -201,10 +200,11 @@
               </div>
             </div>
 
+            </template>
           </div>
 
           <!-- Pagination -->
-          <nav class="mt-5" aria-label="News Pagination">
+          <nav class="mt-5" aria-label="News Pagination" hidden>
             <ul class="pagination justify-content-center mb-0">
               <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Trước</a></li>
               <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -215,7 +215,7 @@
         </div>
 
         <!-- Sidebar Column -->
-        <div class="col-lg-4">
+        <div class="col-lg-4" hidden>
           <!-- Search Widget -->
           <div class="card border p-4 rounded-3 shadow-sm mb-4">
             <h6 class="fw-bold mb-3"><i class="bi bi-search me-1"></i> Tìm kiếm tin tức</h6>
@@ -345,11 +345,11 @@
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-envelope-fill text-primary"></i>
-              <span>contact@fft.com.vn</span>
+              <span>Thông tin email đang cập nhật</span>
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-clock-fill text-primary"></i>
-              <span>Thứ 2 - Thứ 6: 08:00 - 17:30</span>
+              <span>Giờ làm việc đang cập nhật</span>
             </li>
           </ul>
         </div>
@@ -426,7 +426,7 @@
         const views = document.createElement('span');
         views.textContent = `${Number(item.views_count) || 0} lượt xem`;
         const link = document.createElement('a');
-        link.href = `#article-${item.id}`;
+        link.href = `detail.html?slug=${encodeURIComponent(item.slug || '')}`;
         link.className = 'text-primary fw-semibold text-decoration-none';
         link.textContent = 'Đọc tiếp →';
         footer.append(views, link);
@@ -457,11 +457,27 @@
             if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
               renderFeaturedMedia(res.data[0]);
               newsContainer.replaceChildren(...res.data.map(createNewsCard));
+              document.getElementById('news-count').textContent = `Hiển thị ${res.data.length} bài viết`;
+            } else {
+              newsContainer.replaceChildren(createEmptyNewsState());
+              document.getElementById('news-count').textContent = 'Chưa có bài viết';
             }
           })
           .catch(err => {
             console.log('ℹ️ Không thể tải tin tức.', err);
+            newsContainer.replaceChildren(createEmptyNewsState());
+            document.getElementById('news-count').textContent = 'Không tải được bài viết';
           });
+      }
+
+      function createEmptyNewsState() {
+        const column = document.createElement('div');
+        column.className = 'col-12';
+        const box = document.createElement('div');
+        box.className = 'gallery-empty-state';
+        box.innerHTML = '<div class="gallery-empty-icon"><i class="bi bi-journal-x"></i></div><p class="eyebrow mb-2">TIN TỨC XÁC THỰC</p><h2 class="h4 fw-bold">Chưa có bài viết được xuất bản</h2><p class="text-secondary mb-0">Nội dung sẽ hiển thị sau khi quản trị viên tạo và xuất bản bài viết.</p>';
+        column.appendChild(box);
+        return column;
       }
     });
   </script>

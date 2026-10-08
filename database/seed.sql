@@ -23,8 +23,8 @@ VALUES
    'Được thành lập với sứ mệnh mang các giải pháp công nghệ hiện đại đến với cộng đồng doanh nghiệp Việt Nam, FFT Việt Nam không ngừng nghiên cứu và đổi mới sáng tạo. Chúng tôi sở hữu đội ngũ kỹ sư phần mềm giàu nhiệt huyết, quy trình làm việc chuẩn mực, cam kết mang đến giá trị thực chất và sự hài lòng cao nhất cho khách hàng.',
    'Văn phòng số 7 - tổ 97, Phường Phan Đình Phùng, Tỉnh Thái Nguyên',
    '0978078902',
-   'contact@fft.com.vn',
-   'Thứ 2 - Thứ 6: 08:00 - 17:30')
+   '',
+   NULL)
 ON DUPLICATE KEY UPDATE `company_name`=`company_name`;
 
 -- 3. Dữ liệu mẫu: Dịch vụ & Giải pháp
@@ -59,7 +59,8 @@ VALUES
    1)
 ON DUPLICATE KEY UPDATE `slug`=`slug`;
 
--- 4. Dữ liệu mẫu: Tin tức & Sự kiện
+-- 4. Không tạo News mẫu: chỉ hiển thị bài viết do quản trị viên xuất bản.
+/*
 INSERT INTO `news` (`id`, `author_id`, `title`, `slug`, `summary`, `content`, `thumbnail`, `views_count`, `is_published`)
 VALUES 
   (1, 
@@ -68,32 +69,34 @@ VALUES
    'khoi-dong-du-an-nang-cap-he-sinh-thai-so-2026',
    'FFT Việt Nam chính thức công bố chiến lược chuyển đổi số giai đoạn mới với trọng tâm tối ưu trải nghiệm khách hàng.',
    '<p>Trong bối cảnh công nghệ thông tin phát triển vượt bậc, FFT Việt Nam tiếp tục khẳng định cam kết đồng hành cùng các đối tác thông qua dự án nâng cấp toàn diện website và hệ thống cổng thông tin giới thiệu doanh nghiệp...</p><p>Hệ thống mới được phát triển trên nền tảng công nghệ Node.js và kiến trúc tối ưu, mang lại tốc độ truy xuất nhanh chóng và tính bảo mật cao.</p>',
-   '/frontend/assets/images/gallery/team-workshop.png?v=2',
-   128, 
-   1),
+   '/frontend/assets/images/gallery/team-workshop.jpg?v=1',
+   0,
+   0),
   (2, 
    1, 
    'Hội thảo giải pháp công nghệ và tương lai số', 
    'hoi-thao-giai-phap-cong-nghe-va-tuong-lai-so',
    'Đại diện FFT Việt Nam tham gia chia sẻ kinh nghiệm xây dựng giải pháp phần mềm tại diễn đàn công nghệ thường niên.',
    '<p>Vừa qua, ban lãnh đạo công ty đã có buổi trao đổi cùng các chuyên gia đầu ngành về xu hướng ứng dụng công nghệ web tiên tiến trong việc quảng bá thương hiệu và tối ưu hóa quy trình tương tác khách hàng...</p>',
-   '/frontend/assets/images/gallery/product-review.png?v=2',
-   95, 
-   1)
+   '/frontend/assets/images/gallery/product-review.jpg?v=1',
+   0,
+   0)
 ON DUPLICATE KEY UPDATE `slug`=`slug`;
+*/
 
 -- 5. Ảnh minh hoạ được tạo cho bản demo, không phải ảnh hoạt động thực tế của FFT.
 INSERT INTO `gallery` (`id`, `title`, `category`, `image_url`, `description`, `display_order`)
 VALUES
-  (101, 'Không gian trao đổi kỹ thuật', 'Minh hoạ', '../../assets/images/gallery/team-workshop.png?v=2', 'Ảnh minh hoạ không gian chuẩn bị cho cuộc họp kỹ thuật.', 1),
-  (102, 'Kiểm thử ứng dụng di động', 'Minh hoạ', '../../assets/images/gallery/product-review.png?v=2', 'Ảnh minh hoạ thao tác kiểm thử trên thiết bị di động.', 2),
-  (103, 'Đào tạo nội bộ', 'Minh hoạ', '../../assets/images/gallery/project-discussion.png?v=2', 'Ảnh minh hoạ một buổi đào tạo kỹ thuật quy mô nhỏ.', 3),
-  (104, 'Bảo trì hạ tầng mạng', 'Minh hoạ', '../../assets/images/gallery/quality-check.png?v=2', 'Ảnh minh hoạ công việc kiểm tra hạ tầng mạng.', 4)
+  (101, 'Không gian trao đổi kỹ thuật', 'Minh hoạ', '../../assets/images/gallery/team-workshop.jpg?v=1', 'Ảnh minh hoạ không gian chuẩn bị cho cuộc họp kỹ thuật.', 1),
+  (102, 'Kiểm thử ứng dụng di động', 'Minh hoạ', '../../assets/images/gallery/product-review.jpg?v=1', 'Ảnh minh hoạ thao tác kiểm thử trên thiết bị di động.', 2),
+  (103, 'Đào tạo nội bộ', 'Minh hoạ', '../../assets/images/gallery/project-discussion.jpg?v=1', 'Ảnh minh hoạ một buổi đào tạo kỹ thuật quy mô nhỏ.', 3),
+  (104, 'Bảo trì hạ tầng mạng', 'Minh hoạ', '../../assets/images/gallery/quality-check.jpg?v=1', 'Ảnh minh hoạ công việc kiểm tra hạ tầng mạng.', 4)
 ON DUPLICATE KEY UPDATE
   `title` = VALUES(`title`), `category` = VALUES(`category`), `image_url` = VALUES(`image_url`),
   `description` = VALUES(`description`), `display_order` = VALUES(`display_order`);
 
--- 6. Dữ liệu mẫu: Phản hồi liên hệ mẫu
+-- 6. Không tạo Contact mẫu: danh sách quản trị chỉ hiển thị liên hệ thực tế.
+/*
 INSERT INTO `contacts` (`id`, `full_name`, `email`, `phone`, `subject`, `message`, `status`, `admin_notes`)
 VALUES 
   (1, 
@@ -113,3 +116,4 @@ VALUES
    'unread',
    NULL)
 ON DUPLICATE KEY UPDATE `id`=`id`;
+*/

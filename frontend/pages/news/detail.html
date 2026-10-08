@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi tiết cập nhật | FFT Việt Nam</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark"><div class="container"><a class="navbar-brand fw-bold" href="../../index.html">FFT VIỆT NAM</a><a class="btn btn-outline-light btn-sm" href="index.html"><i class="bi bi-arrow-left"></i> Quay lại Tin tức</a></div></nav>
+  <main class="py-5"><article class="container py-4 max-w-700"><p class="eyebrow mb-2">TIN TỨC</p><h1 id="news-title" class="fw-bold mb-3">Đang tải bài viết</h1><p id="news-date" class="text-secondary small border-bottom pb-3"></p><div id="news-content" class="text-secondary lh-lg bg-light border rounded-4 p-4 p-md-5"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Đang tải</span></div></div></article></main>
+  <script src="../../assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const slug = new URLSearchParams(location.search).get('slug');
+      const title = document.getElementById('news-title'); const date = document.getElementById('news-date'); const content = document.getElementById('news-content');
+      if (!slug || !window.ApiClient) { title.textContent = 'Không tìm thấy bài viết'; content.textContent = 'Liên kết bài viết không hợp lệ.'; return; }
+      try { const res = await window.ApiClient.getNewsBySlug(slug); const item = res.data; title.textContent = item.title || 'Cập nhật dự án'; date.textContent = item.created_at ? `Thời gian thực hiện: ${new Date(item.created_at).toLocaleDateString('vi-VN')}` : ''; const source = new DOMParser().parseFromString(item.content || item.summary || '', 'text/html').body; content.replaceChildren(); source.childNodes.forEach(node => { const value = node.textContent.trim(); if (!value) return; const element = document.createElement(node.tagName === 'H2' ? 'h2' : 'p'); element.className = node.tagName === 'H2' ? 'h4 fw-bold text-dark mt-4 mb-3' : 'mb-3'; element.textContent = value; content.appendChild(element); }); }
+      catch (_) { title.textContent = 'Không tìm thấy bài viết'; content.textContent = 'Bài viết chưa được xuất bản hoặc đã bị xoá.'; }
+    });
+  </script>
+</body>
+</html>

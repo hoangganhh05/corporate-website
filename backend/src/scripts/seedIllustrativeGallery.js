@@ -3,10 +3,10 @@ require('dotenv').config();
 const mysql = require('mysql2/promise');
 
 const illustrativeImages = [
-  [101, 'Không gian trao đổi kỹ thuật', 'Minh hoạ', '../../assets/images/gallery/team-workshop.png?v=2', 'Ảnh minh hoạ không gian chuẩn bị cho cuộc họp kỹ thuật.', 1],
-  [102, 'Kiểm thử ứng dụng di động', 'Minh hoạ', '../../assets/images/gallery/product-review.png?v=2', 'Ảnh minh hoạ thao tác kiểm thử trên thiết bị di động.', 2],
-  [103, 'Đào tạo nội bộ', 'Minh hoạ', '../../assets/images/gallery/project-discussion.png?v=2', 'Ảnh minh hoạ một buổi đào tạo kỹ thuật quy mô nhỏ.', 3],
-  [104, 'Bảo trì hạ tầng mạng', 'Minh hoạ', '../../assets/images/gallery/quality-check.png?v=2', 'Ảnh minh hoạ công việc kiểm tra hạ tầng mạng.', 4]
+  [101, 'Không gian trao đổi kỹ thuật', 'Minh hoạ', '../../assets/images/gallery/team-workshop.jpg?v=1', 'Ảnh minh hoạ không gian chuẩn bị cho cuộc họp kỹ thuật.', 1],
+  [102, 'Kiểm thử ứng dụng di động', 'Minh hoạ', '../../assets/images/gallery/product-review.jpg?v=1', 'Ảnh minh hoạ thao tác kiểm thử trên thiết bị di động.', 2],
+  [103, 'Đào tạo nội bộ', 'Minh hoạ', '../../assets/images/gallery/project-discussion.jpg?v=1', 'Ảnh minh hoạ một buổi đào tạo kỹ thuật quy mô nhỏ.', 3],
+  [104, 'Bảo trì hạ tầng mạng', 'Minh hoạ', '../../assets/images/gallery/quality-check.jpg?v=1', 'Ảnh minh hoạ công việc kiểm tra hạ tầng mạng.', 4]
 ];
 
 async function seedIllustrativeGallery() {
