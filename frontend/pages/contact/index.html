@@ -311,7 +311,7 @@
   
   <!-- Interactive Form Validation & Submission Script -->
   <script>
-    const API_BASE_URL = window.API_BASE_URL;
+    const CONTACT_API_BASE_URL = window.API_BASE_URL;
     document.addEventListener('DOMContentLoaded', () => {
       const form = document.getElementById('contact-form');
       const alertBox = document.getElementById('contact-alert');
@@ -382,7 +382,7 @@
         submitBtn.disabled = true;
 
         try {
-          const response = await fetch(`${API_BASE_URL}/contacts`, {
+          const response = await fetch(`${CONTACT_API_BASE_URL}/contacts`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)

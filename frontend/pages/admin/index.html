@@ -232,7 +232,7 @@
 
   <!-- Admin Management JavaScript -->
   <script>
-    const API_BASE_URL = window.API_BASE_URL;
+    const ADMIN_API_BASE_URL = window.API_BASE_URL;
     let currentContacts = [];
     let currentFilter = '';
     let selectedContactId = null;
@@ -276,7 +276,7 @@
       const indicator = document.getElementById('status-indicator');
 
       try {
-        const url = status ? `${API_BASE_URL}/contacts?status=${status}` : `${API_BASE_URL}/contacts`;
+        const url = status ? `${ADMIN_API_BASE_URL}/contacts?status=${status}` : `${ADMIN_API_BASE_URL}/contacts`;
         const res = await fetch(url, { headers: getAuthHeaders() });
         if (!res.ok) throw new Error('API offline');
         const data = await res.json();
@@ -349,7 +349,7 @@
 
     async function openDetail(id) {
       try {
-        const response = await fetch(`${API_BASE_URL}/contacts/${id}`, { headers: getAuthHeaders() });
+        const response = await fetch(`${ADMIN_API_BASE_URL}/contacts/${id}`, { headers: getAuthHeaders() });
         const result = await response.json();
         if (!response.ok || result.status !== 'success') throw new Error(result.message || 'Không thể tải chi tiết liên hệ.');
         const item = result.data;
@@ -381,7 +381,7 @@
       const notes = document.getElementById('modal-notes').value;
 
       try {
-        const response = await fetch(`${API_BASE_URL}/contacts/${selectedContactId}/status`, {
+        const response = await fetch(`${ADMIN_API_BASE_URL}/contacts/${selectedContactId}/status`, {
           method: 'PATCH',
           headers: getAuthHeaders(true),
           body: JSON.stringify({ status: newStatus, adminNotes: notes })
@@ -403,7 +403,7 @@
     async function deleteSelectedContact() {
       if (!selectedContactId || !window.confirm('Bạn có chắc muốn xóa liên hệ này?')) return;
       try {
-        const response = await fetch(`${API_BASE_URL}/contacts/${selectedContactId}`, { method: 'DELETE', headers: getAuthHeaders() });
+        const response = await fetch(`${ADMIN_API_BASE_URL}/contacts/${selectedContactId}`, { method: 'DELETE', headers: getAuthHeaders() });
         const result = await response.json();
         if (!response.ok || result.status !== 'success') throw new Error(result.message || 'Không thể xóa liên hệ.');
         bootstrap.Modal.getInstance(document.getElementById('contactDetailModal')).hide();
@@ -449,7 +449,7 @@
     const managedEditingId = {};
 
     async function adminRequest(endpoint, options = {}) {
-      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      const response = await fetch(`${ADMIN_API_BASE_URL}${endpoint}`, {
         ...options,
         headers: { ...getAuthHeaders(Boolean(options.body)), ...(options.headers || {}) }
       });
@@ -613,7 +613,7 @@
         const loginAlert = document.getElementById('login-alert');
 
         try {
-          const response = await fetch(`${API_BASE_URL}/auth/login`, {
+          const response = await fetch(`${ADMIN_API_BASE_URL}/auth/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
