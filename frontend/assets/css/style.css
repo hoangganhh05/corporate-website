@@ -483,6 +483,84 @@ html {
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
+  /* Admin: giữ thao tác quan trọng trong khung nhìn điện thoại. */
+  .admin-navbar .container-fluid,
+  .admin-main {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .admin-navbar .container-fluid {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .admin-navbar .navbar-brand {
+    font-size: 0.95rem;
+    min-width: 0;
+  }
+
+  .admin-navbar-actions {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0.5rem !important;
+  }
+
+  .admin-navbar-actions .btn {
+    flex: 1 1 auto;
+    white-space: nowrap;
+  }
+
+  .admin-main h3 {
+    font-size: 1.35rem;
+  }
+
+  .admin-main .card-header {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .admin-main #filter-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  .admin-main #filter-group .btn {
+    border-radius: 0.25rem !important;
+  }
+
+  .admin-main #status-indicator {
+    width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .admin-main .table-responsive {
+    font-size: 0.78rem;
+  }
+
+  .admin-main .table-responsive table {
+    min-width: 760px;
+  }
+
+  .admin-main #content-manager .card-body {
+    padding: 1rem !important;
+  }
+
+  .admin-main #content-manager .list-group-item {
+    align-items: flex-start !important;
+    flex-wrap: wrap;
+  }
+
+  .admin-main .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .admin-main .modal-footer .btn,
+  .modal .modal-footer .btn {
+    margin: 0.1rem !important;
+  }
 }
 
 /* ==========================================================================
