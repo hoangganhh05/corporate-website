@@ -97,7 +97,7 @@ async function runFinalReviewAudit() {
   console.log('\n--- [MỤC 3] RÀ SOÁT KIẾN TRÚC VÀ MÃ NGUỒN BACKEND ---');
   const backendDir = path.join(rootDir, 'backend');
   const controllers = ['companyController.js', 'serviceController.js', 'newsController.js', 'galleryController.js', 'contactController.js', 'healthController.js'];
-  const models = ['companyModel.js', 'serviceModel.js', 'newsModel.js', 'galleryModel.js', 'contactModel.js', 'fallbackData.js'];
+  const models = ['companyModel.js', 'serviceModel.js', 'newsModel.js', 'galleryModel.js', 'contactModel.js', 'userModel.js'];
   const routes = ['companyRoutes.js', 'serviceRoutes.js', 'newsRoutes.js', 'galleryRoutes.js', 'contactRoutes.js', 'healthRoutes.js', 'index.js'];
 
   let mvcComplete = true;

@@ -15,7 +15,7 @@
 ### 1. Giới thiệu đơn vị thực tập
 - **Tên doanh nghiệp:** CÔNG TY TNHH CÔNG NGHỆ FFT VIỆT NAM.
 - **Lĩnh vực hoạt động:** Cung cấp giải pháp phần mềm, chuyển đổi số, tư vấn kiến trúc công nghệ thông tin và xây dựng website doanh nghiệp chất lượng cao.
-- **Địa chỉ:** Tầng 5, Tòa nhà Công Nghệ, Quận Cầu Giấy, TP. Hà Nội.
+- **Địa chỉ:** Văn phòng số 7 - tổ 97, Phường Phan Đình Phùng, Tỉnh Thái Nguyên.
 - **Người hướng dẫn trực tiếp:** Trương Thị Minh — Quản lý.
 
 ### 2. Mục tiêu và nhiệm vụ thực tập

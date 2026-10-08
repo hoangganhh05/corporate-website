@@ -347,11 +347,11 @@
           <ul class="list-unstyled small d-flex flex-column gap-2 mb-0 text-secondary">
             <li class="d-flex align-items-start gap-2">
               <i class="bi bi-geo-alt-fill text-primary mt-1"></i>
-              <span>Tầng 5, Tòa nhà Công Nghệ, Q. Cầu Giấy, Hà Nội</span>
+              <span>Văn phòng số 7 - tổ 97, Phường Phan Đình Phùng, Tỉnh Thái Nguyên</span>
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-telephone-fill text-primary"></i>
-              <span>024 1234 5678</span>
+              <span>0978078902</span>
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-envelope-fill text-primary"></i>
@@ -385,44 +385,40 @@
       if (window.ApiClient && window.ApiClient.getNews && newsContainer) {
         window.ApiClient.getNews(10)
           .then(res => {
-            if (res && res.success && Array.isArray(res.data) && res.data.length > 0) {
-              const defaultImages = [
-                'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80'
-              ];
-              let html = '';
-              res.data.forEach((item, index) => {
-                const imgUrl = item.image_url || defaultImages[index % defaultImages.length];
-                const dateStr = item.published_at ? new Date(item.published_at).toLocaleDateString('vi-VN') : '20/06/2026';
-                const badgeColor = index % 2 === 0 ? 'bg-primary-subtle text-primary' : 'bg-success-subtle text-success';
-                
-                html += `
-                  <div id="article-${item.id}" class="col-md-6">
-                    <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                      <div class="bg-light overflow-hidden" style="height: 180px;">
-                        <img src="${imgUrl}" alt="${item.title}" class="w-100 h-100 object-fit-cover" loading="lazy">
-                      </div>
-                      <div class="card-body d-flex flex-column p-4">
-                        <div class="d-flex justify-content-between small text-muted mb-2">
-                          <span class="badge ${badgeColor}">${item.category || 'Tin tức'}</span>
-                          <span><i class="bi bi-calendar3 me-1"></i> ${dateStr}</span>
-                        </div>
-                        <h5 class="fw-bold card-title mb-2">${item.title}</h5>
-                        <p class="card-text text-secondary small mb-3 flex-grow-1">
-                          ${item.summary || item.content || ''}
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
-                          <span><i class="bi bi-eye me-1"></i> ${80 + item.id * 15} lượt xem</span>
-                          <a href="#article-${item.id}" class="text-primary fw-semibold text-decoration-none">Đọc tiếp <i class="bi bi-chevron-right"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                `;
+            if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
+              newsContainer.replaceChildren();
+              res.data.forEach((item) => {
+                const col = document.createElement('div');
+                col.id = `article-${item.slug || item.id}`;
+                col.className = 'col-md-6';
+                const card = document.createElement('article');
+                card.className = 'card h-100 border shadow-sm rounded-3 overflow-hidden';
+                const image = document.createElement('img');
+                image.className = 'w-100 object-fit-cover';
+                image.style.height = '180px';
+                image.loading = 'lazy';
+                image.src = item.thumbnail || '';
+                image.alt = item.title || 'Tin tức';
+                const body = document.createElement('div');
+                body.className = 'card-body d-flex flex-column p-4';
+                const date = item.created_at ? new Date(item.created_at).toLocaleDateString('vi-VN') : '';
+                const metadata = document.createElement('div');
+                metadata.className = 'small text-muted mb-2';
+                metadata.textContent = `${date}${item.author_name ? ` • ${item.author_name}` : ''}`;
+                const title = document.createElement('h5');
+                title.className = 'fw-bold card-title mb-2';
+                title.textContent = item.title || 'Tin tức';
+                const summary = document.createElement('p');
+                summary.className = 'card-text text-secondary small mb-3 flex-grow-1';
+                summary.textContent = item.summary || '';
+                const views = document.createElement('span');
+                views.className = 'small text-muted';
+                views.textContent = `${item.views_count || 0} lượt xem`;
+                body.append(metadata, title, summary, views);
+                card.append(image, body);
+                col.append(card);
+                newsContainer.append(col);
               });
-              newsContainer.innerHTML = html;
             }
           })
           .catch(err => {

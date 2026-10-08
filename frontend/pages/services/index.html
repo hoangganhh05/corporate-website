@@ -62,7 +62,7 @@
 
   <!-- ==================== 3. DETAILED SERVICES SECTION ==================== -->
   <section class="py-5">
-    <div class="container py-4">
+    <div class="container py-4" id="services-list">
 
       <!-- Service 1: Tư vấn giải pháp CNTT -->
       <div id="tu-van-giai-phap-cntt" class="row align-items-center g-5 mb-5 pb-4 border-bottom">
@@ -333,7 +333,7 @@
           Gửi yêu cầu tư vấn ngay
         </a>
         <a href="tel:02412345678" class="btn btn-outline-dark px-4 py-2 fw-semibold">
-          <i class="bi bi-telephone-fill me-1"></i> Hotline: 024 1234 5678
+          <i class="bi bi-telephone-fill me-1"></i> Hotline: 0978078902
         </a>
       </div>
     </div>
@@ -386,11 +386,11 @@
           <ul class="list-unstyled small d-flex flex-column gap-2 mb-0 text-secondary">
             <li class="d-flex align-items-start gap-2">
               <i class="bi bi-geo-alt-fill text-primary mt-1"></i>
-              <span>Tầng 5, Tòa nhà Công Nghệ, Q. Cầu Giấy, Hà Nội</span>
+              <span>Văn phòng số 7 - tổ 97, Phường Phan Đình Phùng, Tỉnh Thái Nguyên</span>
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-telephone-fill text-primary"></i>
-              <span>024 1234 5678</span>
+              <span>0978078902</span>
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-envelope-fill text-primary"></i>
@@ -420,17 +420,41 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      if (window.ApiClient && window.ApiClient.getServices) {
-        window.ApiClient.getServices()
-          .then(res => {
-            if (res && res.success && Array.isArray(res.data)) {
-              console.log('✅ Tải danh mục dịch vụ động thành công từ API:', res.data.length, 'dịch vụ.');
-            }
-          })
-          .catch(err => {
-            console.log('ℹ️ Sử dụng thông tin dịch vụ mặc định.', err);
-          });
-      }
+      const servicesList = document.getElementById('services-list');
+      if (!window.ApiClient || !servicesList) return;
+
+      window.ApiClient.getServices().then((res) => {
+        servicesList.replaceChildren();
+        res.data.forEach((service, index) => {
+          const row = document.createElement('article');
+          row.id = service.slug || `service-${service.id}`;
+          row.className = `row align-items-center g-5 mb-5 pb-4${index < res.data.length - 1 ? ' border-bottom' : ''}`;
+          const textCol = document.createElement('div');
+          textCol.className = 'col-lg-6';
+          const title = document.createElement('h2');
+          title.className = 'fw-bold mb-3';
+          title.textContent = `${index + 1}. ${service.title || 'Dịch vụ'}`;
+          const description = document.createElement('p');
+          description.className = 'text-secondary mb-4';
+          description.textContent = service.description || service.summary || '';
+          const contactLink = document.createElement('a');
+          contactLink.className = 'btn btn-primary fw-semibold';
+          contactLink.href = '../contact/index.html';
+          contactLink.textContent = 'Liên hệ tư vấn';
+          textCol.append(title, description, contactLink);
+          const imageCol = document.createElement('div');
+          imageCol.className = 'col-lg-6';
+          const image = document.createElement('img');
+          image.className = 'w-100 rounded-4 shadow-sm object-fit-cover';
+          image.style.height = '280px';
+          image.loading = 'lazy';
+          image.src = service.image_url || '';
+          image.alt = service.title || 'Dịch vụ';
+          imageCol.append(image);
+          row.append(textCol, imageCol);
+          servicesList.append(row);
+        });
+      }).catch((err) => console.error('Không tải được dữ liệu dịch vụ:', err));
     });
   </script>
 </body>

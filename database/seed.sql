@@ -7,11 +7,11 @@
 USE `company_intro_db`;
 
 -- 1. Dữ liệu mẫu: Admin khởi tạo
--- Mật khẩu tạm thời: admin123
+-- Mật khẩu khởi tạo: admin123 (bcrypt hash, cần đổi khi triển khai thực tế)
 INSERT INTO `users` (`id`, `username`, `password`, `full_name`, `email`, `role`)
 VALUES 
-  (1, 'admin', 'admin123', 'Quản trị viên hệ thống', 'admin@fft.com.vn', 'admin')
-ON DUPLICATE KEY UPDATE `username`=`username`;
+  (1, 'admin', '$2b$12$KhQ2fm4pg1DisGdL/JY8MOID4oZPUyA2d7EqkIPHeoY5rlMuoyWvS', 'Quản trị viên hệ thống', 'admin@fft.com.vn', 'admin')
+ON DUPLICATE KEY UPDATE `password`=VALUES(`password`), `full_name`=VALUES(`full_name`), `email`=VALUES(`email`), `role`=VALUES(`role`);
 
 -- 2. Dữ liệu mẫu: Thông tin doanh nghiệp
 INSERT INTO `company_info` (`id`, `company_name`, `slogan`, `about_summary`, `about_detail`, `address`, `phone`, `email`, `working_hours`)
@@ -21,8 +21,8 @@ VALUES
    'Tiên phong giải pháp công nghệ - Đồng hành cùng phát triển',
    'Công ty TNHH Công Nghệ FFT Việt Nam là đơn vị chuyên nghiệp trong lĩnh vực cung cấp giải pháp chuyển đổi số, thiết kế phần mềm và xây dựng website doanh nghiệp chất lượng cao.',
    'Được thành lập với sứ mệnh mang các giải pháp công nghệ hiện đại đến với cộng đồng doanh nghiệp Việt Nam, FFT Việt Nam không ngừng nghiên cứu và đổi mới sáng tạo. Chúng tôi sở hữu đội ngũ kỹ sư phần mềm giàu nhiệt huyết, quy trình làm việc chuẩn mực, cam kết mang đến giá trị thực chất và sự hài lòng cao nhất cho khách hàng.',
-   'Tầng 5, Tòa nhà Công Nghệ, Quận Cầu Giấy, TP. Hà Nội', 
-   '024 1234 5678', 
+   'Văn phòng số 7 - tổ 97, Phường Phan Đình Phùng, Tỉnh Thái Nguyên',
+   '0978078902',
    'contact@fft.com.vn',
    'Thứ 2 - Thứ 6: 08:00 - 17:30')
 ON DUPLICATE KEY UPDATE `company_name`=`company_name`;

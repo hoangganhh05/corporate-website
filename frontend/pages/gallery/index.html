@@ -341,11 +341,11 @@
           <ul class="list-unstyled small d-flex flex-column gap-2 mb-0 text-secondary">
             <li class="d-flex align-items-start gap-2">
               <i class="bi bi-geo-alt-fill text-primary mt-1"></i>
-              <span>Tầng 5, Tòa nhà Công Nghệ, Q. Cầu Giấy, Hà Nội</span>
+              <span>Văn phòng số 7 - tổ 97, Phường Phan Đình Phùng, Tỉnh Thái Nguyên</span>
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-telephone-fill text-primary"></i>
-              <span>024 1234 5678</span>
+              <span>0978078902</span>
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-envelope-fill text-primary"></i>
@@ -444,42 +444,52 @@
                 'Công nghệ': 'su-kien'
               };
 
-              let html = '';
+              galleryContainer.replaceChildren();
               res.data.forEach(item => {
                 const catClass = categoryMap[item.category] || 'van-phong';
                 const badgeColor = item.category === 'Văn phòng' ? 'bg-primary' : (item.category === 'Hoạt động' ? 'bg-success' : 'bg-warning text-dark');
                 const imgUrl = item.image_url || 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80';
 
-                html += `
-                  <div class="col-md-6 col-lg-4 gallery-item" data-category="${catClass}">
-                    <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                      <div class="position-relative overflow-hidden bg-light" style="height: 220px;">
-                        <img src="${imgUrl}" 
-                             alt="${item.title}" 
-                             class="w-100 h-100 object-fit-cover transition-img" 
-                             loading="lazy">
-                        <span class="badge ${badgeColor} position-absolute top-0 end-0 m-3 shadow-sm">${item.category}</span>
-                      </div>
-                      <div class="card-body p-4">
-                        <h5 class="fw-bold mb-2">${item.title}</h5>
-                        <p class="text-secondary small mb-3">
-                          ${item.description || 'Hình ảnh hoạt động và môi trường làm việc của công ty.'}
-                        </p>
-                        <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn" 
-                                data-bs-toggle="modal" data-bs-target="#imageModal"
-                                data-title="${item.title}"
-                                data-category="${item.category}"
-                                data-img="${imgUrl}"
-                                data-desc="${item.description || ''}">
-                          <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                `;
+                const col = document.createElement('div');
+                col.className = 'col-md-6 col-lg-4 gallery-item';
+                col.dataset.category = catClass;
+                const card = document.createElement('article');
+                card.className = 'card h-100 border shadow-sm rounded-3 overflow-hidden';
+                const imageWrap = document.createElement('div');
+                imageWrap.className = 'position-relative overflow-hidden bg-light';
+                imageWrap.style.height = '220px';
+                const image = document.createElement('img');
+                image.src = imgUrl;
+                image.alt = item.title || 'Hình ảnh thư viện';
+                image.className = 'w-100 h-100 object-fit-cover transition-img';
+                image.loading = 'lazy';
+                const badge = document.createElement('span');
+                badge.className = `badge ${badgeColor} position-absolute top-0 end-0 m-3 shadow-sm`;
+                badge.textContent = item.category || 'Khác';
+                imageWrap.append(image, badge);
+                const body = document.createElement('div');
+                body.className = 'card-body p-4';
+                const title = document.createElement('h5');
+                title.className = 'fw-bold mb-2';
+                title.textContent = item.title || 'Hình ảnh';
+                const description = document.createElement('p');
+                description.className = 'text-secondary small mb-3';
+                description.textContent = item.description || 'Hình ảnh hoạt động và môi trường làm việc của công ty.';
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn';
+                button.dataset.bsToggle = 'modal';
+                button.dataset.bsTarget = '#imageModal';
+                button.dataset.title = item.title || '';
+                button.dataset.category = item.category || '';
+                button.dataset.img = imgUrl;
+                button.dataset.desc = item.description || '';
+                button.textContent = 'Xem chi tiết';
+                body.append(title, description, button);
+                card.append(imageWrap, body);
+                col.append(card);
+                galleryContainer.append(col);
               });
-
-              galleryContainer.innerHTML = html;
               attachModalEvents();
             }
           })

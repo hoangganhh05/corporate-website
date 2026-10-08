@@ -72,7 +72,7 @@
             </div>
             <h5 class="fw-bold mb-2">Trụ Sở Hoạt Động</h5>
             <p class="text-secondary small mb-0">
-              Tầng 5, Tòa nhà Công Nghệ, Quận Cầu Giấy, TP. Hà Nội, Việt Nam
+              Văn phòng số 7 - tổ 97, Phường Phan Đình Phùng, Tỉnh Thái Nguyên
             </p>
           </div>
         </div>
@@ -84,7 +84,7 @@
               <i class="bi bi-telephone-fill"></i>
             </div>
             <h5 class="fw-bold mb-2">Đường Dây Nóng</h5>
-            <p class="text-secondary small mb-1">Hotline: <strong>024 1234 5678</strong></p>
+            <p class="text-secondary small mb-1">Hotline: <strong>0978078902</strong></p>
             <p class="text-muted small mb-0">Hỗ trợ kỹ thuật: 24/7 mọi ngày trong tuần</p>
           </div>
         </div>
@@ -278,11 +278,11 @@
           <ul class="list-unstyled small d-flex flex-column gap-2 mb-0 text-secondary">
             <li class="d-flex align-items-start gap-2">
               <i class="bi bi-geo-alt-fill text-primary mt-1"></i>
-              <span>Tầng 5, Tòa nhà Công Nghệ, Q. Cầu Giấy, Hà Nội</span>
+              <span>Văn phòng số 7 - tổ 97, Phường Phan Đình Phùng, Tỉnh Thái Nguyên</span>
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-telephone-fill text-primary"></i>
-              <span>024 1234 5678</span>
+              <span>0978078902</span>
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-envelope-fill text-primary"></i>
@@ -380,22 +380,39 @@
         submitBtn.disabled = true;
 
         try {
-          // Thử gửi sang Backend API nếu đang chạy
           const response = await fetch('http://localhost:5000/api/contacts', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
-          }).catch(() => null);
+          });
 
-          // Phản hồi thành công
+          let result = null;
+          try {
+            result = await response.json();
+          } catch (_) {
+            // Phản hồi không phải JSON vẫn được xử lý như một lỗi HTTP bên dưới.
+          }
+
+          if (response.status !== 201 || !result || result.status !== 'success') {
+            const error = new Error(
+              result?.message || 'Không thể gửi liên hệ. Vui lòng thử lại sau.'
+            );
+            error.isServerResponse = true;
+            throw error;
+          }
+
+          // Chỉ thông báo thành công và xóa form sau khi API đã tạo bản ghi (HTTP 201).
           alertBox.className = 'alert alert-success py-3 mb-4';
-          alertBox.innerHTML = '<i class="bi bi-check-circle-fill me-2"></i> <strong>Gửi liên hệ thành công!</strong> Cảm ơn quý khách đã tin tưởng FFT Việt Nam. Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.';
+          alertBox.textContent = 'Gửi liên hệ thành công! Cảm ơn quý khách đã tin tưởng FFT Việt Nam. Chúng tôi sẽ phản hồi trong vòng 24 giờ làm việc.';
           alertBox.classList.remove('d-none');
 
           form.reset();
         } catch (error) {
           alertBox.className = 'alert alert-danger py-3 mb-4';
-          alertBox.innerHTML = '<i class="bi bi-exclamation-triangle-fill me-2"></i> Đã xảy ra lỗi trong quá trình gửi tin nhắn. Vui lòng liên hệ trực tiếp qua hotline 024 1234 5678.';
+          const message = error.isServerResponse
+            ? error.message
+            : 'Không thể kết nối máy chủ. Vui lòng thử lại sau hoặc liên hệ trực tiếp qua hotline 0978078902.';
+          alertBox.textContent = message;
           alertBox.classList.remove('d-none');
         } finally {
           btnText.classList.remove('d-none');
