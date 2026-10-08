@@ -49,7 +49,7 @@ Trang chủ được cấu trúc thành 8 phân vùng rõ rệt:
 6. **Khối Tin tức & Sự kiện mới nhất (Latest News):**
    - Hiển thị các bài viết mới từ hệ thống dữ liệu mẫu: *Khởi động dự án nâng cấp hệ sinh thái số doanh nghiệp 2026*, *Hội thảo giải pháp công nghệ và tương lai số*.
 7. **Khối kêu gọi hành động (Call To Action - CTA):**
-   - Kêu gọi đăng ký tư vấn và hiển thị Hotline trực tiếp (`024 1234 5678`).
+   - Kêu gọi đăng ký tư vấn và hiển thị Hotline trực tiếp (`0978078902`).
 8. **Chân trang (Footer):**
    - Cột 1: Thông tin pháp nhân và mạng xã hội.
    - Cột 2: Danh sách liên kết nội bộ nhanh.

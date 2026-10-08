@@ -8,52 +8,55 @@ const API_BASE_URL = 'http://localhost:5000/api';
 /**
  * ApiClient - Module trao đổi dữ liệu tập trung với Backend Node.js Express
  */
+async function requestApi(path, options = {}) {
+  const response = await fetch(`${API_BASE_URL}${path}`, options);
+  const payload = await response.json().catch(() => null);
+  if (!response.ok || !payload || payload.status !== 'success') {
+    throw new Error(payload?.message || `Yêu cầu API thất bại (${response.status}).`);
+  }
+  return payload;
+}
+
 const ApiClient = {
   async getHealth() {
-    const res = await fetch(`${API_BASE_URL}/health`);
-    return await res.json();
+    const response = await fetch(`${API_BASE_URL}/health`);
+    if (!response.ok) throw new Error('Không thể kết nối health check.');
+    return response.json();
   },
 
   async getCompanyInfo() {
-    const res = await fetch(`${API_BASE_URL}/company`);
-    return await res.json();
+    return requestApi('/company');
   },
 
   async getServices() {
-    const res = await fetch(`${API_BASE_URL}/services`);
-    return await res.json();
+    return requestApi('/services');
   },
 
   async getServiceBySlug(slug) {
-    const res = await fetch(`${API_BASE_URL}/services/${slug}`);
-    return await res.json();
+    return requestApi(`/services/${encodeURIComponent(slug)}`);
   },
 
   async getNews(limit = 10) {
-    const res = await fetch(`${API_BASE_URL}/news?limit=${limit}`);
-    return await res.json();
+    return requestApi(`/news?limit=${encodeURIComponent(limit)}`);
   },
 
   async getNewsBySlug(slug) {
-    const res = await fetch(`${API_BASE_URL}/news/${slug}`);
-    return await res.json();
+    return requestApi(`/news/${encodeURIComponent(slug)}`);
   },
 
   async getGallery(category = 'all') {
     const url = category && category !== 'all' 
       ? `${API_BASE_URL}/gallery?category=${encodeURIComponent(category)}`
       : `${API_BASE_URL}/gallery`;
-    const res = await fetch(url);
-    return await res.json();
+    return requestApi(url.replace(API_BASE_URL, ''));
   },
 
   async sendContact(data) {
-    const res = await fetch(`${API_BASE_URL}/contacts`, {
+    return requestApi('/contacts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
-    return await res.json();
   }
 };
 

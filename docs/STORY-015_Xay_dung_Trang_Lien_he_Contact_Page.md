@@ -25,8 +25,8 @@ Triển khai hoàn thiện phân hệ **Liên hệ & Xử lý phản hồi (Cont
    - Trạng thái `active` trên mục "Liên hệ".
    - Breadcrumb phân cấp: `Trang chủ / Liên hệ`.
 2. **Khối thẻ thông tin liên hệ trực tiếp:**
-   - *Trụ sở hoạt động:* Tầng 5, Tòa nhà Công Nghệ, Quận Cầu Giấy, TP. Hà Nội.
-   - *Đường dây nóng:* 024 1234 5678 (Hỗ trợ kỹ thuật 24/7).
+   - *Trụ sở hoạt động:* Văn phòng số 7 - tổ 97, Phường Phan Đình Phùng, Tỉnh Thái Nguyên.
+   - *Đường dây nóng:* 0978078902.
    - *Hòm thư điện tử:* `contact@fft.com.vn` và `support@fft.com.vn`.
 3. **Biểu mẫu gửi liên hệ trực tuyến (Contact Form):**
    - Trường *Họ và tên* (`fullName`): Bắt buộc, tối thiểu 2 ký tự.

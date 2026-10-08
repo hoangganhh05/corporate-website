@@ -43,7 +43,7 @@ Triển khai hoàn thiện trang **Dịch vụ & Giải pháp (Services Page)** 
    - *Bước 4:* Kiểm thử chất lượng (QA/QC) nghiêm ngặt.
    - *Bước 5:* Bàn giao, đào tạo & Bảo hành dài hạn.
 4. **Khối chuyển đổi (CTA) & Chân trang (Footer):**
-   - Nút hành động dẫn trực tiếp sang biểu mẫu liên hệ hoặc gọi điện qua Hotline `024 1234 5678`.
+   - Nút hành động dẫn trực tiếp sang biểu mẫu liên hệ hoặc gọi điện qua Hotline `0978078902`.
    - Chân trang hiển thị thông tin pháp lý, dịch vụ chính và giờ làm việc.
 
 ---

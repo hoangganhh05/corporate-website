@@ -153,6 +153,14 @@
       </div>
     </div>
 
+    <section class="mt-5" aria-labelledby="content-manager-title">
+      <div class="mb-3">
+        <h3 class="fw-bold mb-1" id="content-manager-title">Quản Lý Nội Dung Website</h3>
+        <p class="text-secondary small mb-0">Cập nhật thông tin doanh nghiệp, dịch vụ, tin tức và thư viện ảnh.</p>
+      </div>
+      <div id="content-manager" class="row g-4"></div>
+    </section>
+
   </main>
 
   <!-- ==================== 3. DETAIL & STATUS UPDATE MODAL ==================== -->
@@ -211,6 +219,7 @@
           </div>
         </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger btn-sm me-auto" id="btn-delete-contact">Xóa liên hệ</button>
           <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Đóng</button>
         </div>
       </div>
@@ -222,39 +231,19 @@
 
   <!-- Admin Management JavaScript -->
   <script>
-    // Dữ liệu mẫu dự phòng khi Backend Offline
-    const MOCK_CONTACTS = [
-      {
-        id: 1,
-        full_name: 'Nguyễn Văn An',
-        email: 'nguyenvanan@example.com',
-        phone: '0912 345 678',
-        subject: 'Yêu cầu báo giá dịch vụ thiết kế website',
-        message: 'Kính gửi FFT Việt Nam, công ty chúng tôi đang có nhu cầu thiết kế lại website doanh nghiệp để chuẩn hóa thương hiệu. Xin vui lòng gửi báo giá và tài liệu giới thiệu chi tiết qua email.',
-        status: 'read',
-        admin_notes: 'Đã tiếp nhận yêu cầu, chuẩn bị liên hệ lại trong sáng mai.',
-        created_at: '2026-06-25 09:30:00'
-      },
-      {
-        id: 2,
-        full_name: 'Trần Thị Mai',
-        email: 'tranmai.tech@example.com',
-        phone: '0987 654 321',
-        subject: 'Tư vấn triển khai giải pháp chuyển đổi số',
-        message: 'Tôi muốn tìm hiểu thêm về dịch vụ tư vấn giải pháp CNTT và khả năng tích hợp hệ thống cho doanh nghiệp sản xuất.',
-        status: 'unread',
-        admin_notes: null,
-        created_at: '2026-07-02 14:15:00'
-      }
-    ];
-
     let currentContacts = [];
     let currentFilter = '';
     let selectedContactId = null;
 
-    document.addEventListener('DOMContentLoaded', () => {
-      loadContacts();
+    function getAuthHeaders(includeJson = false) {
+      const token = sessionStorage.getItem('admin_access_token');
+      const headers = {};
+      if (token) headers.Authorization = `Bearer ${token}`;
+      if (includeJson) headers['Content-Type'] = 'application/json';
+      return headers;
+    }
 
+    document.addEventListener('DOMContentLoaded', () => {
       // Sự kiện làm mới
       document.getElementById('btn-refresh').addEventListener('click', () => loadContacts(currentFilter));
 
@@ -277,6 +266,7 @@
       // Sự kiện đổi trạng thái trong Modal
       document.getElementById('btn-mark-read').addEventListener('click', () => updateStatus('read'));
       document.getElementById('btn-mark-replied').addEventListener('click', () => updateStatus('replied'));
+      document.getElementById('btn-delete-contact').addEventListener('click', deleteSelectedContact);
     });
 
     async function loadContacts(status = '') {
@@ -285,23 +275,19 @@
 
       try {
         const url = status ? `http://localhost:5000/api/contacts?status=${status}` : 'http://localhost:5000/api/contacts';
-        const res = await fetch(url);
+        const res = await fetch(url, { headers: getAuthHeaders() });
         if (!res.ok) throw new Error('API offline');
         const data = await res.json();
         
         currentContacts = data.data;
         updateStats(data.statistics);
-        indicator.innerHTML = '<i class="bi bi-circle-fill text-success me-1"></i> Đã kết nối MySQL API Backend';
+        indicator.textContent = 'Đã kết nối API Backend.';
       } catch (err) {
-        // Fallback sang dữ liệu mẫu
-        currentContacts = status ? MOCK_CONTACTS.filter(c => c.status === status) : MOCK_CONTACTS;
-        updateStats({
-          total: MOCK_CONTACTS.length,
-          unread: MOCK_CONTACTS.filter(c => c.status === 'unread').length,
-          read_count: MOCK_CONTACTS.filter(c => c.status === 'read').length,
-          replied: MOCK_CONTACTS.filter(c => c.status === 'replied').length
-        });
-        indicator.innerHTML = '<i class="bi bi-circle-fill text-warning me-1"></i> Chế độ Offline / Dữ liệu demo';
+        currentContacts = [];
+        updateStats({ total: 0, unread: 0, read_count: 0, replied: 0 });
+        indicator.textContent = err.message === 'API offline'
+          ? 'Không thể tải dữ liệu liên hệ. Vui lòng kiểm tra phiên đăng nhập hoặc máy chủ.'
+          : 'Không thể tải dữ liệu liên hệ.';
       }
 
       renderTable();
@@ -317,59 +303,75 @@
 
     function renderTable() {
       const tableBody = document.getElementById('contact-table-body');
+      tableBody.replaceChildren();
       if (!currentContacts || currentContacts.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="7" class="text-center py-4 text-muted">Không có thông tin liên hệ nào.</td></tr>';
+        const row = document.createElement('tr');
+        const cell = document.createElement('td');
+        cell.colSpan = 7;
+        cell.className = 'text-center py-4 text-muted';
+        cell.textContent = 'Không có thông tin liên hệ nào.';
+        row.append(cell);
+        tableBody.append(row);
         return;
       }
 
-      tableBody.innerHTML = currentContacts.map(c => {
+      currentContacts.forEach((c) => {
         let badgeClass = 'bg-secondary';
         let badgeText = 'Chưa xác định';
         if (c.status === 'unread') { badgeClass = 'bg-danger'; badgeText = 'Chưa đọc'; }
         else if (c.status === 'read') { badgeClass = 'bg-warning text-dark'; badgeText = 'Đã đọc'; }
         else if (c.status === 'replied') { badgeClass = 'bg-success'; badgeText = 'Đã phản hồi'; }
 
-        return `
-          <tr>
-            <td class="ps-4 fw-semibold text-secondary">#${c.id}</td>
-            <td><small class="text-muted">${c.created_at ? c.created_at.substring(0, 16) : ''}</small></td>
-            <td class="fw-bold text-dark">${c.full_name}</td>
-            <td>
-              <div>${c.email}</div>
-              <small class="text-muted">${c.phone || '-'}</small>
-            </td>
-            <td class="text-truncate" style="max-width: 250px;">${c.subject}</td>
-            <td class="text-center"><span class="badge ${badgeClass}">${badgeText}</span></td>
-            <td class="text-end pe-4">
-              <button class="btn btn-outline-primary btn-sm py-1 px-2" onclick="openDetail(${c.id})">
-                <i class="bi bi-eye"></i> Xem &amp; Xử lý
-              </button>
-            </td>
-          </tr>
-        `;
-      }).join('');
+        const row = document.createElement('tr');
+        const addCell = (text, className = '') => { const cell = document.createElement('td'); cell.className = className; cell.textContent = text; row.append(cell); return cell; };
+        addCell(`#${c.id}`, 'ps-4 fw-semibold text-secondary');
+        addCell(c.created_at ? String(c.created_at).substring(0, 16) : '', 'text-muted small');
+        addCell(c.full_name || '', 'fw-bold text-dark');
+        addCell(`${c.email || ''}${c.phone ? ` — ${c.phone}` : ''}`);
+        addCell(c.subject || '', 'text-truncate');
+        const statusCell = addCell('', 'text-center');
+        const badge = document.createElement('span');
+        badge.className = `badge ${badgeClass}`;
+        badge.textContent = badgeText;
+        statusCell.append(badge);
+        const actionCell = addCell('', 'text-end pe-4');
+        const action = document.createElement('button');
+        action.type = 'button';
+        action.className = 'btn btn-outline-primary btn-sm py-1 px-2';
+        action.textContent = 'Xem & Xử lý';
+        action.addEventListener('click', () => openDetail(c.id));
+        actionCell.append(action);
+        tableBody.append(row);
+      });
     }
 
-    function openDetail(id) {
-      const item = currentContacts.find(c => c.id === id);
-      if (!item) return;
+    async function openDetail(id) {
+      try {
+        const response = await fetch(`http://localhost:5000/api/contacts/${id}`, { headers: getAuthHeaders() });
+        const result = await response.json();
+        if (!response.ok || result.status !== 'success') throw new Error(result.message || 'Không thể tải chi tiết liên hệ.');
+        const item = result.data;
 
-      selectedContactId = id;
-      document.getElementById('modal-id').textContent = item.id;
-      document.getElementById('modal-fullname').textContent = item.full_name;
-      document.getElementById('modal-date').textContent = item.created_at;
-      document.getElementById('modal-email').textContent = item.email;
-      document.getElementById('modal-phone').textContent = item.phone || 'Chưa cung cấp';
-      document.getElementById('modal-subject').textContent = item.subject;
-      document.getElementById('modal-message').textContent = item.message;
-      document.getElementById('modal-notes').value = item.admin_notes || '';
+        selectedContactId = id;
+        document.getElementById('modal-id').textContent = item.id;
+        document.getElementById('modal-fullname').textContent = item.full_name;
+        document.getElementById('modal-date').textContent = item.created_at;
+        document.getElementById('modal-email').textContent = item.email;
+        document.getElementById('modal-phone').textContent = item.phone || 'Chưa cung cấp';
+        document.getElementById('modal-subject').textContent = item.subject;
+        document.getElementById('modal-message').textContent = item.message;
+        document.getElementById('modal-notes').value = item.admin_notes || '';
 
-      const badge = document.getElementById('modal-status-badge');
-      badge.textContent = item.status.toUpperCase();
-      badge.className = `badge ${item.status === 'unread' ? 'bg-danger' : item.status === 'read' ? 'bg-warning text-dark' : 'bg-success'}`;
+        const badge = document.getElementById('modal-status-badge');
+        badge.textContent = item.status.toUpperCase();
+        badge.className = `badge ${item.status === 'unread' ? 'bg-danger' : item.status === 'read' ? 'bg-warning text-dark' : 'bg-success'}`;
 
-      const modal = new bootstrap.Modal(document.getElementById('contactDetailModal'));
-      modal.show();
+        const modal = new bootstrap.Modal(document.getElementById('contactDetailModal'));
+        modal.show();
+        loadContacts(currentFilter);
+      } catch (error) {
+        window.alert(error.message || 'Không thể tải chi tiết liên hệ.');
+      }
     }
 
     async function updateStatus(newStatus) {
@@ -377,18 +379,18 @@
       const notes = document.getElementById('modal-notes').value;
 
       try {
-        await fetch(`http://localhost:5000/api/contacts/${selectedContactId}/status`, {
+        const response = await fetch(`http://localhost:5000/api/contacts/${selectedContactId}/status`, {
           method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
+          headers: getAuthHeaders(true),
           body: JSON.stringify({ status: newStatus, adminNotes: notes })
         });
-      } catch (e) {
-        // Cập nhật local nếu offline
-        const item = currentContacts.find(c => c.id === selectedContactId);
-        if (item) {
-          item.status = newStatus;
-          item.admin_notes = notes;
+        const result = await response.json();
+        if (!response.ok || result.status !== 'success') {
+          throw new Error(result.message || 'Không thể cập nhật trạng thái liên hệ.');
         }
+      } catch (e) {
+        window.alert(e.message || 'Không thể cập nhật trạng thái liên hệ.');
+        return;
       }
 
       // Đóng modal và reload
@@ -396,34 +398,237 @@
       loadContacts(currentFilter);
     }
 
+    async function deleteSelectedContact() {
+      if (!selectedContactId || !window.confirm('Bạn có chắc muốn xóa liên hệ này?')) return;
+      try {
+        const response = await fetch(`http://localhost:5000/api/contacts/${selectedContactId}`, { method: 'DELETE', headers: getAuthHeaders() });
+        const result = await response.json();
+        if (!response.ok || result.status !== 'success') throw new Error(result.message || 'Không thể xóa liên hệ.');
+        bootstrap.Modal.getInstance(document.getElementById('contactDetailModal')).hide();
+        selectedContactId = null;
+        loadContacts(currentFilter);
+      } catch (error) {
+        window.alert(error.message || 'Không thể xóa liên hệ.');
+      }
+    }
+
+    const contentConfigs = [
+      {
+        key: 'company', title: 'Thông tin doanh nghiệp', endpoint: '/company', singleton: true,
+        fields: [
+          ['company_name', 'Tên công ty', 'text', true], ['slogan', 'Slogan', 'text'],
+          ['about_summary', 'Giới thiệu ngắn', 'textarea'], ['about_detail', 'Giới thiệu chi tiết', 'textarea'],
+          ['address', 'Địa chỉ', 'text', true], ['phone', 'Điện thoại', 'text', true],
+          ['email', 'Email', 'email', true], ['working_hours', 'Giờ làm việc', 'text']
+        ]
+      },
+      {
+        key: 'services', title: 'Dịch vụ', endpoint: '/services', adminEndpoint: '/services/admin/all', label: 'title',
+        fields: [
+          ['title', 'Tiêu đề', 'text', true], ['slug', 'Slug', 'text', true], ['summary', 'Tóm tắt', 'textarea'], ['description', 'Mô tả', 'textarea'],
+          ['icon', 'Bootstrap icon', 'text'], ['image_url', 'URL ảnh', 'url'], ['display_order', 'Thứ tự', 'number'], ['is_active', 'Hiển thị', 'checkbox']
+        ]
+      },
+      {
+        key: 'news', title: 'Tin tức', endpoint: '/news', adminEndpoint: '/news/admin/all', label: 'title',
+        fields: [
+          ['title', 'Tiêu đề', 'text', true], ['slug', 'Slug', 'text', true], ['summary', 'Tóm tắt', 'textarea', true], ['content', 'Nội dung', 'textarea', true],
+          ['thumbnail', 'URL ảnh đại diện', 'url'], ['is_published', 'Xuất bản', 'checkbox']
+        ]
+      },
+      {
+        key: 'gallery', title: 'Thư viện ảnh', endpoint: '/gallery', label: 'title',
+        fields: [
+          ['title', 'Tiêu đề', 'text', true], ['category', 'Danh mục', 'text'], ['image_url', 'URL ảnh', 'url', true], ['description', 'Mô tả', 'textarea'], ['display_order', 'Thứ tự', 'number']
+        ]
+      }
+    ];
+    const managedData = {};
+    const managedEditingId = {};
+
+    async function adminRequest(endpoint, options = {}) {
+      const response = await fetch(`http://localhost:5000/api${endpoint}`, {
+        ...options,
+        headers: { ...getAuthHeaders(Boolean(options.body)), ...(options.headers || {}) }
+      });
+      const data = await response.json().catch(() => null);
+      if (!response.ok || !data || data.status !== 'success') throw new Error(data?.message || 'Thao tác quản trị thất bại.');
+      return data;
+    }
+
+    function createManagedField(field, value) {
+      const [name, label, type, required] = field;
+      const wrapper = document.createElement('div');
+      wrapper.className = 'mb-2';
+      const labelEl = document.createElement('label');
+      labelEl.className = 'form-label small mb-1';
+      labelEl.htmlFor = `managed-${name}`;
+      labelEl.textContent = label;
+      const input = type === 'textarea' ? document.createElement('textarea') : document.createElement('input');
+      input.id = `managed-${name}`;
+      input.name = name;
+      input.className = 'form-control form-control-sm';
+      input.required = Boolean(required);
+      if (type === 'textarea') input.rows = 2;
+      else input.type = type;
+      if (type === 'checkbox') {
+        input.className = 'form-check-input ms-2';
+        input.checked = Boolean(Number(value));
+        const check = document.createElement('div');
+        check.className = 'form-check';
+        check.append(input, labelEl);
+        wrapper.append(check);
+      } else {
+        input.value = value ?? '';
+        wrapper.append(labelEl, input);
+      }
+      return wrapper;
+    }
+
+    function renderContentManager() {
+      const container = document.getElementById('content-manager');
+      if (!container) return;
+      container.replaceChildren();
+      contentConfigs.forEach((config) => {
+        const col = document.createElement('div');
+        col.className = 'col-12 col-xl-6';
+        const card = document.createElement('div');
+        card.className = 'card border-0 shadow-sm h-100';
+        const body = document.createElement('div');
+        body.className = 'card-body p-4';
+        const title = document.createElement('h5');
+        title.className = 'fw-bold mb-3';
+        title.textContent = config.title;
+        const form = document.createElement('form');
+        form.dataset.entity = config.key;
+        const current = config.singleton
+          ? managedData[config.key]
+          : (managedData[config.key] || []).find((entry) => entry.id === managedEditingId[config.key]);
+        config.fields.forEach((field) => form.append(createManagedField(field, current?.[field[0]])));
+        const buttons = document.createElement('div');
+        buttons.className = 'd-flex gap-2 mt-3';
+        const save = document.createElement('button');
+        save.type = 'submit';
+        save.className = 'btn btn-primary btn-sm';
+        save.textContent = config.singleton ? 'Lưu thông tin' : (current ? 'Lưu thay đổi' : 'Tạo mới');
+        buttons.append(save);
+        if (!config.singleton) {
+          const reset = document.createElement('button');
+          reset.type = 'button';
+          reset.className = 'btn btn-outline-secondary btn-sm';
+          reset.textContent = 'Tạo mục mới';
+          reset.addEventListener('click', () => { delete managedEditingId[config.key]; renderContentManager(); });
+          buttons.append(reset);
+        }
+        form.append(buttons);
+        form.addEventListener('submit', (event) => saveManagedEntity(event, config));
+        const list = document.createElement('div');
+        list.className = 'list-group list-group-flush mt-4 border-top';
+        const entries = config.singleton ? (managedData[config.key] ? [managedData[config.key]] : []) : (managedData[config.key] || []);
+        entries.forEach((entry) => {
+          const item = document.createElement('div');
+          item.className = 'list-group-item px-0 d-flex justify-content-between gap-2 align-items-center';
+          const text = document.createElement('span');
+          text.className = 'small text-truncate';
+          text.textContent = entry[config.label] || entry.company_name || `#${entry.id}`;
+          const actions = document.createElement('div');
+          const edit = document.createElement('button');
+          edit.type = 'button'; edit.className = 'btn btn-outline-primary btn-sm'; edit.textContent = 'Sửa';
+          edit.addEventListener('click', () => { managedEditingId[config.key] = entry.id; renderContentManager(); });
+          actions.append(edit);
+          if (!config.singleton) {
+            const remove = document.createElement('button');
+            remove.type = 'button'; remove.className = 'btn btn-outline-danger btn-sm ms-1'; remove.textContent = 'Xóa';
+            remove.addEventListener('click', () => deleteManagedEntity(config, entry.id));
+            actions.append(remove);
+          }
+          item.append(text, actions);
+          list.append(item);
+        });
+        body.append(title, form, list);
+        card.append(body); col.append(card); container.append(col);
+      });
+    }
+
+    async function loadManagedContent() {
+      for (const config of contentConfigs) {
+        const response = await adminRequest(config.adminEndpoint || config.endpoint);
+        managedData[config.key] = response.data;
+      }
+      renderContentManager();
+    }
+
+    async function saveManagedEntity(event, config) {
+      event.preventDefault();
+      const form = event.currentTarget;
+      const payload = {};
+      config.fields.forEach(([name, , type]) => {
+        const input = form.elements[name];
+        payload[name] = type === 'checkbox' ? input.checked : input.value.trim();
+      });
+      const editingId = managedEditingId[config.key];
+      const method = config.singleton ? 'PATCH' : (editingId ? 'PUT' : 'POST');
+      const endpoint = config.singleton ? config.endpoint : `${config.endpoint}${editingId ? `/${editingId}` : ''}`;
+      try {
+        await adminRequest(endpoint, { method, body: JSON.stringify(payload) });
+        delete managedEditingId[config.key];
+        await loadManagedContent();
+      } catch (error) {
+        window.alert(error.message || 'Không thể lưu dữ liệu.');
+      }
+    }
+
+    async function deleteManagedEntity(config, id) {
+      if (!window.confirm('Bạn có chắc muốn xóa mục này?')) return;
+      try {
+        await adminRequest(`${config.endpoint}/${id}`, { method: 'DELETE' });
+        await loadManagedContent();
+      } catch (error) {
+        window.alert(error.message || 'Không thể xóa dữ liệu.');
+      }
+    }
+
     // ==================== XÁC THỰC BẢO MẬT & ĐĂNG NHẬP ====================
     let loginModalInstance = null;
 
     function checkAuth() {
-      const isLoggedIn = sessionStorage.getItem('admin_logged_in') === 'true';
+      const token = sessionStorage.getItem('admin_access_token');
       const loginModalEl = document.getElementById('adminLoginModal');
       loginModalInstance = new bootstrap.Modal(loginModalEl);
 
-      if (!isLoggedIn) {
+      if (!token) {
         loginModalInstance.show();
       } else {
         loadContacts();
+        loadManagedContent().catch((error) => console.error('Không thể tải nội dung quản trị:', error));
       }
 
       // Xử lý gửi form đăng nhập
-      document.getElementById('admin-login-form').addEventListener('submit', (e) => {
+      document.getElementById('admin-login-form').addEventListener('submit', async (e) => {
         e.preventDefault();
         const username = document.getElementById('login-username').value.trim();
         const password = document.getElementById('login-password').value.trim();
         const loginAlert = document.getElementById('login-alert');
 
-        // Mật khẩu hợp lệ: hoang2005 (MySQL), admin123 (seed data) hoặc admin
-        if (username === 'admin' && (password === 'hoang2005' || password === 'admin123' || password === 'admin')) {
-          sessionStorage.setItem('admin_logged_in', 'true');
+        try {
+          const response = await fetch('http://localhost:5000/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+          });
+          const result = await response.json();
+          if (!response.ok || result.status !== 'success' || !result.data?.token) {
+            throw new Error(result.message || 'Tài khoản hoặc mật khẩu không chính xác.');
+          }
+
+          sessionStorage.setItem('admin_access_token', result.data.token);
+          sessionStorage.setItem('admin_user', JSON.stringify(result.data.user));
           loginAlert.classList.add('d-none');
           loginModalInstance.hide();
           loadContacts();
-        } else {
+          loadManagedContent().catch((loadError) => window.alert(loadError.message || 'Không thể tải nội dung quản trị.'));
+        } catch (error) {
+          loginAlert.textContent = error.message || 'Không thể đăng nhập. Vui lòng thử lại.';
           loginAlert.classList.remove('d-none');
         }
       });
@@ -432,7 +637,8 @@
       const logoutBtn = document.getElementById('btn-logout');
       if (logoutBtn) {
         logoutBtn.addEventListener('click', () => {
-          sessionStorage.removeItem('admin_logged_in');
+          sessionStorage.removeItem('admin_access_token');
+          sessionStorage.removeItem('admin_user');
           window.location.href = '../../index.html';
         });
       }
@@ -460,12 +666,11 @@
           <form id="admin-login-form">
             <div class="mb-3">
               <label class="form-label small fw-semibold">Tên đăng nhập</label>
-              <input type="text" class="form-control" id="login-username" value="admin" required autofocus>
+              <input type="text" class="form-control" id="login-username" autocomplete="username" required autofocus>
             </div>
             <div class="mb-3">
               <label class="form-label small fw-semibold">Mật khẩu</label>
-              <input type="password" class="form-control" id="login-password" placeholder="Nhập mật khẩu..." required>
-              <div class="form-text small text-muted">Mật khẩu: <code>hoang2005</code> hoặc <code>admin123</code></div>
+              <input type="password" class="form-control" id="login-password" placeholder="Nhập mật khẩu..." autocomplete="current-password" required>
             </div>
             <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">
               <i class="bi bi-box-arrow-in-right me-1"></i> Đăng nhập ngay

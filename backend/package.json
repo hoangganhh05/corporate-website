@@ -11,8 +11,9 @@
     "test:functional": "node src/scripts/runFunctionalTests.js",
     "test:ui": "node src/scripts/verifyUiResponsive.js",
     "test:regression": "node src/scripts/runRegressionSuite.js",
-    "test:all": "npm run test:regression",
-    "test:audit": "node src/scripts/runFinalReviewAudit.js"
+    "test:all": "npm run test:regression && npm run test:e2e",
+    "test:audit": "node src/scripts/runFinalReviewAudit.js",
+    "test:e2e": "node src/scripts/runE2EFlow.js"
   },
   "keywords": [
     "express",
@@ -22,9 +23,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.3",
     "mysql2": "^3.12.0"
   },
   "devDependencies": {

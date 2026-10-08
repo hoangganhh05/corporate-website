@@ -28,7 +28,7 @@ Xây dựng hoàn thiện trang **Giới thiệu doanh nghiệp (About Page)** t
 2. **Tổng quan doanh nghiệp (Company Overview):**
    - Nội dung giới thiệu chi tiết đối chiếu từ trường `about_detail` trong bảng `company_info`.
    - Khối trích dẫn châm ngôn: *"Tiên phong giải pháp công nghệ - Đồng hành cùng phát triển bền vững của cộng đồng doanh nghiệp"*.
-   - Khung thông tin pháp lý: Tên công ty, địa chỉ trụ sở (Cầu Giấy, Hà Nội), hotline hỗ trợ, email liên hệ, giờ làm việc.
+   - Khung thông tin pháp lý: Tên công ty, địa chỉ trụ sở tại Phường Phan Đình Phùng, Tỉnh Thái Nguyên, hotline hỗ trợ, email liên hệ, giờ làm việc.
 3. **Định hướng chiến lược (Tầm nhìn - Sứ mệnh - Giá trị cốt lõi):**
    - *Tầm nhìn:* Trở thành đơn vị công nghệ hàng đầu tại Việt Nam cung cấp hạ tầng số và phát triển phần mềm theo yêu cầu.
    - *Sứ mệnh:* Đồng hành cùng đối tác trên con đường số hóa, đơn giản hóa các bài toán phức tạp thông qua phần mềm tối ưu.

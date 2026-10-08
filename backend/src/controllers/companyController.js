@@ -24,6 +24,21 @@ const companyController = {
     } catch (error) {
       next(error);
     }
+  },
+
+  async updateCompanyInfo(req, res, next) {
+    try {
+      const required = ['company_name', 'address', 'phone', 'email'];
+      const missing = required.filter((field) => !String(req.body[field] || '').trim());
+      if (missing.length) {
+        return res.status(400).json({ status: 'error', message: `Thiếu trường bắt buộc: ${missing.join(', ')}` });
+      }
+      const updated = await CompanyModel.updateCompanyInfo(req.body);
+      if (!updated) return res.status(404).json({ status: 'error', message: 'Không tìm thấy thông tin doanh nghiệp.' });
+      return res.status(200).json({ status: 'success', message: 'Cập nhật thông tin doanh nghiệp thành công.' });
+    } catch (error) {
+      return next(error);
+    }
   }
 };
 
