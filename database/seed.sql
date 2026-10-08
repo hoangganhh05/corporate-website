@@ -68,7 +68,7 @@ VALUES
    'khoi-dong-du-an-nang-cap-he-sinh-thai-so-2026',
    'FFT Việt Nam chính thức công bố chiến lược chuyển đổi số giai đoạn mới với trọng tâm tối ưu trải nghiệm khách hàng.',
    '<p>Trong bối cảnh công nghệ thông tin phát triển vượt bậc, FFT Việt Nam tiếp tục khẳng định cam kết đồng hành cùng các đối tác thông qua dự án nâng cấp toàn diện website và hệ thống cổng thông tin giới thiệu doanh nghiệp...</p><p>Hệ thống mới được phát triển trên nền tảng công nghệ Node.js và kiến trúc tối ưu, mang lại tốc độ truy xuất nhanh chóng và tính bảo mật cao.</p>',
-   '/frontend/assets/images/gallery/team-workshop.png',
+   '/frontend/assets/images/gallery/team-workshop.png?v=2',
    128, 
    1),
   (2, 
@@ -77,7 +77,7 @@ VALUES
    'hoi-thao-giai-phap-cong-nghe-va-tuong-lai-so',
    'Đại diện FFT Việt Nam tham gia chia sẻ kinh nghiệm xây dựng giải pháp phần mềm tại diễn đàn công nghệ thường niên.',
    '<p>Vừa qua, ban lãnh đạo công ty đã có buổi trao đổi cùng các chuyên gia đầu ngành về xu hướng ứng dụng công nghệ web tiên tiến trong việc quảng bá thương hiệu và tối ưu hóa quy trình tương tác khách hàng...</p>',
-   '/frontend/assets/images/gallery/product-review.png',
+   '/frontend/assets/images/gallery/product-review.png?v=2',
    95, 
    1)
 ON DUPLICATE KEY UPDATE `slug`=`slug`;
@@ -85,10 +85,10 @@ ON DUPLICATE KEY UPDATE `slug`=`slug`;
 -- 5. Ảnh minh hoạ được tạo cho bản demo, không phải ảnh hoạt động thực tế của FFT.
 INSERT INTO `gallery` (`id`, `title`, `category`, `image_url`, `description`, `display_order`)
 VALUES
-  (101, 'Trao đổi phương án kỹ thuật', 'Minh hoạ', '../../assets/images/gallery/team-workshop.png', 'Ảnh minh hoạ cho hoạt động trao đổi kỹ thuật.', 1),
-  (102, 'Cùng rà soát sản phẩm', 'Minh hoạ', '../../assets/images/gallery/product-review.png', 'Ảnh minh hoạ cho quá trình review sản phẩm.', 2),
-  (103, 'Thảo luận tiến độ dự án', 'Minh hoạ', '../../assets/images/gallery/project-discussion.png', 'Ảnh minh hoạ cho buổi trao đổi dự án.', 3),
-  (104, 'Kiểm thử chất lượng', 'Minh hoạ', '../../assets/images/gallery/quality-check.png', 'Ảnh minh hoạ cho công việc kiểm thử.', 4)
+  (101, 'Không gian trao đổi kỹ thuật', 'Minh hoạ', '../../assets/images/gallery/team-workshop.png?v=2', 'Ảnh minh hoạ không gian chuẩn bị cho cuộc họp kỹ thuật.', 1),
+  (102, 'Kiểm thử ứng dụng di động', 'Minh hoạ', '../../assets/images/gallery/product-review.png?v=2', 'Ảnh minh hoạ thao tác kiểm thử trên thiết bị di động.', 2),
+  (103, 'Đào tạo nội bộ', 'Minh hoạ', '../../assets/images/gallery/project-discussion.png?v=2', 'Ảnh minh hoạ một buổi đào tạo kỹ thuật quy mô nhỏ.', 3),
+  (104, 'Bảo trì hạ tầng mạng', 'Minh hoạ', '../../assets/images/gallery/quality-check.png?v=2', 'Ảnh minh hoạ công việc kiểm tra hạ tầng mạng.', 4)
 ON DUPLICATE KEY UPDATE
   `title` = VALUES(`title`), `category` = VALUES(`category`), `image_url` = VALUES(`image_url`),
   `description` = VALUES(`description`), `display_order` = VALUES(`display_order`);

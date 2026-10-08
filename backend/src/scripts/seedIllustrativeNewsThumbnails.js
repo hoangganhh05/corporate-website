@@ -15,8 +15,8 @@ async function seedIllustrativeNewsThumbnails() {
     const [result] = await connection.query(
       `UPDATE news
        SET thumbnail = CASE id
-         WHEN 1 THEN '/frontend/assets/images/gallery/team-workshop.png'
-         WHEN 2 THEN '/frontend/assets/images/gallery/product-review.png'
+         WHEN 1 THEN '/frontend/assets/images/gallery/team-workshop.png?v=2'
+         WHEN 2 THEN '/frontend/assets/images/gallery/product-review.png?v=2'
        END
        WHERE id IN (1, 2)`
     );
