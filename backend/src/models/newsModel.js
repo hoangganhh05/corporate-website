@@ -1,6 +1,16 @@
 const { pool } = require('../config/db');
 
 const NewsModel = {
+  async getAllNews() {
+    const [rows] = await pool.query(
+      `SELECT n.id, n.title, n.slug, n.summary, n.content, n.thumbnail, n.views_count,
+              n.is_published, n.created_at, n.updated_at, u.full_name AS author_name
+       FROM news n LEFT JOIN users u ON n.author_id = u.id
+       ORDER BY n.created_at DESC, n.id DESC`
+    );
+    return rows;
+  },
+
   async getPublishedNews(limit = 10, offset = 0) {
     const limitNum = parseInt(limit, 10) || 10;
     const offsetNum = parseInt(offset, 10) || 0;

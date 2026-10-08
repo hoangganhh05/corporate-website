@@ -28,7 +28,8 @@ const companyController = {
 
   async updateCompanyInfo(req, res, next) {
     try {
-      const required = ['company_name', 'address', 'phone', 'email'];
+      // Email chưa có nguồn xác nhận trong tài liệu dự án, nên cho phép để trống.
+      const required = ['company_name', 'address', 'phone'];
       const missing = required.filter((field) => !String(req.body[field] || '').trim());
       if (missing.length) {
         return res.status(400).json({ status: 'error', message: `Thiếu trường bắt buộc: ${missing.join(', ')}` });

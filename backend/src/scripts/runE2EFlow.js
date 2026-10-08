@@ -52,6 +52,12 @@ async function run() {
     assert(result.response.status === 200 && result.body?.data?.token, 'Admin login phải trả JWT.');
     const headers = { Authorization: `Bearer ${result.body.data.token}`, 'Content-Type': 'application/json' };
 
+    console.log('E2E 3.1/11 Admin đọc danh sách quản trị News/Services...');
+    result = await request(baseUrl, '/api/news/admin/all', { headers });
+    assert(result.response.status === 200 && Array.isArray(result.body?.data), 'Admin phải đọc được danh sách News quản trị.');
+    result = await request(baseUrl, '/api/services/admin/all', { headers });
+    assert(result.response.status === 200 && Array.isArray(result.body?.data), 'Admin phải đọc được danh sách Services quản trị.');
+
     console.log('E2E 4/11 Admin đọc chi tiết Contact và hệ thống đổi unread sang read...');
     result = await request(baseUrl, `/api/contacts/${createdContactId}`, { headers });
     assert(result.response.status === 200 && result.body?.data?.status === 'read', 'Mở Contact unread phải đổi sang read.');
