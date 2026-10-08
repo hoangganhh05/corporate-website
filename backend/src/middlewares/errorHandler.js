@@ -16,12 +16,14 @@ const errorHandler = (err, req, res, next) => {
 
   const statusCode = err.status || 500;
   const isServerError = statusCode >= 500;
+  const isProduction = process.env.NODE_ENV === 'production';
 
   res.status(statusCode).json({
     status: 'error',
-    message: isServerError
+    message: isProduction && isServerError
       ? 'Đã xảy ra lỗi máy chủ. Vui lòng thử lại sau.'
       : (err.message || 'Yêu cầu không hợp lệ.'),
+    ...(!isProduction && isServerError && { stack: err.stack }),
   });
 };
 
