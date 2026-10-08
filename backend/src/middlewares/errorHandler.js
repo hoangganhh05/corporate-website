@@ -14,9 +14,14 @@ const notFoundHandler = (req, res, next) => {
 const errorHandler = (err, req, res, next) => {
   console.error('[Error Handler]:', err.stack || err.message);
 
-  res.status(err.status || 500).json({
+  const statusCode = err.status || 500;
+  const isServerError = statusCode >= 500;
+
+  res.status(statusCode).json({
     status: 'error',
-    message: err.message || 'Internal Server Error',
+    message: isServerError
+      ? 'Đã xảy ra lỗi máy chủ. Vui lòng thử lại sau.'
+      : (err.message || 'Yêu cầu không hợp lệ.'),
   });
 };
 
