@@ -66,7 +66,7 @@
       <div class="row align-items-center g-4 bg-white rounded-4 border p-3 p-md-4 shadow-sm">
         <div class="col-lg-6">
           <div class="rounded-3 overflow-hidden shadow-sm" style="height: 280px;">
-            <div class="news-visual h-100"><span>FFT / TIN TỨC</span><i class="bi bi-megaphone"></i></div>
+            <div class="news-visual h-100" id="featured-media"><span>FFT / TIN TỨC</span><i class="bi bi-megaphone"></i></div>
           </div>
         </div>
         <div class="col-lg-6">
@@ -381,7 +381,7 @@
 
         if (item.thumbnail) {
           const media = document.createElement('div');
-          media.className = 'bg-light overflow-hidden';
+          media.className = 'bg-light overflow-hidden position-relative';
           media.style.height = '180px';
           const image = document.createElement('img');
           image.src = item.thumbnail;
@@ -389,6 +389,10 @@
           image.className = 'w-100 h-100 object-fit-cover';
           image.loading = 'lazy';
           media.appendChild(image);
+          const illustrationLabel = document.createElement('span');
+          illustrationLabel.className = 'badge bg-dark position-absolute top-0 start-0 m-3';
+          illustrationLabel.textContent = 'Ảnh minh hoạ';
+          media.appendChild(illustrationLabel);
           card.appendChild(media);
         } else {
           const visual = document.createElement('div');
@@ -432,10 +436,26 @@
         return column;
       }
 
+      function renderFeaturedMedia(item) {
+        const featuredMedia = document.getElementById('featured-media');
+        if (!featuredMedia || !item?.thumbnail) return;
+        featuredMedia.replaceChildren();
+        featuredMedia.className = 'position-relative h-100 bg-light';
+        const image = document.createElement('img');
+        image.src = item.thumbnail;
+        image.alt = item.title || 'Tin tức FFT Việt Nam';
+        image.className = 'w-100 h-100 object-fit-cover';
+        const label = document.createElement('span');
+        label.className = 'badge bg-dark position-absolute top-0 start-0 m-3';
+        label.textContent = 'Ảnh minh hoạ';
+        featuredMedia.append(image, label);
+      }
+
       if (window.ApiClient && window.ApiClient.getNews && newsContainer) {
         window.ApiClient.getNews(10)
           .then(res => {
             if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
+              renderFeaturedMedia(res.data[0]);
               newsContainer.replaceChildren(...res.data.map(createNewsCard));
             }
           })

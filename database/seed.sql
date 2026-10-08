@@ -68,7 +68,7 @@ VALUES
    'khoi-dong-du-an-nang-cap-he-sinh-thai-so-2026',
    'FFT Việt Nam chính thức công bố chiến lược chuyển đổi số giai đoạn mới với trọng tâm tối ưu trải nghiệm khách hàng.',
    '<p>Trong bối cảnh công nghệ thông tin phát triển vượt bậc, FFT Việt Nam tiếp tục khẳng định cam kết đồng hành cùng các đối tác thông qua dự án nâng cấp toàn diện website và hệ thống cổng thông tin giới thiệu doanh nghiệp...</p><p>Hệ thống mới được phát triển trên nền tảng công nghệ Node.js và kiến trúc tối ưu, mang lại tốc độ truy xuất nhanh chóng và tính bảo mật cao.</p>',
-   NULL,
+   '/frontend/assets/images/gallery/team-workshop.png',
    128, 
    1),
   (2, 
@@ -77,7 +77,7 @@ VALUES
    'hoi-thao-giai-phap-cong-nghe-va-tuong-lai-so',
    'Đại diện FFT Việt Nam tham gia chia sẻ kinh nghiệm xây dựng giải pháp phần mềm tại diễn đàn công nghệ thường niên.',
    '<p>Vừa qua, ban lãnh đạo công ty đã có buổi trao đổi cùng các chuyên gia đầu ngành về xu hướng ứng dụng công nghệ web tiên tiến trong việc quảng bá thương hiệu và tối ưu hóa quy trình tương tác khách hàng...</p>',
-   NULL,
+   '/frontend/assets/images/gallery/product-review.png',
    95, 
    1)
 ON DUPLICATE KEY UPDATE `slug`=`slug`;
