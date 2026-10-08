@@ -1,12 +1,6 @@
 const { pool } = require('../config/db');
 
-/**
- * Model thao tác với bảng gallery trong MySQL
- */
 const GalleryModel = {
-  /**
-   * Lấy danh sách hình ảnh (có thể lọc theo danh mục)
-   */
   async getGallery(category = null) {
     let sql = 'SELECT * FROM gallery';
     const params = [];

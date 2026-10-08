@@ -66,20 +66,17 @@
       <div class="row align-items-center g-4 bg-white rounded-4 border p-3 p-md-4 shadow-sm">
         <div class="col-lg-6">
           <div class="rounded-3 overflow-hidden shadow-sm" style="height: 280px;">
-            <img id="featured-img" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" 
-                 alt="Khởi động dự án nâng cấp hệ sinh thái số doanh nghiệp 2026" 
-                 class="w-100 h-100 object-fit-cover" loading="lazy">
+            <div class="news-visual h-100" id="featured-media"><span>FFT / TIN TỨC</span><i class="bi bi-megaphone"></i></div>
           </div>
         </div>
         <div class="col-lg-6">
           <div class="d-flex align-items-center gap-2 mb-2">
             <span class="badge bg-danger">Tin Nổi Bật</span>
-            <small class="text-muted"><i class="bi bi-calendar3 me-1"></i> 15/06/2026</small>
-            <small class="text-muted">• <i class="bi bi-eye me-1"></i> 128 lượt xem</small>
+            <small class="text-muted">Nội dung do quản trị viên xuất bản</small>
           </div>
-          <h3 class="fw-bold mb-3">Khởi động dự án nâng cấp hệ sinh thái số doanh nghiệp 2026</h3>
+          <h3 class="fw-bold mb-3">Tin tức đang được cập nhật</h3>
           <p class="text-secondary mb-4">
-            FFT Việt Nam chính thức công bố chiến lược chuyển đổi số giai đoạn mới với trọng tâm tối ưu hóa trải nghiệm khách hàng, kiến tạo giải pháp website và cổng thông tin giới thiệu doanh nghiệp thế hệ mới trên nền tảng Node.js và MySQL tối ưu.
+            Các bài viết chỉ xuất hiện khi được quản trị viên tạo và xuất bản từ hệ thống.
           </p>
           <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center gap-2">
@@ -106,18 +103,16 @@
         <div class="col-lg-8">
           <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
             <h4 class="fw-bold mb-0">Bài Viết Mới Nhất</h4>
-            <span class="text-muted small">Hiển thị 4 bài viết</span>
+            <span class="text-muted small" id="news-count">Đang tải bài viết</span>
           </div>
 
           <div class="row g-4" id="news-grid">
-
+            <template id="legacy-news-layout">
             <!-- Article 1 -->
             <div id="article-1" class="col-md-6">
               <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                <div class="bg-light overflow-hidden" style="height: 180px;">
-                  <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" 
-                       alt="Hội thảo giải pháp công nghệ và tương lai số" 
-                       class="w-100 h-100 object-fit-cover" loading="lazy">
+                <div class="news-visual">
+                  <span>FFT / CẬP NHẬT</span><i class="bi bi-journal-text"></i>
                 </div>
                 <div class="card-body d-flex flex-column p-4">
                   <div class="d-flex justify-content-between small text-muted mb-2">
@@ -139,10 +134,8 @@
             <!-- Article 2 -->
             <div id="article-2" class="col-md-6">
               <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                <div class="bg-light overflow-hidden" style="height: 180px;">
-                  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
-                       alt="Tầm quan trọng của website chuẩn SEO đối với doanh nghiệp" 
-                       class="w-100 h-100 object-fit-cover" loading="lazy">
+                <div class="news-visual news-visual--alt">
+                  <span>FFT / KIẾN THỨC</span><i class="bi bi-lightbulb"></i>
                 </div>
                 <div class="card-body d-flex flex-column p-4">
                   <div class="d-flex justify-content-between small text-muted mb-2">
@@ -164,10 +157,8 @@
             <!-- Article 3 -->
             <div id="article-3" class="col-md-6">
               <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                <div class="bg-light overflow-hidden" style="height: 180px;">
-                  <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" 
-                       alt="Bảo mật dữ liệu và phòng ngừa tấn công mạng cho khối SMEs" 
-                       class="w-100 h-100 object-fit-cover" loading="lazy">
+                <div class="news-visual news-visual--blue">
+                  <span>FFT / CÔNG NGHỆ</span><i class="bi bi-shield-check"></i>
                 </div>
                 <div class="card-body d-flex flex-column p-4">
                   <div class="d-flex justify-content-between small text-muted mb-2">
@@ -189,10 +180,8 @@
             <!-- Article 4 -->
             <div id="article-4" class="col-md-6">
               <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                <div class="bg-light overflow-hidden" style="height: 180px;">
-                  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" 
-                       alt="Chương trình kết nối công nghệ và văn hóa doanh nghiệp FFT" 
-                       class="w-100 h-100 object-fit-cover" loading="lazy">
+                <div class="news-visual news-visual--orange">
+                  <span>FFT / NỘI BỘ</span><i class="bi bi-people"></i>
                 </div>
                 <div class="card-body d-flex flex-column p-4">
                   <div class="d-flex justify-content-between small text-muted mb-2">
@@ -211,10 +200,11 @@
               </div>
             </div>
 
+            </template>
           </div>
 
           <!-- Pagination -->
-          <nav class="mt-5" aria-label="News Pagination">
+          <nav class="mt-5" aria-label="News Pagination" hidden>
             <ul class="pagination justify-content-center mb-0">
               <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Trước</a></li>
               <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -225,7 +215,7 @@
         </div>
 
         <!-- Sidebar Column -->
-        <div class="col-lg-4">
+        <div class="col-lg-4" hidden>
           <!-- Search Widget -->
           <div class="card border p-4 rounded-3 shadow-sm mb-4">
             <h6 class="fw-bold mb-3"><i class="bi bi-search me-1"></i> Tìm kiếm tin tức</h6>
@@ -355,11 +345,11 @@
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-envelope-fill text-primary"></i>
-              <span>contact@fft.com.vn</span>
+              <span>Thông tin email đang cập nhật</span>
             </li>
             <li class="d-flex align-items-center gap-2">
               <i class="bi bi-clock-fill text-primary"></i>
-              <span>Thứ 2 - Thứ 6: 08:00 - 17:30</span>
+              <span>Giờ làm việc đang cập nhật</span>
             </li>
           </ul>
         </div>
@@ -382,48 +372,112 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const newsContainer = document.getElementById('news-grid');
+      function createNewsCard(item, index) {
+        const column = document.createElement('div');
+        column.id = `article-${item.id}`;
+        column.className = 'col-md-6';
+        const card = document.createElement('article');
+        card.className = 'card h-100 border shadow-sm rounded-3 overflow-hidden';
+
+        if (item.thumbnail) {
+          const media = document.createElement('div');
+          media.className = 'bg-light overflow-hidden position-relative';
+          media.style.height = '180px';
+          const image = document.createElement('img');
+          image.src = item.thumbnail;
+          image.alt = item.title || 'Tin tức FFT Việt Nam';
+          image.className = 'w-100 h-100 object-fit-cover';
+          image.loading = 'lazy';
+          media.appendChild(image);
+          const illustrationLabel = document.createElement('span');
+          illustrationLabel.className = 'badge bg-dark position-absolute top-0 start-0 m-3';
+          illustrationLabel.textContent = 'Ảnh minh hoạ';
+          media.appendChild(illustrationLabel);
+          card.appendChild(media);
+        } else {
+          const visual = document.createElement('div');
+          visual.className = index % 2 ? 'news-visual news-visual--alt' : 'news-visual';
+          const label = document.createElement('span');
+          label.textContent = 'FFT / TIN TỨC';
+          const icon = document.createElement('i');
+          icon.className = index % 2 ? 'bi bi-lightbulb' : 'bi bi-journal-text';
+          visual.append(label, icon);
+          card.appendChild(visual);
+        }
+
+        const body = document.createElement('div');
+        body.className = 'card-body d-flex flex-column p-4';
+        const meta = document.createElement('div');
+        meta.className = 'd-flex justify-content-between small text-muted mb-2';
+        const category = document.createElement('span');
+        category.className = 'badge bg-primary-subtle text-primary';
+        category.textContent = 'Tin tức';
+        const date = document.createElement('span');
+        date.textContent = item.created_at ? new Date(item.created_at).toLocaleDateString('vi-VN') : '';
+        meta.append(category, date);
+        const title = document.createElement('h5');
+        title.className = 'fw-bold card-title mb-2';
+        title.textContent = item.title || 'Tin tức FFT Việt Nam';
+        const summary = document.createElement('p');
+        summary.className = 'card-text text-secondary small mb-3 flex-grow-1';
+        summary.textContent = item.summary || '';
+        const footer = document.createElement('div');
+        footer.className = 'd-flex justify-content-between align-items-center pt-2 border-top small text-muted';
+        const views = document.createElement('span');
+        views.textContent = `${Number(item.views_count) || 0} lượt xem`;
+        const link = document.createElement('a');
+        link.href = `detail.html?slug=${encodeURIComponent(item.slug || '')}`;
+        link.className = 'text-primary fw-semibold text-decoration-none';
+        link.textContent = 'Đọc tiếp →';
+        footer.append(views, link);
+        body.append(meta, title, summary, footer);
+        card.appendChild(body);
+        column.appendChild(card);
+        return column;
+      }
+
+      function renderFeaturedMedia(item) {
+        const featuredMedia = document.getElementById('featured-media');
+        if (!featuredMedia || !item?.thumbnail) return;
+        featuredMedia.replaceChildren();
+        featuredMedia.className = 'position-relative h-100 bg-light';
+        const image = document.createElement('img');
+        image.src = item.thumbnail;
+        image.alt = item.title || 'Tin tức FFT Việt Nam';
+        image.className = 'w-100 h-100 object-fit-cover';
+        const label = document.createElement('span');
+        label.className = 'badge bg-dark position-absolute top-0 start-0 m-3';
+        label.textContent = 'Ảnh minh hoạ';
+        featuredMedia.append(image, label);
+      }
+
       if (window.ApiClient && window.ApiClient.getNews && newsContainer) {
         window.ApiClient.getNews(10)
           .then(res => {
             if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
-              newsContainer.replaceChildren();
-              res.data.forEach((item) => {
-                const col = document.createElement('div');
-                col.id = `article-${item.slug || item.id}`;
-                col.className = 'col-md-6';
-                const card = document.createElement('article');
-                card.className = 'card h-100 border shadow-sm rounded-3 overflow-hidden';
-                const image = document.createElement('img');
-                image.className = 'w-100 object-fit-cover';
-                image.style.height = '180px';
-                image.loading = 'lazy';
-                image.src = item.thumbnail || '';
-                image.alt = item.title || 'Tin tức';
-                const body = document.createElement('div');
-                body.className = 'card-body d-flex flex-column p-4';
-                const date = item.created_at ? new Date(item.created_at).toLocaleDateString('vi-VN') : '';
-                const metadata = document.createElement('div');
-                metadata.className = 'small text-muted mb-2';
-                metadata.textContent = `${date}${item.author_name ? ` • ${item.author_name}` : ''}`;
-                const title = document.createElement('h5');
-                title.className = 'fw-bold card-title mb-2';
-                title.textContent = item.title || 'Tin tức';
-                const summary = document.createElement('p');
-                summary.className = 'card-text text-secondary small mb-3 flex-grow-1';
-                summary.textContent = item.summary || '';
-                const views = document.createElement('span');
-                views.className = 'small text-muted';
-                views.textContent = `${item.views_count || 0} lượt xem`;
-                body.append(metadata, title, summary, views);
-                card.append(image, body);
-                col.append(card);
-                newsContainer.append(col);
-              });
+              renderFeaturedMedia(res.data[0]);
+              newsContainer.replaceChildren(...res.data.map(createNewsCard));
+              document.getElementById('news-count').textContent = `Hiển thị ${res.data.length} bài viết`;
+            } else {
+              newsContainer.replaceChildren(createEmptyNewsState());
+              document.getElementById('news-count').textContent = 'Chưa có bài viết';
             }
           })
           .catch(err => {
-            console.log('ℹ️ Không thể kết nối API news, duy trì nội dung tĩnh dự phòng.', err);
+            console.log('ℹ️ Không thể tải tin tức.', err);
+            newsContainer.replaceChildren(createEmptyNewsState());
+            document.getElementById('news-count').textContent = 'Không tải được bài viết';
           });
+      }
+
+      function createEmptyNewsState() {
+        const column = document.createElement('div');
+        column.className = 'col-12';
+        const box = document.createElement('div');
+        box.className = 'gallery-empty-state';
+        box.innerHTML = '<div class="gallery-empty-icon"><i class="bi bi-journal-x"></i></div><p class="eyebrow mb-2">TIN TỨC XÁC THỰC</p><h2 class="h4 fw-bold">Chưa có bài viết được xuất bản</h2><p class="text-secondary mb-0">Nội dung sẽ hiển thị sau khi quản trị viên tạo và xuất bản bài viết.</p>';
+        column.appendChild(box);
+        return column;
       }
     });
   </script>
