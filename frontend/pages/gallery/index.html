@@ -72,11 +72,8 @@
         <button class="btn btn-outline-secondary btn-sm px-3 py-2 fw-semibold" data-filter="van-phong">
           <i class="bi bi-building me-1"></i> Không gian văn phòng
         </button>
-        <button class="btn btn-outline-secondary btn-sm px-3 py-2 fw-semibold" data-filter="hoat-dong">
-          <i class="bi bi-people me-1"></i> Hoạt động đội ngũ
-        </button>
-        <button class="btn btn-outline-secondary btn-sm px-3 py-2 fw-semibold" data-filter="su-kien">
-          <i class="bi bi-trophy me-1"></i> Sự kiện &amp; Vinh danh
+        <button class="btn btn-outline-secondary btn-sm px-3 py-2 fw-semibold" data-filter="minh-hoa">
+          <i class="bi bi-images me-1"></i> Ảnh minh hoạ
         </button>
       </div>
 
@@ -275,7 +272,7 @@
       });
 
       function createGalleryItem(item) {
-        const categoryMap = { 'Văn phòng': 'van-phong', 'Hoạt động': 'hoat-dong', 'Sự kiện': 'su-kien', 'Công nghệ': 'su-kien' };
+        const categoryMap = { 'Văn phòng': 'van-phong', 'Minh hoạ': 'minh-hoa' };
         const badgeClass = item.category === 'Văn phòng' ? 'bg-primary' : (item.category === 'Hoạt động' ? 'bg-success' : 'bg-warning text-dark');
         const column = document.createElement('div');
         column.className = 'col-md-6 col-lg-4 gallery-item';

@@ -82,8 +82,16 @@ VALUES
    1)
 ON DUPLICATE KEY UPDATE `slug`=`slug`;
 
--- 5. Thư viện hình ảnh khởi tạo rỗng.
--- Chỉ bổ sung ảnh đã được FFT xác nhận thông qua trang quản trị.
+-- 5. Ảnh minh hoạ được tạo cho bản demo, không phải ảnh hoạt động thực tế của FFT.
+INSERT INTO `gallery` (`id`, `title`, `category`, `image_url`, `description`, `display_order`)
+VALUES
+  (101, 'Trao đổi phương án kỹ thuật', 'Minh hoạ', '../../assets/images/gallery/team-workshop.png', 'Ảnh minh hoạ cho hoạt động trao đổi kỹ thuật.', 1),
+  (102, 'Cùng rà soát sản phẩm', 'Minh hoạ', '../../assets/images/gallery/product-review.png', 'Ảnh minh hoạ cho quá trình review sản phẩm.', 2),
+  (103, 'Thảo luận tiến độ dự án', 'Minh hoạ', '../../assets/images/gallery/project-discussion.png', 'Ảnh minh hoạ cho buổi trao đổi dự án.', 3),
+  (104, 'Kiểm thử chất lượng', 'Minh hoạ', '../../assets/images/gallery/quality-check.png', 'Ảnh minh hoạ cho công việc kiểm thử.', 4)
+ON DUPLICATE KEY UPDATE
+  `title` = VALUES(`title`), `category` = VALUES(`category`), `image_url` = VALUES(`image_url`),
+  `description` = VALUES(`description`), `display_order` = VALUES(`display_order`);
 
 -- 6. Dữ liệu mẫu: Phản hồi liên hệ mẫu
 INSERT INTO `contacts` (`id`, `full_name`, `email`, `phone`, `subject`, `message`, `status`, `admin_notes`)
