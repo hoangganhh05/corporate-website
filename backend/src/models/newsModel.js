@@ -1,5 +1,4 @@
 const { pool } = require('../config/db');
-const { fallbackNews } = require('./fallbackData');
 
 /**
  * Model thao tác với bảng news trong MySQL
@@ -24,7 +23,7 @@ const NewsModel = {
       );
       return rows;
     } catch (error) {
-      return fallbackNews;
+      throw error;
     }
   },
 
@@ -49,7 +48,7 @@ const NewsModel = {
       }
       return null;
     } catch (error) {
-      return fallbackNews.find((n) => n.slug === slug || String(n.id) === String(slug)) || null;
+      throw error;
     }
   }
 };

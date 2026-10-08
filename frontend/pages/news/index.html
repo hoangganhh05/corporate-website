@@ -66,9 +66,7 @@
       <div class="row align-items-center g-4 bg-white rounded-4 border p-3 p-md-4 shadow-sm">
         <div class="col-lg-6">
           <div class="rounded-3 overflow-hidden shadow-sm" style="height: 280px;">
-            <img id="featured-img" src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80" 
-                 alt="Khởi động dự án nâng cấp hệ sinh thái số doanh nghiệp 2026" 
-                 class="w-100 h-100 object-fit-cover" loading="lazy">
+            <div class="news-visual h-100"><span>FFT / TIN TỨC</span><i class="bi bi-megaphone"></i></div>
           </div>
         </div>
         <div class="col-lg-6">
@@ -114,10 +112,8 @@
             <!-- Article 1 -->
             <div id="article-1" class="col-md-6">
               <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                <div class="bg-light overflow-hidden" style="height: 180px;">
-                  <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" 
-                       alt="Hội thảo giải pháp công nghệ và tương lai số" 
-                       class="w-100 h-100 object-fit-cover" loading="lazy">
+                <div class="news-visual">
+                  <span>FFT / CẬP NHẬT</span><i class="bi bi-journal-text"></i>
                 </div>
                 <div class="card-body d-flex flex-column p-4">
                   <div class="d-flex justify-content-between small text-muted mb-2">
@@ -139,10 +135,8 @@
             <!-- Article 2 -->
             <div id="article-2" class="col-md-6">
               <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                <div class="bg-light overflow-hidden" style="height: 180px;">
-                  <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" 
-                       alt="Tầm quan trọng của website chuẩn SEO đối với doanh nghiệp" 
-                       class="w-100 h-100 object-fit-cover" loading="lazy">
+                <div class="news-visual news-visual--alt">
+                  <span>FFT / KIẾN THỨC</span><i class="bi bi-lightbulb"></i>
                 </div>
                 <div class="card-body d-flex flex-column p-4">
                   <div class="d-flex justify-content-between small text-muted mb-2">
@@ -164,10 +158,8 @@
             <!-- Article 3 -->
             <div id="article-3" class="col-md-6">
               <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                <div class="bg-light overflow-hidden" style="height: 180px;">
-                  <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80" 
-                       alt="Bảo mật dữ liệu và phòng ngừa tấn công mạng cho khối SMEs" 
-                       class="w-100 h-100 object-fit-cover" loading="lazy">
+                <div class="news-visual news-visual--blue">
+                  <span>FFT / CÔNG NGHỆ</span><i class="bi bi-shield-check"></i>
                 </div>
                 <div class="card-body d-flex flex-column p-4">
                   <div class="d-flex justify-content-between small text-muted mb-2">
@@ -189,10 +181,8 @@
             <!-- Article 4 -->
             <div id="article-4" class="col-md-6">
               <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                <div class="bg-light overflow-hidden" style="height: 180px;">
-                  <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" 
-                       alt="Chương trình kết nối công nghệ và văn hóa doanh nghiệp FFT" 
-                       class="w-100 h-100 object-fit-cover" loading="lazy">
+                <div class="news-visual news-visual--orange">
+                  <span>FFT / NỘI BỘ</span><i class="bi bi-people"></i>
                 </div>
                 <div class="card-body d-flex flex-column p-4">
                   <div class="d-flex justify-content-between small text-muted mb-2">
@@ -382,51 +372,75 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const newsContainer = document.getElementById('news-grid');
+      function createNewsCard(item, index) {
+        const column = document.createElement('div');
+        column.id = `article-${item.id}`;
+        column.className = 'col-md-6';
+        const card = document.createElement('article');
+        card.className = 'card h-100 border shadow-sm rounded-3 overflow-hidden';
+
+        if (item.thumbnail) {
+          const media = document.createElement('div');
+          media.className = 'bg-light overflow-hidden';
+          media.style.height = '180px';
+          const image = document.createElement('img');
+          image.src = item.thumbnail;
+          image.alt = item.title || 'Tin tức FFT Việt Nam';
+          image.className = 'w-100 h-100 object-fit-cover';
+          image.loading = 'lazy';
+          media.appendChild(image);
+          card.appendChild(media);
+        } else {
+          const visual = document.createElement('div');
+          visual.className = index % 2 ? 'news-visual news-visual--alt' : 'news-visual';
+          const label = document.createElement('span');
+          label.textContent = 'FFT / TIN TỨC';
+          const icon = document.createElement('i');
+          icon.className = index % 2 ? 'bi bi-lightbulb' : 'bi bi-journal-text';
+          visual.append(label, icon);
+          card.appendChild(visual);
+        }
+
+        const body = document.createElement('div');
+        body.className = 'card-body d-flex flex-column p-4';
+        const meta = document.createElement('div');
+        meta.className = 'd-flex justify-content-between small text-muted mb-2';
+        const category = document.createElement('span');
+        category.className = 'badge bg-primary-subtle text-primary';
+        category.textContent = 'Tin tức';
+        const date = document.createElement('span');
+        date.textContent = item.created_at ? new Date(item.created_at).toLocaleDateString('vi-VN') : '';
+        meta.append(category, date);
+        const title = document.createElement('h5');
+        title.className = 'fw-bold card-title mb-2';
+        title.textContent = item.title || 'Tin tức FFT Việt Nam';
+        const summary = document.createElement('p');
+        summary.className = 'card-text text-secondary small mb-3 flex-grow-1';
+        summary.textContent = item.summary || '';
+        const footer = document.createElement('div');
+        footer.className = 'd-flex justify-content-between align-items-center pt-2 border-top small text-muted';
+        const views = document.createElement('span');
+        views.textContent = `${Number(item.views_count) || 0} lượt xem`;
+        const link = document.createElement('a');
+        link.href = `#article-${item.id}`;
+        link.className = 'text-primary fw-semibold text-decoration-none';
+        link.textContent = 'Đọc tiếp →';
+        footer.append(views, link);
+        body.append(meta, title, summary, footer);
+        card.appendChild(body);
+        column.appendChild(card);
+        return column;
+      }
+
       if (window.ApiClient && window.ApiClient.getNews && newsContainer) {
         window.ApiClient.getNews(10)
           .then(res => {
-            if (res && res.success && Array.isArray(res.data) && res.data.length > 0) {
-              const defaultImages = [
-                'https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80',
-                'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80'
-              ];
-              let html = '';
-              res.data.forEach((item, index) => {
-                const imgUrl = item.image_url || defaultImages[index % defaultImages.length];
-                const dateStr = item.published_at ? new Date(item.published_at).toLocaleDateString('vi-VN') : '20/06/2026';
-                const badgeColor = index % 2 === 0 ? 'bg-primary-subtle text-primary' : 'bg-success-subtle text-success';
-                
-                html += `
-                  <div id="article-${item.id}" class="col-md-6">
-                    <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                      <div class="bg-light overflow-hidden" style="height: 180px;">
-                        <img src="${imgUrl}" alt="${item.title}" class="w-100 h-100 object-fit-cover" loading="lazy">
-                      </div>
-                      <div class="card-body d-flex flex-column p-4">
-                        <div class="d-flex justify-content-between small text-muted mb-2">
-                          <span class="badge ${badgeColor}">${item.category || 'Tin tức'}</span>
-                          <span><i class="bi bi-calendar3 me-1"></i> ${dateStr}</span>
-                        </div>
-                        <h5 class="fw-bold card-title mb-2">${item.title}</h5>
-                        <p class="card-text text-secondary small mb-3 flex-grow-1">
-                          ${item.summary || item.content || ''}
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center pt-2 border-top small text-muted">
-                          <span><i class="bi bi-eye me-1"></i> ${80 + item.id * 15} lượt xem</span>
-                          <a href="#article-${item.id}" class="text-primary fw-semibold text-decoration-none">Đọc tiếp <i class="bi bi-chevron-right"></i></a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                `;
-              });
-              newsContainer.innerHTML = html;
+            if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
+              newsContainer.replaceChildren(...res.data.map(createNewsCard));
             }
           })
           .catch(err => {
-            console.log('ℹ️ Không thể kết nối API news, duy trì nội dung tĩnh dự phòng.', err);
+            console.log('ℹ️ Không thể tải tin tức.', err);
           });
       }
     });

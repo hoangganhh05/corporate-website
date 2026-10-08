@@ -53,9 +53,9 @@
           <li class="breadcrumb-item active text-white" aria-current="page">Hình ảnh</li>
         </ol>
       </nav>
-      <h1 class="fw-bold mb-2">Thư Viện Hình Ảnh &amp; Hoạt Động</h1>
+      <h1 class="fw-bold mb-2">Thư Viện Hình Ảnh</h1>
       <p class="text-secondary max-w-600 mx-auto mb-0">
-        Khám phá không gian văn phòng sáng tạo, văn hóa làm việc năng động và các sự kiện đáng nhớ của FFT Việt Nam.
+        Hình ảnh thực tế do FFT Việt Nam cập nhật và xác nhận.
       </p>
     </div>
   </header>
@@ -65,7 +65,7 @@
     <div class="container py-3">
 
       <!-- Filter Buttons -->
-      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5" id="gallery-filters">
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-5" id="gallery-filters" hidden>
         <button class="btn btn-primary btn-sm px-3 py-2 fw-semibold active" data-filter="all">
           Tất cả ảnh
         </button>
@@ -82,166 +82,12 @@
 
       <!-- Gallery Grid -->
       <div class="row g-4" id="gallery-items">
-
-        <!-- Item 1: Văn phòng -->
-        <div class="col-md-6 col-lg-4 gallery-item" data-category="van-phong">
-          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-            <div class="position-relative overflow-hidden bg-light" style="height: 220px;">
-              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" 
-                   alt="Không gian văn phòng mở hiện đại" 
-                   class="w-100 h-100 object-fit-cover transition-img" 
-                   loading="lazy">
-              <span class="badge bg-primary position-absolute top-0 end-0 m-3 shadow-sm">Văn phòng</span>
-            </div>
-            <div class="card-body p-4">
-              <h5 class="fw-bold mb-2">Không gian văn phòng mở hiện đại</h5>
-              <p class="text-secondary small mb-3">
-                Khu vực làm việc tiện nghi, ngập tràn ánh sáng tự nhiên thúc đẩy khả năng sáng tạo của đội ngũ kỹ sư.
-              </p>
-              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn" 
-                      data-bs-toggle="modal" data-bs-target="#imageModal"
-                      data-title="Không gian văn phòng mở hiện đại"
-                      data-category="Văn phòng"
-                      data-img="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=85"
-                      data-desc="Không gian làm việc mở với đầy đủ tiện nghi, thiết kế hiện đại chuẩn doanh nghiệp công nghệ, trang bị màn hình chất lượng cao và môi trường năng động.">
-                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 2: Văn phòng -->
-        <div class="col-md-6 col-lg-4 gallery-item" data-category="van-phong">
-          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-            <div class="position-relative overflow-hidden bg-light" style="height: 220px;">
-              <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=800&q=80" 
-                   alt="Phòng họp sáng tạo & Brainstorm" 
-                   class="w-100 h-100 object-fit-cover transition-img" 
-                   loading="lazy">
-              <span class="badge bg-primary position-absolute top-0 end-0 m-3 shadow-sm">Văn phòng</span>
-            </div>
-            <div class="card-body p-4">
-              <h5 class="fw-bold mb-2">Phòng họp sáng tạo &amp; Brainstorm</h5>
-              <p class="text-secondary small mb-3">
-                Không gian thảo luận chiến lược dự án, trang bị bảng tương tác và hệ thống họp trực tuyến bảo mật.
-              </p>
-              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn"
-                      data-bs-toggle="modal" data-bs-target="#imageModal"
-                      data-title="Phòng họp sáng tạo & Brainstorm"
-                      data-category="Văn phòng"
-                      data-img="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1200&q=85"
-                      data-desc="Phòng họp cách âm chuẩn, trang bị hệ thống họp trực tuyến đa điểm cho các buổi làm việc từ xa cùng khách hàng và đối tác chiến lược.">
-                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 3: Hoạt động -->
-        <div class="col-md-6 col-lg-4 gallery-item" data-category="hoat-dong">
-          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-            <div class="position-relative overflow-hidden bg-light" style="height: 220px;">
-              <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" 
-                   alt="Buổi họp kỹ thuật Sprint Review" 
-                   class="w-100 h-100 object-fit-cover transition-img" 
-                   loading="lazy">
-              <span class="badge bg-success position-absolute top-0 end-0 m-3 shadow-sm">Hoạt động</span>
-            </div>
-            <div class="card-body p-4">
-              <h5 class="fw-bold mb-2">Buổi họp kỹ thuật Sprint Review</h5>
-              <p class="text-secondary small mb-3">
-                Đội ngũ lập trình viên định kỳ đánh giá chất lượng sản phẩm, rà soát mã nguồn và chia sẻ kiến thức mới.
-              </p>
-              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn"
-                      data-bs-toggle="modal" data-bs-target="#imageModal"
-                      data-title="Buổi họp kỹ thuật Sprint Review"
-                      data-category="Hoạt động"
-                      data-img="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=85"
-                      data-desc="Hình ảnh buổi tổng kết tiến độ theo mô hình Agile/Scrum, nơi các thành viên đóng góp ý kiến nâng cao trải nghiệm người dùng và hiệu năng hệ thống.">
-                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 4: Hoạt động -->
-        <div class="col-md-6 col-lg-4 gallery-item" data-category="hoat-dong">
-          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-            <div class="position-relative overflow-hidden bg-light" style="height: 220px;">
-              <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=800&q=80" 
-                   alt="Chuyến dã ngoại Teambuilding" 
-                   class="w-100 h-100 object-fit-cover transition-img" 
-                   loading="lazy">
-              <span class="badge bg-success position-absolute top-0 end-0 m-3 shadow-sm">Hoạt động</span>
-            </div>
-            <div class="card-body p-4">
-              <h5 class="fw-bold mb-2">Chuyến dã ngoại Teambuilding</h5>
-              <p class="text-secondary small mb-3">
-                Hoạt động ngoại khóa thường niên giúp tái tạo năng lượng, tăng cường kết nối và thấu hiểu giữa các phòng ban.
-              </p>
-              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn"
-                      data-bs-toggle="modal" data-bs-target="#imageModal"
-                      data-title="Chuyến dã ngoại Teambuilding"
-                      data-category="Hoạt động"
-                      data-img="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=85"
-                      data-desc="Khoảnh khắc vui tươi, gắn kết tinh thần đoàn kết của toàn thể cán bộ nhân viên công ty trong chuyến hành trình dã ngoại định kỳ hàng năm.">
-                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 5: Sự kiện -->
-        <div class="col-md-6 col-lg-4 gallery-item" data-category="su-kien">
-          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-            <div class="position-relative overflow-hidden bg-light" style="height: 220px;">
-              <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80" 
-                   alt="Lễ vinh danh nhân sự xuất sắc" 
-                   class="w-100 h-100 object-fit-cover transition-img" 
-                   loading="lazy">
-              <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3 shadow-sm">Sự kiện</span>
-            </div>
-            <div class="card-body p-4">
-              <h5 class="fw-bold mb-2">Lễ vinh danh nhân sự xuất sắc</h5>
-              <p class="text-secondary small mb-3">
-                Trao thưởng các kỹ sư và chuyên viên có cống hiến vượt bậc trong các dự án công nghệ chuyển đổi số.
-              </p>
-              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn"
-                      data-bs-toggle="modal" data-bs-target="#imageModal"
-                      data-title="Lễ vinh danh nhân sự xuất sắc"
-                      data-category="Sự kiện"
-                      data-img="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85"
-                      data-desc="Ban lãnh đạo công ty trao chứng nhận và phần thưởng vinh danh những cá nhân xuất sắc có thành tích vượt trội trong quý 2/2026.">
-                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Item 6: Sự kiện -->
-        <div class="col-md-6 col-lg-4 gallery-item" data-category="su-kien">
-          <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-            <div class="position-relative overflow-hidden bg-light" style="height: 220px;">
-              <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" 
-                   alt="Hội thảo kết nối công nghệ số" 
-                   class="w-100 h-100 object-fit-cover transition-img" 
-                   loading="lazy">
-              <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3 shadow-sm">Sự kiện</span>
-            </div>
-            <div class="card-body p-4">
-              <h5 class="fw-bold mb-2">Hội thảo kết nối công nghệ số</h5>
-              <p class="text-secondary small mb-3">
-                FFT Việt Nam đồng tổ chức diễn đàn chia sẻ xu hướng giải pháp phần mềm cho cộng đồng doanh nghiệp.
-              </p>
-              <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn"
-                      data-bs-toggle="modal" data-bs-target="#imageModal"
-                      data-title="Hội thảo kết nối công nghệ số"
-                      data-category="Sự kiện"
-                      data-img="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=85"
-                      data-desc="Đại diện FFT Việt Nam trình bày tham luận về kiến trúc phần mềm thế hệ mới và an toàn thông tin tại hội thảo thường niên khối công nghệ.">
-                <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
-              </button>
-            </div>
+        <div class="col-12" id="gallery-empty-state">
+          <div class="gallery-empty-state">
+            <div class="gallery-empty-icon"><i class="bi bi-images"></i></div>
+            <p class="eyebrow mb-2">THƯ VIỆN XÁC THỰC</p>
+            <h2 class="h4 fw-bold">Ảnh hoạt động thực tế đang được cập nhật</h2>
+            <p class="text-secondary mb-0">FFT chỉ đăng hình ảnh văn phòng, đội ngũ và sự kiện khi có nguồn ảnh được xác nhận.</p>
           </div>
         </div>
 
@@ -378,6 +224,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const galleryContainer = document.getElementById('gallery-items');
+      const galleryFilters = document.getElementById('gallery-filters');
       const filterButtons = document.querySelectorAll('#gallery-filters button');
       const modalTitle = document.getElementById('imageModalLabel');
       const modalCategory = document.getElementById('modalCategory');
@@ -427,64 +274,67 @@
         });
       });
 
-      // Gán sự kiện ban đầu cho HTML mẫu
-      attachModalEvents();
+      function createGalleryItem(item) {
+        const categoryMap = { 'Văn phòng': 'van-phong', 'Hoạt động': 'hoat-dong', 'Sự kiện': 'su-kien', 'Công nghệ': 'su-kien' };
+        const badgeClass = item.category === 'Văn phòng' ? 'bg-primary' : (item.category === 'Hoạt động' ? 'bg-success' : 'bg-warning text-dark');
+        const column = document.createElement('div');
+        column.className = 'col-md-6 col-lg-4 gallery-item';
+        column.dataset.category = categoryMap[item.category] || 'van-phong';
+        const card = document.createElement('article');
+        card.className = 'card h-100 border shadow-sm rounded-3 overflow-hidden';
+        const media = document.createElement('div');
+        media.className = 'position-relative overflow-hidden bg-light';
+        media.style.height = '220px';
+        const image = document.createElement('img');
+        image.src = item.image_url;
+        image.alt = item.title || 'Hình ảnh FFT Việt Nam';
+        image.className = 'w-100 h-100 object-fit-cover transition-img';
+        image.loading = 'lazy';
+        const badge = document.createElement('span');
+        badge.className = `badge ${badgeClass} position-absolute top-0 end-0 m-3 shadow-sm`;
+        badge.textContent = item.category || 'Hình ảnh';
+        media.append(image, badge);
+        const body = document.createElement('div');
+        body.className = 'card-body p-4';
+        const title = document.createElement('h5');
+        title.className = 'fw-bold mb-2';
+        title.textContent = item.title || 'Hình ảnh FFT Việt Nam';
+        const description = document.createElement('p');
+        description.className = 'text-secondary small mb-3';
+        description.textContent = item.description || '';
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'btn btn-outline-primary btn-sm w-100 fw-semibold';
+        button.dataset.bsToggle = 'modal';
+        button.dataset.bsTarget = '#imageModal';
+        button.textContent = 'Xem chi tiết';
+        button.addEventListener('click', () => {
+          modalTitle.textContent = title.textContent;
+          modalCategory.textContent = badge.textContent;
+          modalDesc.textContent = description.textContent;
+          modalImg.src = image.src;
+          modalImg.alt = image.alt;
+        });
+        body.append(title, description, button);
+        card.append(media, body);
+        column.appendChild(card);
+        return column;
+      }
 
-      // Thử tải dữ liệu ĐỘNG từ Backend API nếu máy chủ đang chạy
+      // Chỉ tải ảnh do quản trị viên đã nhập từ backend.
       if (window.ApiClient && typeof window.ApiClient.getGallery === 'function') {
         window.ApiClient.getGallery()
           .then(res => {
             if (res && res.status === 'success' && Array.isArray(res.data) && res.data.length > 0) {
-              console.log('⚡ Đang hiển thị dữ liệu thư viện ảnh ĐỘNG từ Backend API (MySQL):', res.data.length, 'mục');
-              
-              const categoryMap = {
-                'Văn phòng': 'van-phong',
-                'Hoạt động': 'hoat-dong',
-                'Sự kiện': 'su-kien',
-                'Công nghệ': 'su-kien'
-              };
-
-              let html = '';
-              res.data.forEach(item => {
-                const catClass = categoryMap[item.category] || 'van-phong';
-                const badgeColor = item.category === 'Văn phòng' ? 'bg-primary' : (item.category === 'Hoạt động' ? 'bg-success' : 'bg-warning text-dark');
-                const imgUrl = item.image_url || 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80';
-
-                html += `
-                  <div class="col-md-6 col-lg-4 gallery-item" data-category="${catClass}">
-                    <div class="card h-100 border shadow-sm rounded-3 overflow-hidden">
-                      <div class="position-relative overflow-hidden bg-light" style="height: 220px;">
-                        <img src="${imgUrl}" 
-                             alt="${item.title}" 
-                             class="w-100 h-100 object-fit-cover transition-img" 
-                             loading="lazy">
-                        <span class="badge ${badgeColor} position-absolute top-0 end-0 m-3 shadow-sm">${item.category}</span>
-                      </div>
-                      <div class="card-body p-4">
-                        <h5 class="fw-bold mb-2">${item.title}</h5>
-                        <p class="text-secondary small mb-3">
-                          ${item.description || 'Hình ảnh hoạt động và môi trường làm việc của công ty.'}
-                        </p>
-                        <button class="btn btn-outline-primary btn-sm w-100 fw-semibold view-detail-btn" 
-                                data-bs-toggle="modal" data-bs-target="#imageModal"
-                                data-title="${item.title}"
-                                data-category="${item.category}"
-                                data-img="${imgUrl}"
-                                data-desc="${item.description || ''}">
-                          <i class="bi bi-arrows-fullscreen me-1"></i> Xem chi tiết
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                `;
-              });
-
-              galleryContainer.innerHTML = html;
-              attachModalEvents();
+              const confirmedImages = res.data.filter(item => item.image_url);
+              if (confirmedImages.length > 0) {
+                galleryContainer.replaceChildren(...confirmedImages.map(createGalleryItem));
+                galleryFilters.hidden = false;
+              }
             }
           })
           .catch(err => {
-            console.log('ℹ️ Không thể kết nối API gallery, duy trì hiển thị ảnh mẫu tĩnh.', err);
+            console.log('ℹ️ Không thể tải thư viện ảnh.', err);
           });
       }
     });

@@ -1,5 +1,4 @@
 const { pool } = require('../config/db');
-const { fallbackGallery } = require('./fallbackData');
 
 /**
  * Model thao tác với bảng gallery trong MySQL
@@ -23,10 +22,7 @@ const GalleryModel = {
       const [rows] = await pool.query(sql, params);
       return rows;
     } catch (error) {
-      if (category && category !== 'all') {
-        return fallbackGallery.filter((g) => g.category.toLowerCase() === category.toLowerCase());
-      }
-      return fallbackGallery;
+      throw error;
     }
   }
 };

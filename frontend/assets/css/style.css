@@ -4,48 +4,69 @@
    Thiết kế chuẩn Doanh nghiệp B2B (Clean, Professional, High Density)
    ========================================================================== */
 
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap');
+
 :root {
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --primary-light: #eff6ff;
-  --secondary: #475569;
-  --dark: #0f172a;
-  --dark-surface: #1e293b;
-  --light-bg: #f8fafc;
-  --border: #e2e8f0;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --hover-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+  --primary: #087f78;
+  --primary-hover: #05635e;
+  --primary-light: #e6f5f2;
+  --secondary: #5d6870;
+  --dark: #151c20;
+  --dark-surface: #202a30;
+  --light-bg: #f4f7f6;
+  --border: #dbe3e1;
+  --text-main: #20282d;
+  --text-muted: #66747a;
+  --card-shadow: 0 1px 2px rgba(21, 28, 32, 0.04), 0 8px 24px rgba(21, 28, 32, 0.035);
+  --hover-shadow: 0 10px 28px rgba(21, 28, 32, 0.08);
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text-main);
-  background-color: #ffffff;
+  background-color: #fcfdfd;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  line-height: 1.6;
+  line-height: 1.65;
 }
+
+h1, h2, h3, h4, h5, h6, .navbar-brand {
+  font-family: "Manrope", "Be Vietnam Pro", sans-serif;
+}
+
+.bg-light, .bg-light-subtle {
+  background-color: var(--light-bg) !important;
+}
+
+.text-primary { color: var(--primary) !important; }
+.bg-primary { background-color: var(--primary) !important; }
+.btn-primary { background-color: var(--primary); border-color: var(--primary); }
+.btn-primary:hover, .btn-primary:focus { background-color: var(--primary-hover); border-color: var(--primary-hover); }
+.btn-outline-primary { color: var(--primary); border-color: var(--primary); }
+.btn-outline-primary:hover { background-color: var(--primary); border-color: var(--primary); }
+.border-primary { border-color: var(--primary) !important; }
 
 /* Navbar */
 .navbar {
-  padding-top: 0.85rem;
-  padding-bottom: 0.85rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  background-color: rgba(21, 28, 32, 0.97) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .navbar-brand {
   font-weight: 700;
-  letter-spacing: -0.5px;
-  font-size: 1.25rem;
+  letter-spacing: -0.035em;
+  font-size: 1.08rem;
 }
 
 .navbar-nav .nav-link {
+  color: #aebbc0 !important;
+  font-size: 0.87rem;
   font-weight: 500;
-  padding: 0.5rem 0.85rem !important;
-  transition: color 0.2s ease;
+  padding: 0.5rem 0.7rem !important;
+  transition: color 0.18s ease;
 }
 
 .navbar-nav .nav-link:hover,
@@ -55,38 +76,53 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
+  background: radial-gradient(circle at 50% -35%, #23454a 0, #151c20 48%, #101517 100%);
   color: #ffffff;
-  padding: 5.5rem 0 4.5rem;
+  padding: 6.5rem 0 5.5rem;
   position: relative;
+  overflow: hidden;
 }
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -9rem;
+  height: 12rem;
+  border-top: 1px solid rgba(175, 237, 226, 0.12);
+  transform: rotate(-4deg);
+}
+
+.hero-section .container { position: relative; z-index: 1; }
 
 .hero-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: rgba(37, 99, 235, 0.2);
-  border: 1px solid rgba(147, 197, 253, 0.3);
-  color: #bfdbfe;
-  padding: 0.35rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
+  background-color: transparent;
+  border: 0;
+  border-left: 2px solid #3dd3c3;
+  color: #b9cfcd;
+  padding: 0 0 0 0.7rem;
+  border-radius: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
 }
 
 .hero-title {
-  font-size: 2.75rem;
+  font-size: clamp(2.25rem, 5vw, 3.65rem);
   font-weight: 800;
   line-height: 1.2;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.05em;
   margin-bottom: 1.25rem;
 }
 
 .hero-lead {
   font-size: 1.15rem;
-  color: #94a3b8;
-  max-width: 650px;
+  color: #b6c5c5;
+  max-width: 690px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 2rem;
@@ -96,12 +132,12 @@ body {
 .stats-bar {
   background: #ffffff;
   border: 1px solid var(--border);
-  border-radius: 0.75rem;
+  border-radius: 0.35rem;
   box-shadow: var(--card-shadow);
-  margin-top: -2.5rem;
+  margin-top: -2.75rem;
   position: relative;
   z-index: 10;
-  padding: 1.75rem 1rem;
+  padding: 1.35rem 1rem;
 }
 
 .stat-item {
@@ -109,15 +145,15 @@ body {
 }
 
 .stat-number {
-  font-size: 2rem;
+  font-size: 1.02rem;
   font-weight: 800;
-  color: var(--primary);
+  color: var(--text-main);
   line-height: 1;
   margin-bottom: 0.25rem;
 }
 
 .stat-label {
-  font-size: 0.875rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   font-weight: 500;
 }
@@ -125,23 +161,22 @@ body {
 /* Feature & Service Cards */
 .feature-card {
   border: 1px solid var(--border);
-  border-radius: 0.75rem;
+  border-radius: 0.45rem;
   background-color: #ffffff;
   padding: 2rem 1.5rem;
   height: 100%;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .feature-card:hover {
-  transform: translateY(-4px);
   box-shadow: var(--hover-shadow);
-  border-color: #cbd5e1;
+  border-color: #a8c9c4;
 }
 
 .icon-box {
   width: 52px;
   height: 52px;
-  border-radius: 0.625rem;
+  border-radius: 0.35rem;
   background-color: var(--primary-light);
   color: var(--primary);
   display: flex;
@@ -151,21 +186,110 @@ body {
   margin-bottom: 1.25rem;
 }
 
+/* Visual content uses brand cues instead of unrelated stock portraits. */
+.delivery-panel {
+  background: var(--dark);
+  color: #fff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid #2d393d;
+}
+
+.delivery-panel-head {
+  color: #afc7c4;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.delivery-panel-head i { font-size: 1.2rem; color: #61dfd0; }
+
+.delivery-steps { list-style: none; margin: 1.75rem 0 1.5rem; padding: 0; }
+.delivery-steps li { display: flex; gap: 1rem; padding: 1rem 0; border-top: 1px solid rgba(255,255,255,.13); }
+.delivery-steps li > span { color: #61dfd0; font: 700 .78rem "Manrope", sans-serif; padding-top: .2rem; }
+.delivery-steps strong { display: block; font-size: 1rem; }
+.delivery-steps small { color: #aebfc0; display: block; font-size: .82rem; margin-top: .12rem; }
+.delivery-note { color: #b8ccca; font-size: .84rem; }
+.delivery-note i { color: #61dfd0; }
+
+.service-visual,
+.news-visual {
+  align-items: flex-start;
+  background: #e1f1ed;
+  color: #0c5751;
+  display: flex;
+  height: 140px;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 1.25rem;
+}
+
+.service-visual span,
+.news-visual span {
+  font: 700 .7rem "Manrope", sans-serif;
+  letter-spacing: .09em;
+}
+
+.service-visual i,
+.news-visual i { font-size: 4.5rem; line-height: .8; opacity: .82; }
+.service-visual--blue { background: #e5eef9; color: #245b96; }
+.service-visual--orange { background: #fbeedf; color: #a34b16; }
+.news-visual { background: #1e3435; color: #e5f6f3; height: 180px; }
+.news-visual--alt { background: #31485d; color: #e8f3ff; }
+.news-visual--blue { background: #e5eef9; color: #245b96; }
+.news-visual--orange { background: #fbeedf; color: #a34b16; }
+
+.gallery-empty-state {
+  align-items: center;
+  background: linear-gradient(135deg, #edf6f4, #f9fbfb);
+  border: 1px dashed #9bbcb7;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 320px;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+
+.gallery-empty-state > p:last-child { max-width: 520px; }
+.gallery-empty-icon {
+  align-items: center;
+  background: var(--dark);
+  border-radius: 0.45rem;
+  color: #6ee0d2;
+  display: flex;
+  font-size: 1.7rem;
+  height: 58px;
+  justify-content: center;
+  margin-bottom: 1.1rem;
+  width: 58px;
+}
+
+.eyebrow {
+  color: var(--primary);
+  font: 700 .7rem "Manrope", sans-serif;
+  letter-spacing: .11em;
+}
+
 /* News Cards */
 .news-card {
   border: 1px solid var(--border);
-  border-radius: 0.75rem;
+  border-radius: 0.45rem;
   overflow: hidden;
   background-color: #ffffff;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 .news-card:hover {
-  transform: translateY(-4px);
   box-shadow: var(--hover-shadow);
+  border-color: #a8c9c4;
 }
 
 .news-card-img {
@@ -183,9 +307,9 @@ body {
 
 /* CTA Section */
 .cta-section {
-  background-color: var(--light-bg);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background-color: #eaf3f1;
+  border-top: 0;
+  border-bottom: 0;
   padding: 4.5rem 0;
 }
 
@@ -194,7 +318,7 @@ footer {
   margin-top: auto;
   background-color: var(--dark);
   color: #94a3b8;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 3px solid var(--primary);
   padding-top: 4rem;
   padding-bottom: 2rem;
 }
@@ -214,9 +338,61 @@ footer a:hover {
   font-size: 0.95rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
   margin-bottom: 1.25rem;
 }
+
+/* Các thành phần Bootstrap dùng lại trên tất cả trang */
+.btn {
+  border-radius: 0.35rem;
+  font-size: 0.88rem;
+  box-shadow: none !important;
+}
+
+.badge {
+  border-radius: 0.25rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.badge.bg-primary-subtle {
+  background-color: transparent !important;
+  border-left: 2px solid var(--primary);
+  padding: 0.1rem 0 0.1rem 0.55rem !important;
+  border-radius: 0;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+}
+
+.card, .modal-content, .form-control, .form-select {
+  border-color: var(--border);
+  border-radius: 0.4rem;
+}
+
+.card { box-shadow: var(--card-shadow) !important; }
+
+.form-control, .form-select {
+  font-size: 0.9rem;
+  padding: 0.63rem 0.72rem;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #66aaa1;
+  box-shadow: 0 0 0 0.2rem rgba(8, 127, 120, 0.12);
+}
+
+/* Dashboard nội bộ: ưu tiên độ rõ ràng và mật độ thông tin */
+body.bg-light { background-color: #f2f5f4 !important; }
+body.bg-light main { max-width: 1440px; margin: 0 auto; }
+body.bg-light .card-header { background-color: #fff !important; }
+body.bg-light .table thead th {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+body.bg-light .table > :not(caption) > * > * { padding-top: 0.85rem; padding-bottom: 0.85rem; }
 
 /* ==========================================================================
    Responsive Breakpoints & Mobile Enhancements (STORY-016)
